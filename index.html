@@ -667,6 +667,136 @@
       z-index: 3;
     }
 
+    /* Studio — themed project clusters */
+    .studio {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .cluster {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem 1.25rem 1.1rem 1.6rem;
+      background: var(--bg-card);
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .cluster::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background: var(--cluster-color, var(--accent));
+    }
+
+    .cluster:hover {
+      border-color: var(--cluster-color, var(--accent));
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-1px);
+    }
+
+    .cluster-head {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .cluster-glyph {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--cluster-color, var(--accent));
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .cluster-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      color: var(--text);
+    }
+
+    .cluster-count {
+      margin-left: auto;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-subtle);
+    }
+
+    .cluster-thesis {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 0.85rem;
+    }
+
+    .cluster-projects {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .cluster-projects li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.55rem;
+      align-items: baseline;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .cluster-projects code {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      background: var(--bg-tag);
+      color: var(--text);
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .cluster-projects a code {
+      color: var(--cluster-color, var(--accent));
+      transition: background 0.15s;
+    }
+
+    .cluster-projects a {
+      text-decoration: none;
+    }
+
+    .cluster-projects a:hover code {
+      background: var(--cluster-color, var(--accent));
+      color: #fff;
+    }
+
+    .studio-legend {
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      text-align: center;
+      line-height: 1.5;
+    }
+
     /* Writing list */
     .articles {
       list-style: none;
@@ -948,6 +1078,7 @@
 <nav class="topnav" aria-label="Page sections">
   <a href="#about">About</a>
   <a href="#work">Work</a>
+  <a href="#studio">Studio</a>
   <a href="#writing">Writing</a>
   <a href="#principles">Principles</a>
   <a href="#connect">Connect</a>
@@ -1186,6 +1317,85 @@
         <span class="tech-bubble size-sm">EventBridge</span>
         <span class="tech-bubble size-sm">OpenSearch</span>
       </div>
+    </section>
+
+    <!-- Studio — themed projects -->
+    <section class="card" id="studio">
+      <p class="section-label">The Studio</p>
+      <p class="viz-subtitle">Active builds across five domains — each one a case study in trust, delegation, and supervised autonomy.</p>
+
+      <div class="studio">
+        <article class="cluster" style="--cluster-color: var(--purple);">
+          <header class="cluster-head">
+            <span class="cluster-glyph" aria-hidden="true">HA</span>
+            <span class="cluster-name">Human-Agent Systems</span>
+            <span class="cluster-count">04 builds</span>
+          </header>
+          <p class="cluster-thesis">Where the agent meets the operator. Routing, oversight, scoped delegation, and the scaffolding humans need to stay in command without becoming bottlenecks.</p>
+          <ul class="cluster-projects">
+            <li><a href="https://github.com/abduljaleel/neurl" rel="noopener noreferrer"><code>neurl</code></a><span>AI routing infrastructure with model registry and policy engine</span></li>
+            <li><a href="https://github.com/abduljaleel/aicapital" rel="noopener noreferrer"><code>aicapital</code></a><span>Decision support with evidence boards and structured frameworks</span></li>
+            <li><a href="https://github.com/abduljaleel/flow-at" rel="noopener noreferrer"><code>flow-at</code></a><span>Workflow orchestration with conditional logic and approval chains</span></li>
+            <li><a href="https://github.com/abduljaleel/aivi" rel="noopener noreferrer"><code>aivi</code></a><span>Enterprise AI maturity diagnostics and benchmarking</span></li>
+          </ul>
+        </article>
+
+        <article class="cluster" style="--cluster-color: var(--rose);">
+          <header class="cluster-head">
+            <span class="cluster-glyph" aria-hidden="true">SA</span>
+            <span class="cluster-name">Supervised Autonomy</span>
+            <span class="cluster-count">03 builds</span>
+          </header>
+          <p class="cluster-thesis">Real-world systems where a wrong action has weight — physical, financial, environmental. Supervision, intervention, and recovery are first-class concerns.</p>
+          <ul class="cluster-projects">
+            <li><a href="https://github.com/abduljaleel/robocars" rel="noopener noreferrer"><code>robocars</code></a><span>Fleet console for self-driving vehicles — mission control and intervention logging</span></li>
+            <li><a href="https://github.com/abduljaleel/tesl-on" rel="noopener noreferrer"><code>tesl-on</code></a><span>Energy platform with multi-site optimisation and forecasting</span></li>
+            <li><a href="https://github.com/abduljaleel/planetpi" rel="noopener noreferrer"><code>planetpi</code></a><span>Geospatial intelligence — anomaly detection and risk scoring</span></li>
+          </ul>
+        </article>
+
+        <article class="cluster" style="--cluster-color: var(--teal);">
+          <header class="cluster-head">
+            <span class="cluster-glyph" aria-hidden="true">TS</span>
+            <span class="cluster-name">Trust &amp; Security Posture</span>
+            <span class="cluster-count">02 builds</span>
+          </header>
+          <p class="cluster-thesis">The substrate underneath everything else. Vulnerability lineage, AI risk surfaces, and the slow, careful work of keeping a system honest as it grows.</p>
+          <ul class="cluster-projects">
+            <li><a href="https://github.com/abduljaleel/vim" rel="noopener noreferrer"><code>vim</code></a><span>Vulnerability Inheritance Map — tracing CVEs across forks and vendored deps</span></li>
+            <li><a href="https://github.com/abduljaleel/owasp-ai-maturity-assessment" rel="noopener noreferrer"><code>owasp-ai</code></a><span>OWASP-aligned AI maturity assessment toolkit</span></li>
+          </ul>
+        </article>
+
+        <article class="cluster" style="--cluster-color: var(--amber);">
+          <header class="cluster-head">
+            <span class="cluster-glyph" aria-hidden="true">DA</span>
+            <span class="cluster-name">Decision Architectures</span>
+            <span class="cluster-count">03 builds</span>
+          </header>
+          <p class="cluster-thesis">Systems that help humans choose well under uncertainty — game selection, scenario planning, evidence-weighted bets, statistically honest experiments.</p>
+          <ul class="cluster-projects">
+            <li><a href="https://github.com/abduljaleel/finiteinfinite" rel="noopener noreferrer"><code>finiteinfinite</code></a><span>Strategic decision system with portfolio design and scenario planning</span></li>
+            <li><a href="https://github.com/abduljaleel/lessventures" rel="noopener noreferrer"><code>lessventures</code></a><span>Venture studio operating system — capital allocation and portfolio analytics</span></li>
+            <li><a href="https://github.com/abduljaleel/dynamic-fi" rel="noopener noreferrer"><code>dynamic-fi</code></a><span>Scientific platform — experiment design and statistical methodology</span></li>
+          </ul>
+        </article>
+
+        <article class="cluster" style="--cluster-color: var(--indigo);">
+          <header class="cluster-head">
+            <span class="cluster-glyph" aria-hidden="true">KS</span>
+            <span class="cluster-name">Knowledge &amp; Story</span>
+            <span class="cluster-count">02 builds</span>
+          </header>
+          <p class="cluster-thesis">Tools for the human side of the equation — narrative architecture, brand voice, and the diagnostics that help people perform at their best.</p>
+          <ul class="cluster-projects">
+            <li><a href="https://github.com/abduljaleel/playbookfilms" rel="noopener noreferrer"><code>playbookfilms</code></a><span>Narrative platform — story builder, brand voice engine, asset library</span></li>
+            <li><a href="https://github.com/abduljaleel/smile-dk" rel="noopener noreferrer"><code>smile-dk</code></a><span>Human performance — energy diagnostics and personalised protocols</span></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="studio-legend">Each cluster is a working hypothesis about where trust, autonomy, and good design intersect. <a href="https://github.com/abduljaleel?tab=repositories" rel="noopener noreferrer" style="color: var(--accent);">See all 98 repositories &rarr;</a></p>
     </section>
 
     <!-- Writing -->
