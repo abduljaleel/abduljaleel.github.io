@@ -352,6 +352,127 @@
       color: var(--text-subtle);
     }
 
+    /* Project link */
+    .project a.project-link {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .project .project-content-wrap { position: relative; z-index: 2; pointer-events: none; }
+    .project .project-content-wrap > * { pointer-events: auto; }
+
+    .project-label {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-subtle);
+      z-index: 3;
+    }
+
+    /* Writing list */
+    .articles {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .article {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color 0.15s, background 0.15s, transform 0.15s;
+      background: var(--bg-card);
+    }
+
+    .article:hover {
+      border-color: var(--accent);
+      background: rgba(37, 99, 235, 0.03);
+      transform: translateX(2px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .article:hover { background: rgba(96, 165, 250, 0.06); }
+    }
+
+    .article-date {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      width: 80px;
+      padding-top: 0.15rem;
+    }
+
+    .article-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .article-title {
+      font-size: 0.88rem;
+      font-weight: 550;
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+
+    .article-source {
+      font-size: 0.7rem;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .article-source svg {
+      width: 11px;
+      height: 11px;
+      fill: currentColor;
+    }
+
+    /* Stats row */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 0.85rem 0.5rem;
+      background: var(--bg-tag);
+      border-radius: 10px;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-subtle);
+    }
+
     /* Community roles */
     .community-grid {
       display: grid;
@@ -531,6 +652,7 @@
 <nav class="topnav" aria-label="Page sections">
   <a href="#about">About</a>
   <a href="#work">Work</a>
+  <a href="#writing">Writing</a>
   <a href="#principles">Principles</a>
   <a href="#credentials">Credentials</a>
   <a href="#connect">Connect</a>
@@ -548,118 +670,318 @@
       </header>
 
       <p class="about">
-        Solutions-oriented engineering leader building trustworthy human-agent systems. I treat trust as an architectural outcome — designing environments where AI capability becomes dependable, governable behavior. Experienced in modernising technology ecosystems at scale, from near-real-time data pipelines to zero-trust security foundations.
+        I build the judgement and systems discipline required to make AI agents trustworthy enough for real work. I treat trust as an architectural outcome — not a model feature — designing the human, technical, and organisational structures that allow agents to earn it. I optimise for normal use, not demos; for consistency, not novelty.
       </p>
 
       <hr class="divider">
 
-      <p class="section-label">Expertise</p>
+      <p class="section-label">Working Across</p>
       <div class="tags">
         <span>Human-Agent Systems</span>
         <span>Trust Architecture</span>
-        <span>Cloud Architecture</span>
+        <span>Agent Observability</span>
+        <span>Context Infrastructure</span>
         <span>Platform Engineering</span>
-        <span>AI Agents</span>
+        <span>Cloud Architecture</span>
         <span>DevSecOps</span>
-        <span>API Governance</span>
         <span>Serverless</span>
-        <span>Threat Modelling</span>
+        <span>API Governance</span>
         <span>Sociotechnical Design</span>
       </div>
     </article>
 
     <!-- Projects / Work -->
     <section id="work">
-      <div class="section-label">Projects & Focus Areas</div>
+      <div class="section-label">Selected Projects</div>
 
       <div class="projects-grid">
-        <!-- Featured: Trust Architecture -->
+        <!-- Featured: Agent Trace -->
         <div class="project project-full">
+          <span class="project-label">Featured</span>
+          <a class="project-link" href="https://github.com/abduljaleel/agent-trace" rel="noopener noreferrer" aria-label="agent-trace on GitHub"></a>
           <div class="stripe" style="background: linear-gradient(90deg, var(--accent), var(--purple));"></div>
           <div class="project-inner">
             <div class="project-icon" style="background: linear-gradient(135deg, var(--accent), var(--purple));">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
-            <div class="project-content">
-              <h3>Trustworthy Human-Agent Systems</h3>
-              <p>Architecting systems where AI agents earn trust through design, not demos. Defining delegation boundaries, escalation protocols, and legibility patterns so people can rely on agents repeatedly without confusion or loss of control.</p>
+            <div class="project-content project-content-wrap">
+              <h3>agent-trace</h3>
+              <p>A standard format for tracing AI-generated code — making agent behaviour inspectable, auditable, and reproducible. The foundation of agent legibility.</p>
               <div class="project-tags">
-                <span style="background: var(--accent-light); color: var(--accent);">Trust Architecture</span>
-                <span style="background: var(--accent-light); color: var(--accent);">HITL / HOTL</span>
-                <span style="background: var(--accent-light); color: var(--accent);">Delegation Design</span>
+                <span style="background: var(--accent-light); color: var(--accent);">TypeScript</span>
+                <span style="background: var(--accent-light); color: var(--accent);">Open Standard</span>
+                <span style="background: var(--accent-light); color: var(--accent);">Observability</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Agent Observability -->
+        <!-- neurl -->
         <div class="project">
-          <div class="stripe" style="background: var(--teal);"></div>
-          <div class="project-icon" style="background: var(--teal);">
-            <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <h3>Agent Behaviour Legibility</h3>
-          <p>Making agent state visible at a glance — thinking, waiting, acting, blocked, done. Designing inspection interfaces that replace black-box opacity with clear accountability.</p>
-          <div class="project-tags">
-            <span style="background: #ccfbf1; color: #0f766e;">Observability</span>
-            <span style="background: #ccfbf1; color: #0f766e;">UX</span>
+          <a class="project-link" href="https://github.com/abduljaleel/neurl" rel="noopener noreferrer" aria-label="neurl on GitHub"></a>
+          <div class="stripe" style="background: var(--purple);"></div>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--purple);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 0 0 3 3h6"/></svg>
+            </div>
+            <h3>neurl</h3>
+            <p>AI routing infrastructure with model registry and cost-performance analytics. Choose the right LLM for each prompt, every time.</p>
+            <div class="project-tags">
+              <span style="background: #ede9fe; color: #6d28d9;">Model Routing</span>
+              <span style="background: #ede9fe; color: #6d28d9;">FinOps</span>
+            </div>
           </div>
         </div>
 
-        <!-- Recovery Architecture -->
+        <!-- compound-engineering -->
         <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/compound-engineering" rel="noopener noreferrer" aria-label="compound-engineering on GitHub"></a>
+          <div class="stripe" style="background: var(--accent);"></div>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--accent);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <h3>compound-engineering</h3>
+            <p>Claude Code engineering plugin that compounds developer productivity through reusable patterns and workflow automation.</p>
+            <div class="project-tags">
+              <span style="background: var(--accent-light); color: var(--accent);">Claude Code</span>
+              <span style="background: var(--accent-light); color: var(--accent);">Plugin</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- vim -->
+        <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/vim" rel="noopener noreferrer" aria-label="vim on GitHub"></a>
           <div class="stripe" style="background: var(--rose);"></div>
-          <div class="project-icon" style="background: var(--rose);">
-            <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-          </div>
-          <h3>Recovery-First Design</h3>
-          <p>Building pause, stop, retry, reroute, revert, and escalate as first-class operations. Recovery is not an afterthought — it is part of the trust contract.</p>
-          <div class="project-tags">
-            <span style="background: #ffe4e6; color: #be123c;">Resilience</span>
-            <span style="background: #ffe4e6; color: #be123c;">Safety</span>
-          </div>
-        </div>
-
-        <!-- Context Infrastructure -->
-        <div class="project">
-          <div class="stripe" style="background: var(--amber);"></div>
-          <div class="project-icon" style="background: var(--amber);">
-            <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          </div>
-          <h3>Context as Infrastructure</h3>
-          <p>Treating context quality — freshness, boundaries, structure — as the foundation of agent behaviour. Designing context pipelines with the same rigour as data infrastructure.</p>
-          <div class="project-tags">
-            <span style="background: #fef3c7; color: #92400e;">RAG</span>
-            <span style="background: #fef3c7; color: #92400e;">MCP</span>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--rose);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>vim — Vulnerability Inheritance Map</h3>
+            <p>Tracing how vulnerabilities propagate across forks, vendored dependencies, and compiled binaries. Supply chain visibility for the agent era.</p>
+            <div class="project-tags">
+              <span style="background: #ffe4e6; color: #be123c;">Go</span>
+              <span style="background: #ffe4e6; color: #be123c;">Security</span>
+            </div>
           </div>
         </div>
 
-        <!-- Sociotechnical Evaluation -->
+        <!-- aivi -->
         <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/aivi" rel="noopener noreferrer" aria-label="aivi on GitHub"></a>
           <div class="stripe" style="background: var(--indigo);"></div>
-          <div class="project-icon" style="background: var(--indigo);">
-            <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          </div>
-          <h3>Sociotechnical Evaluation</h3>
-          <p>Measuring what matters: override rates, operator confidence, recovery time, and clarity of ownership — not just task completion or output quality.</p>
-          <div class="project-tags">
-            <span style="background: #e0e7ff; color: #4338ca;">Metrics</span>
-            <span style="background: #e0e7ff; color: #4338ca;">Governance</span>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--indigo);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4M15 11h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-4M12 4v16"/></svg>
+            </div>
+            <h3>aivi</h3>
+            <p>Enterprise AI assessment platform for transformation roadmaps and capability benchmarking. Where do you actually stand?</p>
+            <div class="project-tags">
+              <span style="background: #e0e7ff; color: #4338ca;">Assessment</span>
+              <span style="background: #e0e7ff; color: #4338ca;">Strategy</span>
+            </div>
           </div>
         </div>
 
-        <!-- Cloud Modernisation -->
+        <!-- robocars -->
         <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/robocars" rel="noopener noreferrer" aria-label="robocars on GitHub"></a>
+          <div class="stripe" style="background: var(--teal);"></div>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--teal);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17h2l1-4h12l1 4h2v-5l-2-7H5L3 12z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <h3>robocars</h3>
+            <p>Fleet management for autonomous vehicles — supervision, mission control, and analytics. HITL / HOTL patterns in production.</p>
+            <div class="project-tags">
+              <span style="background: #ccfbf1; color: #0f766e;">Autonomy</span>
+              <span style="background: #ccfbf1; color: #0f766e;">HITL</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- flow-at -->
+        <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/flow-at" rel="noopener noreferrer" aria-label="flow-at on GitHub"></a>
+          <div class="stripe" style="background: var(--amber);"></div>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--amber);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg>
+            </div>
+            <h3>flow-at</h3>
+            <p>Workflow orchestration with visual builder and conditional logic. Where delegation is explicit and recovery is first-class.</p>
+            <div class="project-tags">
+              <span style="background: #fef3c7; color: #92400e;">Orchestration</span>
+              <span style="background: #fef3c7; color: #92400e;">No-code</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- aicapital -->
+        <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/aicapital" rel="noopener noreferrer" aria-label="aicapital on GitHub"></a>
           <div class="stripe" style="background: var(--green);"></div>
-          <div class="project-icon" style="background: var(--green);">
-            <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--green);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M5 12h14M5 5l14 14M19 5L5 19"/></svg>
+            </div>
+            <h3>aicapital</h3>
+            <p>Decision support system with scenario modelling and structured frameworks. Augmenting human judgement, not replacing it.</p>
+            <div class="project-tags">
+              <span style="background: #dcfce7; color: #166534;">Decision Tools</span>
+              <span style="background: #dcfce7; color: #166534;">Modelling</span>
+            </div>
           </div>
-          <h3>Cloud Platform Modernisation</h3>
-          <p>Transforming legacy ecosystems with near-real-time data services, scaling provisioning from weeks to real-time, with zero-trust and security-by-design foundations.</p>
-          <div class="project-tags">
-            <span style="background: #dcfce7; color: #166534;">AWS</span>
-            <span style="background: #dcfce7; color: #166534;">Zero Trust</span>
+        </div>
+
+        <!-- planetpi -->
+        <div class="project">
+          <a class="project-link" href="https://github.com/abduljaleel/planetpi" rel="noopener noreferrer" aria-label="planetpi on GitHub"></a>
+          <div class="stripe" style="background: var(--accent);"></div>
+          <div class="project-content-wrap">
+            <div class="project-icon" style="background: var(--accent);">
+              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10M2 12h20"/></svg>
+            </div>
+            <h3>planetpi</h3>
+            <p>Geospatial monitoring platform with asset tracking, anomaly detection, and risk assessment for distributed infrastructure.</p>
+            <div class="project-tags">
+              <span style="background: var(--accent-light); color: var(--accent);">Geospatial</span>
+              <span style="background: var(--accent-light); color: var(--accent);">Monitoring</span>
+            </div>
           </div>
+        </div>
+
+        <!-- More on GitHub -->
+        <div class="project project-full" style="background: var(--bg-tag); border-style: dashed;">
+          <a class="project-link" href="https://github.com/abduljaleel?tab=repositories" rel="noopener noreferrer" aria-label="All repositories on GitHub"></a>
+          <div class="project-inner">
+            <div class="project-icon" style="background: var(--text-muted);">
+              <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </div>
+            <div class="project-content project-content-wrap">
+              <h3>30+ more repositories on GitHub</h3>
+              <p>Including <strong>roma</strong> (multi-agent framework), <strong>cloud-intelligence-dashboards-framework</strong>, <strong>localstack-serverless</strong>, <strong>workshop-serverless-with-cdk</strong>, and contributions to <strong>OWASP AI Maturity Assessment</strong> and the open-source ecosystem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section class="card" id="writing">
+      <p class="section-label">Recent Writing</p>
+      <ul class="articles">
+        <li>
+          <a class="article" href="https://abduljaleelkavungal.medium.com/context-graphs-the-trillion-dollar-opportunity-everyone-is-getting-wrong-192c37064926" rel="noopener noreferrer">
+            <span class="article-date">Jan 2026</span>
+            <span class="article-content">
+              <span class="article-title">Context Graphs: The Trillion-Dollar Opportunity Everyone Is Getting Wrong</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                Medium
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://www.linkedin.com/in/abduljaleelkavungal/recent-activity/articles/" rel="noopener noreferrer">
+            <span class="article-date">Jan 2026</span>
+            <span class="article-content">
+              <span class="article-title">2026: From AI Assistants to AI Infrastructure</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+                LinkedIn
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://www.linkedin.com/in/abduljaleelkavungal/recent-activity/articles/" rel="noopener noreferrer">
+            <span class="article-date">Jun 2025</span>
+            <span class="article-content">
+              <span class="article-title">Human Oversight in Autonomous Systems — HITL vs HOTL</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+                LinkedIn
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://abduljaleelkavungal.medium.com/" rel="noopener noreferrer">
+            <span class="article-date">Apr 2025</span>
+            <span class="article-content">
+              <span class="article-title">The 5 Emotional Stages of Adopting AI Software Agents (and Why It's Worth It)</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                Medium
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://www.linkedin.com/in/abduljaleelkavungal/recent-activity/articles/" rel="noopener noreferrer">
+            <span class="article-date">Mar 2025</span>
+            <span class="article-content">
+              <span class="article-title">Crafting Effective System Prompts: A Case Study with MCP Server</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+                LinkedIn
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://www.linkedin.com/in/abduljaleelkavungal/recent-activity/articles/" rel="noopener noreferrer">
+            <span class="article-date">Mar 2025</span>
+            <span class="article-content">
+              <span class="article-title">Tips for Maximising Efficiency with Software Engineering Agents</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45z"/></svg>
+                LinkedIn
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://abduljaleelkavungal.medium.com/rag-how-to-unleash-the-full-potential-of-llms-in-question-answering-dbc472b23d21" rel="noopener noreferrer">
+            <span class="article-date">Nov 2023</span>
+            <span class="article-content">
+              <span class="article-title">RAG: How to Unleash the Full Potential of LLMs in Question Answering</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                Medium
+              </span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a class="article" href="https://abduljaleelkavungal.medium.com/" rel="noopener noreferrer">
+            <span class="article-date">Nov 2023</span>
+            <span class="article-content">
+              <span class="article-title">FinOps Should Be Engineering-Led</span>
+              <span class="article-source">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                Medium
+              </span>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">98+</div>
+          <div class="stat-label">Repositories</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">6K+</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">33</div>
+          <div class="stat-label">Recommendations</div>
         </div>
       </div>
     </section>
