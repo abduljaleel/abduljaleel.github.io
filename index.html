@@ -352,6 +352,299 @@
       color: var(--text-subtle);
     }
 
+    /* ======= Visualisations ======= */
+
+    /* Radar chart */
+    .viz-radar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .viz-radar svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .radar-grid { fill: none; stroke: var(--border); stroke-width: 1; }
+    .radar-axis { stroke: var(--border); stroke-width: 1; }
+    .radar-shape {
+      fill: var(--accent);
+      fill-opacity: 0.18;
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-linejoin: round;
+    }
+    .radar-point {
+      fill: var(--bg-card);
+      stroke: var(--accent);
+      stroke-width: 2;
+    }
+    .radar-label {
+      font-size: 11px;
+      font-weight: 600;
+      fill: var(--text-muted);
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    /* Timeline */
+    .viz-timeline {
+      position: relative;
+      padding: 1rem 0 0.5rem;
+    }
+
+    .viz-timeline::before {
+      content: "";
+      position: absolute;
+      top: 2.4rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+        var(--purple) 0%,
+        var(--accent) 30%,
+        var(--teal) 60%,
+        var(--green) 100%);
+      border-radius: 2px;
+    }
+
+    .timeline-track {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.25rem;
+      position: relative;
+    }
+
+    .timeline-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .timeline-year {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 3px solid var(--accent);
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s;
+    }
+
+    .timeline-node:hover .timeline-dot {
+      transform: scale(1.3);
+    }
+
+    .timeline-node[data-color="purple"] .timeline-dot { border-color: var(--purple); }
+    .timeline-node[data-color="indigo"] .timeline-dot { border-color: var(--indigo); }
+    .timeline-node[data-color="teal"] .timeline-dot { border-color: var(--teal); }
+    .timeline-node[data-color="green"] .timeline-dot { border-color: var(--green); }
+    .timeline-node[data-color="amber"] .timeline-dot { border-color: var(--amber); }
+    .timeline-node[data-color="rose"] .timeline-dot { border-color: var(--rose); }
+
+    .timeline-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.3;
+      max-width: 70px;
+    }
+
+    .timeline-sub {
+      font-size: 0.6rem;
+      color: var(--text-subtle);
+      margin-top: 0.1rem;
+      line-height: 1.2;
+    }
+
+    /* Trust stack */
+    .trust-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 400px;
+      margin: 1rem auto 0;
+    }
+
+    .trust-layer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    .trust-layer:hover { transform: translateX(4px); }
+
+    .trust-layer .trust-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      opacity: 0.7;
+      letter-spacing: 0.06em;
+    }
+
+    .trust-layer .trust-desc {
+      margin-left: auto;
+      font-size: 0.7rem;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    .trust-layer:nth-child(1) {
+      background: linear-gradient(90deg, #1e40af, #1d4ed8);
+      width: 100%;
+    }
+    .trust-layer:nth-child(2) {
+      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      width: 92%;
+      align-self: center;
+    }
+    .trust-layer:nth-child(3) {
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      width: 84%;
+      align-self: center;
+    }
+    .trust-layer:nth-child(4) {
+      background: linear-gradient(90deg, #60a5fa, #93c5fd);
+      width: 76%;
+      align-self: center;
+      color: #1e3a8a;
+    }
+    .trust-layer:nth-child(5) {
+      background: linear-gradient(90deg, #93c5fd, #bfdbfe);
+      width: 68%;
+      align-self: center;
+      color: #1e3a8a;
+    }
+    .trust-layer:nth-child(6) {
+      background: linear-gradient(90deg, #bfdbfe, #dbeafe);
+      width: 60%;
+      align-self: center;
+      color: #1e3a8a;
+    }
+
+    .trust-layer:nth-child(4) .trust-num,
+    .trust-layer:nth-child(5) .trust-num,
+    .trust-layer:nth-child(6) .trust-num,
+    .trust-layer:nth-child(4) .trust-desc,
+    .trust-layer:nth-child(5) .trust-desc,
+    .trust-layer:nth-child(6) .trust-desc {
+      color: #1e3a8a;
+      opacity: 0.7;
+    }
+
+    /* HITL spectrum */
+    .hitl-spectrum {
+      margin-top: 1rem;
+    }
+
+    .hitl-bar {
+      position: relative;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(90deg,
+        var(--rose) 0%,
+        var(--amber) 35%,
+        var(--accent) 65%,
+        var(--green) 100%);
+      margin-bottom: 0.75rem;
+    }
+
+    .hitl-markers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .hitl-marker {
+      position: relative;
+      padding-top: 0.5rem;
+    }
+
+    .hitl-marker::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 12px;
+      background: var(--text-muted);
+    }
+
+    .hitl-marker-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .hitl-marker-sub {
+      font-size: 0.65rem;
+      color: var(--text-subtle);
+      line-height: 1.3;
+    }
+
+    /* Tech stack bubbles */
+    .tech-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0;
+    }
+
+    .tech-bubble {
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      background: var(--bg-tag);
+      color: var(--text-muted);
+      font-weight: 500;
+      transition: transform 0.2s, background 0.2s;
+      cursor: default;
+    }
+
+    .tech-bubble:hover {
+      transform: scale(1.08);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .tech-bubble.size-xl { font-size: 1.1rem; font-weight: 700; }
+    .tech-bubble.size-lg { font-size: 0.95rem; font-weight: 650; }
+    .tech-bubble.size-md { font-size: 0.85rem; font-weight: 600; }
+    .tech-bubble.size-sm { font-size: 0.75rem; }
+
+    /* Viz subtitle */
+    .viz-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
     /* Project link */
     .project a.project-link {
       position: absolute;
@@ -638,6 +931,9 @@
       .certs-grid { grid-template-columns: 1fr; }
       .links { grid-template-columns: 1fr; }
       .topnav { gap: 1rem; flex-wrap: wrap; }
+      .timeline-track { grid-template-columns: repeat(4, 1fr); gap: 0.75rem 0.25rem; }
+      .timeline-track .timeline-node:nth-child(n+5) { display: none; }
+      .hitl-markers { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
     }
 
     .divider {
@@ -690,181 +986,206 @@
       </div>
     </article>
 
-    <!-- Projects / Work -->
-    <section id="work">
-      <div class="section-label">Selected Projects</div>
+    <!-- Capability Radar -->
+    <section class="card" id="work">
+      <p class="section-label">Capability Map</p>
+      <p class="viz-subtitle">Depth across the stack — from architectural foundations to emerging human-agent design.</p>
 
-      <div class="projects-grid">
-        <!-- Featured: Agent Trace -->
-        <div class="project project-full">
-          <span class="project-label">Featured</span>
-          <a class="project-link" href="https://github.com/abduljaleel/agent-trace" rel="noopener noreferrer" aria-label="agent-trace on GitHub"></a>
-          <div class="stripe" style="background: linear-gradient(90deg, var(--accent), var(--purple));"></div>
-          <div class="project-inner">
-            <div class="project-icon" style="background: linear-gradient(135deg, var(--accent), var(--purple));">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div class="project-content project-content-wrap">
-              <h3>agent-trace</h3>
-              <p>A standard format for tracing AI-generated code — making agent behaviour inspectable, auditable, and reproducible. The foundation of agent legibility.</p>
-              <div class="project-tags">
-                <span style="background: var(--accent-light); color: var(--accent);">TypeScript</span>
-                <span style="background: var(--accent-light); color: var(--accent);">Open Standard</span>
-                <span style="background: var(--accent-light); color: var(--accent);">Observability</span>
-              </div>
-            </div>
+      <div class="viz-radar">
+        <svg viewBox="0 0 360 320" role="img" aria-label="Hexagonal radar chart showing capability depth across six domains">
+          <!-- Grid rings -->
+          <g transform="translate(180, 165)">
+            <polygon class="radar-grid" points="0,-120 103.92,-60 103.92,60 0,120 -103.92,60 -103.92,-60"/>
+            <polygon class="radar-grid" points="0,-90 77.94,-45 77.94,45 0,90 -77.94,45 -77.94,-45"/>
+            <polygon class="radar-grid" points="0,-60 51.96,-30 51.96,30 0,60 -51.96,30 -51.96,-30"/>
+            <polygon class="radar-grid" points="0,-30 25.98,-15 25.98,15 0,30 -25.98,15 -25.98,-15"/>
+
+            <!-- Axes -->
+            <line class="radar-axis" x1="0" y1="0" x2="0" y2="-120"/>
+            <line class="radar-axis" x1="0" y1="0" x2="103.92" y2="-60"/>
+            <line class="radar-axis" x1="0" y1="0" x2="103.92" y2="60"/>
+            <line class="radar-axis" x1="0" y1="0" x2="0" y2="120"/>
+            <line class="radar-axis" x1="0" y1="0" x2="-103.92" y2="60"/>
+            <line class="radar-axis" x1="0" y1="0" x2="-103.92" y2="-60"/>
+
+            <!-- Capability shape: 95, 90, 88, 85, 82, 92 (out of 120 = 100%) -->
+            <!-- Trust Architecture (top) 95% = 114 -->
+            <!-- Cloud (top-right) 90% = 108 -->
+            <!-- Platform Eng (bottom-right) 88% = 105.6 -->
+            <!-- AI Agents (bottom) 95% = 114 -->
+            <!-- Security (bottom-left) 82% = 98.4 -->
+            <!-- Sociotechnical (top-left) 92% = 110.4 -->
+            <polygon class="radar-shape" points="0,-114 93.53,-54 91.49,52.8 0,114 -85.27,49.2 -95.61,-55.2"/>
+
+            <!-- Points -->
+            <circle class="radar-point" cx="0" cy="-114" r="4"/>
+            <circle class="radar-point" cx="93.53" cy="-54" r="4"/>
+            <circle class="radar-point" cx="91.49" cy="52.8" r="4"/>
+            <circle class="radar-point" cx="0" cy="114" r="4"/>
+            <circle class="radar-point" cx="-85.27" cy="49.2" r="4"/>
+            <circle class="radar-point" cx="-95.61" cy="-55.2" r="4"/>
+
+            <!-- Labels -->
+            <text class="radar-label" x="0" y="-138">Trust Architecture</text>
+            <text class="radar-label" x="118" y="-72">Cloud &amp;</text>
+            <text class="radar-label" x="118" y="-58">Architecture</text>
+            <text class="radar-label" x="118" y="78">Platform</text>
+            <text class="radar-label" x="118" y="92">Engineering</text>
+            <text class="radar-label" x="0" y="138">AI Agents</text>
+            <text class="radar-label" x="-118" y="78">DevSecOps</text>
+            <text class="radar-label" x="-118" y="-72">Sociotechnical</text>
+            <text class="radar-label" x="-118" y="-58">Design</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Career Evolution Timeline -->
+    <section class="card">
+      <p class="section-label">Career Arc</p>
+      <p class="viz-subtitle">From procedural code to architecting trust in autonomous systems.</p>
+
+      <div class="viz-timeline">
+        <div class="timeline-track">
+          <div class="timeline-node" data-color="rose">
+            <span class="timeline-year">2010</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">PHP Engineer</span>
+            <span class="timeline-sub">Procedural</span>
+          </div>
+          <div class="timeline-node" data-color="amber">
+            <span class="timeline-year">2015</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">Cloud + ML</span>
+            <span class="timeline-sub">Big Data, R</span>
+          </div>
+          <div class="timeline-node" data-color="indigo">
+            <span class="timeline-year">2017</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">AWS SA Pro</span>
+            <span class="timeline-sub">TOGAF 9</span>
+          </div>
+          <div class="timeline-node" data-color="purple">
+            <span class="timeline-year">2020</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">Serverless</span>
+            <span class="timeline-sub">FinOps</span>
+          </div>
+          <div class="timeline-node" data-color="teal">
+            <span class="timeline-year">2023</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">RAG &amp; LLMs</span>
+            <span class="timeline-sub">GenAI</span>
+          </div>
+          <div class="timeline-node" data-color="green">
+            <span class="timeline-year">2025</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">AI Agents</span>
+            <span class="timeline-sub">HITL / MCP</span>
+          </div>
+          <div class="timeline-node">
+            <span class="timeline-year">2026</span>
+            <span class="timeline-dot"></span>
+            <span class="timeline-label">Trust Architecture</span>
+            <span class="timeline-sub">Now</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- neurl -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/neurl" rel="noopener noreferrer" aria-label="neurl on GitHub"></a>
-          <div class="stripe" style="background: var(--purple);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--purple);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9v6a3 3 0 0 0 3 3h6"/></svg>
-            </div>
-            <h3>neurl</h3>
-            <p>AI routing infrastructure with model registry and cost-performance analytics. Choose the right LLM for each prompt, every time.</p>
-            <div class="project-tags">
-              <span style="background: #ede9fe; color: #6d28d9;">Model Routing</span>
-              <span style="background: #ede9fe; color: #6d28d9;">FinOps</span>
-            </div>
+    <!-- Trust Architecture Stack -->
+    <section class="card">
+      <p class="section-label">Trust Architecture</p>
+      <p class="viz-subtitle">Trust is an architectural outcome — not a model feature. Each layer earns the one above.</p>
+
+      <div class="trust-stack">
+        <div class="trust-layer">
+          <span class="trust-num">06</span>
+          <span>Trust</span>
+          <span class="trust-desc">Adoption &amp; reliance</span>
+        </div>
+        <div class="trust-layer">
+          <span class="trust-num">05</span>
+          <span>Recovery</span>
+          <span class="trust-desc">Stop · revert · escalate</span>
+        </div>
+        <div class="trust-layer">
+          <span class="trust-num">04</span>
+          <span>Legibility</span>
+          <span class="trust-desc">Inspectable state</span>
+        </div>
+        <div class="trust-layer">
+          <span class="trust-num">03</span>
+          <span>Delegation</span>
+          <span class="trust-desc">Explicit boundaries</span>
+        </div>
+        <div class="trust-layer">
+          <span class="trust-num">02</span>
+          <span>Permissions</span>
+          <span class="trust-desc">Scoped capability</span>
+        </div>
+        <div class="trust-layer">
+          <span class="trust-num">01</span>
+          <span>Context</span>
+          <span class="trust-desc">Quality &amp; freshness</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HITL Spectrum -->
+    <section class="card">
+      <p class="section-label">Autonomy Spectrum</p>
+      <p class="viz-subtitle">Designing the right level of human involvement for each workflow — not the maximum.</p>
+
+      <div class="hitl-spectrum">
+        <div class="hitl-bar"></div>
+        <div class="hitl-markers">
+          <div class="hitl-marker">
+            <div class="hitl-marker-label">HIC</div>
+            <div class="hitl-marker-sub">Human in command — every step approved</div>
+          </div>
+          <div class="hitl-marker">
+            <div class="hitl-marker-label">HITL</div>
+            <div class="hitl-marker-sub">Human in the loop — approve key actions</div>
+          </div>
+          <div class="hitl-marker">
+            <div class="hitl-marker-label">HOTL</div>
+            <div class="hitl-marker-sub">Human on the loop — supervise &amp; intervene</div>
+          </div>
+          <div class="hitl-marker">
+            <div class="hitl-marker-label">HOOTL</div>
+            <div class="hitl-marker-sub">Out of the loop — observe outcomes</div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- compound-engineering -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/compound-engineering" rel="noopener noreferrer" aria-label="compound-engineering on GitHub"></a>
-          <div class="stripe" style="background: var(--accent);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--accent);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <h3>compound-engineering</h3>
-            <p>Claude Code engineering plugin that compounds developer productivity through reusable patterns and workflow automation.</p>
-            <div class="project-tags">
-              <span style="background: var(--accent-light); color: var(--accent);">Claude Code</span>
-              <span style="background: var(--accent-light); color: var(--accent);">Plugin</span>
-            </div>
-          </div>
-        </div>
+    <!-- Tech Stack Cloud -->
+    <section class="card">
+      <p class="section-label">Tech Surface</p>
+      <p class="viz-subtitle">Daily-use technologies, weighted by depth and frequency.</p>
 
-        <!-- vim -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/vim" rel="noopener noreferrer" aria-label="vim on GitHub"></a>
-          <div class="stripe" style="background: var(--rose);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--rose);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3>vim — Vulnerability Inheritance Map</h3>
-            <p>Tracing how vulnerabilities propagate across forks, vendored dependencies, and compiled binaries. Supply chain visibility for the agent era.</p>
-            <div class="project-tags">
-              <span style="background: #ffe4e6; color: #be123c;">Go</span>
-              <span style="background: #ffe4e6; color: #be123c;">Security</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- aivi -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/aivi" rel="noopener noreferrer" aria-label="aivi on GitHub"></a>
-          <div class="stripe" style="background: var(--indigo);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--indigo);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4M15 11h4a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-4M12 4v16"/></svg>
-            </div>
-            <h3>aivi</h3>
-            <p>Enterprise AI assessment platform for transformation roadmaps and capability benchmarking. Where do you actually stand?</p>
-            <div class="project-tags">
-              <span style="background: #e0e7ff; color: #4338ca;">Assessment</span>
-              <span style="background: #e0e7ff; color: #4338ca;">Strategy</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- robocars -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/robocars" rel="noopener noreferrer" aria-label="robocars on GitHub"></a>
-          <div class="stripe" style="background: var(--teal);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--teal);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17h2l1-4h12l1 4h2v-5l-2-7H5L3 12z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
-            </div>
-            <h3>robocars</h3>
-            <p>Fleet management for autonomous vehicles — supervision, mission control, and analytics. HITL / HOTL patterns in production.</p>
-            <div class="project-tags">
-              <span style="background: #ccfbf1; color: #0f766e;">Autonomy</span>
-              <span style="background: #ccfbf1; color: #0f766e;">HITL</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- flow-at -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/flow-at" rel="noopener noreferrer" aria-label="flow-at on GitHub"></a>
-          <div class="stripe" style="background: var(--amber);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--amber);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M6 9v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V9"/></svg>
-            </div>
-            <h3>flow-at</h3>
-            <p>Workflow orchestration with visual builder and conditional logic. Where delegation is explicit and recovery is first-class.</p>
-            <div class="project-tags">
-              <span style="background: #fef3c7; color: #92400e;">Orchestration</span>
-              <span style="background: #fef3c7; color: #92400e;">No-code</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- aicapital -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/aicapital" rel="noopener noreferrer" aria-label="aicapital on GitHub"></a>
-          <div class="stripe" style="background: var(--green);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--green);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M5 12h14M5 5l14 14M19 5L5 19"/></svg>
-            </div>
-            <h3>aicapital</h3>
-            <p>Decision support system with scenario modelling and structured frameworks. Augmenting human judgement, not replacing it.</p>
-            <div class="project-tags">
-              <span style="background: #dcfce7; color: #166534;">Decision Tools</span>
-              <span style="background: #dcfce7; color: #166534;">Modelling</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- planetpi -->
-        <div class="project">
-          <a class="project-link" href="https://github.com/abduljaleel/planetpi" rel="noopener noreferrer" aria-label="planetpi on GitHub"></a>
-          <div class="stripe" style="background: var(--accent);"></div>
-          <div class="project-content-wrap">
-            <div class="project-icon" style="background: var(--accent);">
-              <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10M12 2a15 15 0 0 0-4 10 15 15 0 0 0 4 10M2 12h20"/></svg>
-            </div>
-            <h3>planetpi</h3>
-            <p>Geospatial monitoring platform with asset tracking, anomaly detection, and risk assessment for distributed infrastructure.</p>
-            <div class="project-tags">
-              <span style="background: var(--accent-light); color: var(--accent);">Geospatial</span>
-              <span style="background: var(--accent-light); color: var(--accent);">Monitoring</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- More on GitHub -->
-        <div class="project project-full" style="background: var(--bg-tag); border-style: dashed;">
-          <a class="project-link" href="https://github.com/abduljaleel?tab=repositories" rel="noopener noreferrer" aria-label="All repositories on GitHub"></a>
-          <div class="project-inner">
-            <div class="project-icon" style="background: var(--text-muted);">
-              <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-            </div>
-            <div class="project-content project-content-wrap">
-              <h3>30+ more repositories on GitHub</h3>
-              <p>Including <strong>roma</strong> (multi-agent framework), <strong>cloud-intelligence-dashboards-framework</strong>, <strong>localstack-serverless</strong>, <strong>workshop-serverless-with-cdk</strong>, and contributions to <strong>OWASP AI Maturity Assessment</strong> and the open-source ecosystem.</p>
-            </div>
-          </div>
-        </div>
+      <div class="tech-cloud">
+        <span class="tech-bubble size-xl">AWS</span>
+        <span class="tech-bubble size-xl">AI Agents</span>
+        <span class="tech-bubble size-lg">Serverless</span>
+        <span class="tech-bubble size-lg">TypeScript</span>
+        <span class="tech-bubble size-lg">Python</span>
+        <span class="tech-bubble size-lg">MCP</span>
+        <span class="tech-bubble size-md">Terraform</span>
+        <span class="tech-bubble size-md">Kubernetes</span>
+        <span class="tech-bubble size-md">RAG</span>
+        <span class="tech-bubble size-md">LangGraph</span>
+        <span class="tech-bubble size-md">Bedrock</span>
+        <span class="tech-bubble size-md">Claude Code</span>
+        <span class="tech-bubble size-sm">Go</span>
+        <span class="tech-bubble size-sm">Lambda</span>
+        <span class="tech-bubble size-sm">CDK</span>
+        <span class="tech-bubble size-sm">DynamoDB</span>
+        <span class="tech-bubble size-sm">Athena</span>
+        <span class="tech-bubble size-sm">Step Functions</span>
+        <span class="tech-bubble size-sm">EventBridge</span>
+        <span class="tech-bubble size-sm">OpenSearch</span>
       </div>
     </section>
 
