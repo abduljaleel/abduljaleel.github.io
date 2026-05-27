@@ -248,13 +248,6 @@
         radial-gradient(700px 420px at 0% 0%, rgba(124,58,237,0.07), transparent 60%);
     }
     .hero-grid { display: grid; grid-template-columns: 1.04fr 1fr; gap: 3.5rem; align-items: center; }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 0.85rem; border-radius: 999px;
-      background: var(--bg-card); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-      font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.4rem;
-    }
-    .hero-pill .ping { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.18); }
     .hero h1 {
       font-size: clamp(2.3rem, 5.2vw, 3.5rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; color: var(--text);
     }
@@ -292,10 +285,6 @@
     .hub-ring { fill: var(--bg-card); stroke: var(--accent); stroke-width: 2.5; animation: tg-pulse 3.4s ease-in-out infinite; }
     @keyframes tg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.72; } }
     .hub-icon, .hub-check { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
-    .hub-label {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-weight: 800; font-size: 13px; letter-spacing: 0.04em; fill: var(--text); text-anchor: middle;
-    }
     .chip-bg { fill: var(--bg-card); stroke-width: 1.75; stroke-opacity: 0.7; }
     .chip-name {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -457,7 +446,6 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="hero-pill"><span class="ping" aria-hidden="true"></span> Independent engineering studio · Melbourne</span>
         <h1>Trustworthy systems<br>for the <span class="grad">agent era</span>.</h1>
         <p class="hero-sub">Open-source infrastructure that makes AI agents and software supply chains safe enough for real work — and a forthcoming book on the work that holds everything else up.</p>
         <div class="hero-actions">
@@ -468,9 +456,9 @@
       </div>
 
       <div class="hero-visual">
-        <div class="tgraph" role="img" aria-label="Diagram: the studio at the center connects four open-source products as nodes in one trust network — ax (AI coding agent), Wharf (MCP server), VIM (supply-chain security), and Unpaid (the book).">
+        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects four open-source products as nodes in one network — ax (AI coding agent), Wharf (MCP server), VIM (supply-chain security), and Unpaid (the book).">
           <svg viewBox="0 0 480 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <title>Studio trust network</title>
+            <title>Product trust network</title>
             <circle class="tg-orbit" cx="240" cy="215" r="156"/>
             <g>
               <line class="edge" x1="240" y1="215" x2="240" y2="59"  stroke="var(--indigo)"/>
@@ -485,9 +473,8 @@
             <g>
               <circle class="hub-glow" cx="240" cy="215" r="54"/>
               <circle class="hub-ring" cx="240" cy="215" r="50"/>
-              <path class="hub-icon" d="M226,185 L254,185 L254,202 C254,213 248,219 240,224 C232,219 226,213 226,202 Z"/>
-              <path class="hub-check" d="M232,202 L238,209 L250,194"/>
-              <text class="hub-label" x="240" y="240">studio</text>
+              <path class="hub-icon" d="M226,196 L254,196 L254,213 C254,224 248,230 240,235 C232,230 226,224 226,213 Z"/>
+              <path class="hub-check" d="M232,213 L238,220 L250,205"/>
             </g>
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
               <rect class="chip-bg" x="174" y="36" width="132" height="46" rx="12" stroke="var(--indigo)"/>
