@@ -252,35 +252,41 @@
     .hero-meta { margin-top: 1.6rem; font-size: 0.82rem; color: var(--text-subtle); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
     .hero-meta strong { color: var(--text); font-weight: 700; }
 
-    /* Console mock */
-    .mock {
-      border-radius: 14px; background: var(--panel);
-      border: 1px solid rgba(148,163,184,0.16);
+    /* Trust graph */
+    .tgraph {
+      position: relative;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(125% 110% at 50% 10%, var(--accent-soft), transparent 60%),
+        var(--bg-card);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-lg);
-      overflow: hidden; color: #cbd5e1;
-      transform: perspective(1400px) rotateY(-7deg) rotateX(2deg);
-      transition: transform 0.4s ease;
+      padding: 1.1rem 1.1rem 1.25rem;
+      overflow: hidden;
     }
-    .mock:hover { transform: perspective(1400px) rotateY(-2deg) rotateX(0deg); }
-    .mock-bar { display: flex; align-items: center; gap: 0.45rem; padding: 0.7rem 0.9rem; background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(148,163,184,0.12); }
-    .mock-bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
-    .mock-bar i:nth-child(1) { background: #ff5f57; }
-    .mock-bar i:nth-child(2) { background: #febc2e; }
-    .mock-bar i:nth-child(3) { background: #28c840; }
-    .mock-bar span { margin-left: 0.6rem; font-size: 0.72rem; color: #8b94a7; font-family: ui-monospace, Menlo, Consolas, monospace; }
-    .mock-body { display: grid; grid-template-columns: 168px 1fr; min-height: 286px; }
-    .mock-side { padding: 0.9rem 0.7rem; border-right: 1px solid rgba(148,163,184,0.12); display: flex; flex-direction: column; gap: 0.25rem; }
-    .mock-side .lbl { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.12em; color: #5b6678; padding: 0.3rem 0.5rem 0.5rem; font-weight: 700; }
-    .mock-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.55rem; border-radius: 8px; font-size: 0.8rem; font-weight: 600; color: #aeb8c8; }
-    .mock-item .d { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .mock-item.active { background: rgba(129,140,248,0.14); color: #fff; }
-    .mock-main { padding: 1.1rem 1.15rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.79rem; line-height: 1.85; }
-    .mock-main .pl { color: #6ee7b7; }
-    .mock-main .cm { color: #818cf8; }
-    .mock-main .mut { color: #7c8699; }
-    .mock-main .ok { color: #34d399; }
-    .mock-main .cursor { display: inline-block; width: 8px; height: 1em; background: #6ee7b7; vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
+    .tgraph svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .tg-orbit { fill: none; stroke: var(--border); stroke-width: 1.5; stroke-dasharray: 2 7; opacity: 0.85; }
+    .edge { fill: none; stroke-width: 2; stroke-linecap: round; opacity: 0.42; }
+    .edge-flow {
+      fill: none; stroke-width: 2.5; stroke-linecap: round;
+      stroke-dasharray: 14 152;
+      animation: tg-flow 2.8s linear infinite;
+    }
+    @keyframes tg-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -166; } }
+    .hub-glow { fill: var(--accent); opacity: 0.12; }
+    .hub-ring { fill: var(--bg-card); stroke: var(--accent); stroke-width: 2.5; animation: tg-pulse 3.4s ease-in-out infinite; }
+    @keyframes tg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.72; } }
+    .hub-icon, .hub-check { fill: none; stroke: var(--accent); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .hub-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 800; font-size: 13px; letter-spacing: 0.04em; fill: var(--text); text-anchor: middle;
+    }
+    .chip-bg { fill: var(--bg-card); stroke-width: 1.75; stroke-opacity: 0.7; }
+    .chip-name {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-weight: 700; font-size: 15px; fill: var(--text); text-anchor: middle;
+    }
+    .chip-sub { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; fill: var(--text-subtle); text-anchor: middle; }
 
     /* Stats */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
@@ -396,8 +402,6 @@
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-visual { order: 2; }
-      .mock { transform: none; }
-      .mock:hover { transform: none; }
       .product-row { grid-template-columns: 1fr; gap: 1.75rem; }
       .product-row.reverse .product-copy { order: 0; }
       .product-visual { order: 2; }
@@ -407,12 +411,9 @@
     @media (max-width: 520px) {
       .pad { padding: 3.5rem 0; }
       .hero { padding: 3rem 0; }
-      .mock-body { grid-template-columns: 1fr; }
-      .mock-side { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; }
-      .mock { transform: none; }
     }
   </style>
 </head>
@@ -452,25 +453,48 @@
       </div>
 
       <div class="hero-visual">
-        <div class="mock" role="img" aria-label="A console showing the studio's product suite with the ax coding agent running in a terminal">
-          <div class="mock-bar"><i></i><i></i><i></i><span>studio — ax</span></div>
-          <div class="mock-body">
-            <aside class="mock-side">
-              <span class="lbl">Suite</span>
-              <span class="mock-item active"><span class="d" style="background:#818cf8"></span> ax</span>
-              <span class="mock-item"><span class="d" style="background:#2dd4bf"></span> Wharf</span>
-              <span class="mock-item"><span class="d" style="background:#fb7185"></span> VIM</span>
-              <span class="mock-item"><span class="d" style="background:#fbbf24"></span> Unpaid</span>
-            </aside>
-            <div class="mock-main">
-              <div><span class="pl">ajk@studio</span> ~ ax "add rate limiting to the gateway"</div>
-              <div><span class="cm">◇ route</span>&nbsp;&nbsp;<span class="mut">balanced tier · claude · gpt · local</span></div>
-              <div><span class="cm">◇ search</span>&nbsp;<span class="mut">1,284 files indexed in 0.4s</span></div>
-              <div><span class="cm">◇ edit</span>&nbsp;&nbsp;&nbsp;<span class="mut">gateway.ts · middleware/limit.ts</span></div>
-              <div><span class="ok">✓ 253 tests passing · 80% coverage · 0 secrets</span></div>
-              <div><span class="pl">ajk@studio</span> ~ <span class="cursor" aria-hidden="true"></span></div>
-            </div>
-          </div>
+        <div class="tgraph" role="img" aria-label="Diagram: the studio at the center connects four open-source products as nodes in one trust network — ax (AI coding agent), Wharf (MCP server), VIM (supply-chain security), and Unpaid (the book).">
+          <svg viewBox="0 0 480 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <title>Studio trust network</title>
+            <circle class="tg-orbit" cx="240" cy="215" r="156"/>
+            <g>
+              <line class="edge" x1="240" y1="215" x2="240" y2="59"  stroke="var(--indigo)"/>
+              <line class="edge" x1="240" y1="215" x2="396" y2="215" stroke="var(--teal)"/>
+              <line class="edge" x1="240" y1="215" x2="240" y2="371" stroke="var(--amber)"/>
+              <line class="edge" x1="240" y1="215" x2="84"  y2="215" stroke="var(--rose)"/>
+              <line class="edge-flow" x1="240" y1="215" x2="240" y2="59"  stroke="var(--indigo)"/>
+              <line class="edge-flow" x1="240" y1="215" x2="396" y2="215" stroke="var(--teal)"  style="animation-delay:.7s"/>
+              <line class="edge-flow" x1="240" y1="215" x2="240" y2="371" stroke="var(--amber)" style="animation-delay:1.4s"/>
+              <line class="edge-flow" x1="240" y1="215" x2="84"  y2="215" stroke="var(--rose)"  style="animation-delay:2.1s"/>
+            </g>
+            <g>
+              <circle class="hub-glow" cx="240" cy="215" r="54"/>
+              <circle class="hub-ring" cx="240" cy="215" r="50"/>
+              <path class="hub-icon" d="M226,185 L254,185 L254,202 C254,213 248,219 240,224 C232,219 226,213 226,202 Z"/>
+              <path class="hub-check" d="M232,202 L238,209 L250,194"/>
+              <text class="hub-label" x="240" y="240">studio</text>
+            </g>
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
+              <rect class="chip-bg" x="174" y="36" width="132" height="46" rx="12" stroke="var(--indigo)"/>
+              <text class="chip-name" x="240" y="55">ax</text>
+              <text class="chip-sub"  x="240" y="69">CODING AGENT</text>
+            </g>
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(20,184,166,.22))">
+              <rect class="chip-bg" x="330" y="192" width="132" height="46" rx="12" stroke="var(--teal)"/>
+              <text class="chip-name" x="396" y="211">Wharf</text>
+              <text class="chip-sub"  x="396" y="225">MCP SERVER</text>
+            </g>
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
+              <rect class="chip-bg" x="174" y="348" width="132" height="46" rx="12" stroke="var(--amber)"/>
+              <text class="chip-name" x="240" y="367">Unpaid</text>
+              <text class="chip-sub"  x="240" y="381">THE BOOK</text>
+            </g>
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(244,63,94,.22))">
+              <rect class="chip-bg" x="18" y="192" width="132" height="46" rx="12" stroke="var(--rose)"/>
+              <text class="chip-name" x="84" y="211">VIM</text>
+              <text class="chip-sub"  x="84" y="225">SUPPLY CHAIN</text>
+            </g>
+          </svg>
         </div>
       </div>
     </div>
