@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Abdul Jaleel Kavungal — Trustworthy systems for the agent era</title>
-  <meta name="description" content="An independent engineering studio building open-source infrastructure for trustworthy AI and secure software supply chains: ax, Wharf, VIM, and LoopbackCloud.">
+  <meta name="description" content="An independent engineering studio building open-source infrastructure for trustworthy AI and secure software supply chains — plus two digital kits: Lean Agent Kernel Kit and Fit 5 inch Cine Drone Kit.">
   <meta name="author" content="Abdul Jaleel Kavungal">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="Abdul Jaleel Kavungal, AI coding agent, ax, Wharf, MCP server, VIM, vulnerability inheritance map, software supply chain security, LoopbackCloud, local cloud emulator, multicloud development, trustworthy AI, platform engineering, Melbourne">
+  <meta name="keywords" content="Abdul Jaleel Kavungal, AI coding agent, ax, Wharf, MCP server, VIM, vulnerability inheritance map, software supply chain security, LoopbackCloud, local cloud emulator, Lean Agent Kernel Kit, Fit cine drone, trustworthy AI, platform engineering, Melbourne">
   <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://abduljaleel.xyz/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Abdul Jaleel Kavungal — Trustworthy systems for the agent era">
-  <meta property="og:description" content="Open-source infrastructure for trustworthy AI and secure software supply chains — ax, Wharf, VIM, and LoopbackCloud.">
+  <meta property="og:description" content="Open-source infrastructure for trustworthy AI and two digital kits: Lean Agent Kernel Kit and Fit 5 inch Cine Drone Kit.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://abduljaleel.xyz/">
   <meta property="og:site_name" content="Abdul Jaleel Kavungal">
@@ -30,7 +30,7 @@
   <meta name="twitter:site" content="@tdgentleman">
   <meta name="twitter:creator" content="@tdgentleman">
   <meta name="twitter:title" content="Abdul Jaleel Kavungal — Trustworthy systems for the agent era">
-  <meta name="twitter:description" content="Open-source infrastructure for trustworthy AI and secure software supply chains — ax, Wharf, VIM, and LoopbackCloud.">
+  <meta name="twitter:description" content="Open-source infrastructure for trustworthy AI and two digital kits: Lean Agent Kernel Kit and Fit 5 inch Cine Drone Kit.">
   <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/16448905?v=4&amp;s=460">
   <meta name="twitter:image:alt" content="Abdul Jaleel Kavungal">
 
@@ -61,7 +61,7 @@
         "about": { "@id": "https://abduljaleel.xyz/#person" },
         "primaryImageOfPage": "https://avatars.githubusercontent.com/u/16448905?v=4&s=460",
         "inLanguage": "en",
-        "description": "Independent engineering studio building open-source infrastructure for trustworthy AI and secure software supply chains — ax, Wharf, VIM, and LoopbackCloud."
+        "description": "Independent engineering studio building open-source infrastructure for trustworthy AI and two digital kits: Lean Agent Kernel Kit and Fit 5 inch Cine Drone Kit."
       },
       {
         "@type": "Person",
@@ -117,6 +117,20 @@
         "description": "A local-first emulator that runs 70+ AWS, Azure and GCP services on localhost — build and test multicloud applications with no accounts, no spend and no network.",
         "author": { "@id": "https://abduljaleel.xyz/#person" },
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Lean Agent Kernel Kit",
+        "url": "https://abduljaleel.xyz/lean-agent-kernel/",
+        "description": "A pin-locked Lean 4.32.0 Lake package and two practitioner PDFs for people who write or check AI-agent claims. Free core on GitHub. Paid companion not for sale until payout is connected.",
+        "author": { "@id": "https://abduljaleel.xyz/#person" }
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Fit 5 inch Cine Drone Kit",
+        "url": "https://abduljaleel.xyz/fit-5in-cine-drone/",
+        "description": "Print-ready STL plate for a 220 mm / 3S cine frame. Digital files only. Not flight-certified. Free core on GitHub.",
+        "author": { "@id": "https://abduljaleel.xyz/#person" }
       }
     ]
   }
@@ -403,6 +417,21 @@
     .footer-bottom p { font-size: 0.78rem; color: var(--text-subtle); }
     .footer-bottom .motto { font-family: var(--display); font-style: italic; }
 
+
+    /* Studio kits */
+    .kits { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .kit-card {
+      border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1.55rem 1.35rem;
+      background: var(--bg-card); box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 0.55rem;
+    }
+    .kit-card .ptag { margin-bottom: 0; }
+    .kit-card h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+    .kit-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.55; }
+    .kit-meta { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.74rem; font-weight: 650; color: var(--pc, var(--accent)); }
+    .kit-card .product-link { margin-top: 0.4rem; }
+    @media (max-width: 720px) { .kits { grid-template-columns: 1fr; } }
+
     @media (max-width: 900px) {
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
@@ -435,6 +464,7 @@
     </a>
     <div class="nav-links">
       <a href="#products">Products</a>
+      <a href="#kits">Kits</a>
       <a href="/aks/">AK$</a>
       <a href="#proof">Studio</a>
       <a href="/loopbackcloud/">LoopbackCloud</a>
@@ -650,6 +680,33 @@
     </div>
   </section>
 
+  <!-- Studio kits -->
+  <section class="pad band" id="kits" style="padding-top: 4.5rem;">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Studio kits</span>
+        <h2 class="section-title">Two digital packs you can actually buy later.</h2>
+        <p class="section-lead">Free cores are public today. Paid companions wait on a Gumroad payout. Created and maintained by an autonomous AI agent; a human operator in Melbourne vouches for the account.</p>
+      </div>
+      <div class="kits">
+        <article class="kit-card" style="--pc: var(--amber);">
+          <span class="ptag"><span class="d" aria-hidden="true"></span> Formal methods</span>
+          <h3>Lean Agent Kernel Kit</h3>
+          <p class="kit-meta">USD $39 · draft · not for sale yet</p>
+          <p>Pin-locked Lean 4.32.0 Lake package plus two practitioner PDFs for people who write or check AI-agent claims. No Mathlib. No shipped sorry. You are buying the PDFs; the core stays free.</p>
+          <a class="product-link" href="/lean-agent-kernel/">Open the kit page <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+        <article class="kit-card" style="--pc: var(--teal);">
+          <span class="ptag"><span class="d" aria-hidden="true"></span> 3D print / FPV</span>
+          <h3>Fit 5 inch Cine Drone Kit</h3>
+          <p class="kit-meta">USD $19 · STLs public · listing not open</p>
+          <p>Print-ready millimetre CAD for a 220 mm / 3S cine frame. Digital files only. Not a physical drone. Not flight-certified. Same shapes can be generated free on the Fit site.</p>
+          <a class="product-link" href="/fit-5in-cine-drone/">Open the kit page <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Testimonial -->
   <section class="band pad">
     <div class="container">
@@ -704,6 +761,8 @@
         <a href="/vim">VIM</a>
         <a href="/loopbackcloud/">LoopbackCloud</a>
         <a href="/aks/">AK$</a>
+        <a href="/lean-agent-kernel/">Lean Agent Kernel Kit</a>
+        <a href="/fit-5in-cine-drone/">Fit 5 inch Cine Drone Kit</a>
       </div>
       <div class="footer-col">
         <h4>Writing</h4>
