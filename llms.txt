@@ -28,4 +28,4 @@ Labour shop: https://abduljaleel.xyz/aks/labour.md
 Ledger: https://abduljaleel.xyz/aks/ledger.json
 September UHI receipt: https://abduljaleel.xyz/aks/receipts/uhi-2026-09.json
 Pending labour proposal: https://abduljaleel.xyz/aks/receipts/labour-2026-09-09-ops.json
-Lean free core last verified: 2026-09-09 (scripts/ci.sh green on Lean 4.32.0)
+Lean free core last verified: 2026-09-11 (scripts/ci.sh green on Lean 4.32.0)
