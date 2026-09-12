@@ -203,6 +203,7 @@
     .feat .ic svg { width: 22px; height: 22px; stroke: var(--accent-strong); fill: none; }
     .feat h3 { margin: 0 0 7px; font-size: 17px; letter-spacing: -.01em; }
     .feat p { margin: 0; color: var(--muted); font-size: 14px; }
+    .feat p + p { margin-top: 10px; }
 
     /* interconnect showcase */
     .ic-wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
@@ -476,18 +477,20 @@
       <div class="sec-head reveal">
         <span class="eyebrow">Why Loopback Cloud</span>
         <h2>Develop against the cloud, without the cloud</h2>
-        <p>Everything you — or your AI agent — need to build, test, and demo cloud apps. Local, fast, and free.</p>
+        <p>Everything you — or your AI agent — need to build, test, and demo cloud apps. Local AWS, Azure, and GCP on <code style="font-family:var(--mono);font-size:.9em">127.0.0.1</code> with SigV4, MCP tools, interconnect 403 gates, and labs — fast, free, and offline-capable.</p>
       </div>
       <div class="features">
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></div>
           <h3>One console, three clouds</h3>
-          <p>Browse AWS, Azure, and GCP resources side by side in a single read-only UI. Flip between providers without leaving the page.</p>
+          <p>Browse AWS, Azure, and GCP resources side by side at <code>/_loopback/console</code> — S3 buckets, Blob containers, Cloud Storage buckets, Lambda, Functions, and Pub/Sub topics in vendor-styled themes.</p>
+          <p>Copy ARNs, endpoints, and IDs for scripts; watch Cost Lab meters, toggle chaos, and inspect interconnect status without signing into three vendor portals.</p>
         </div>
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
           <h3>Drop-in SDK compatibility</h3>
-          <p>Point the AWS, Azure, and GCP SDKs, CLIs, Terraform, CDK, and OpenTofu at localhost. Keep your code — just change the endpoint.</p>
+          <p>Point the AWS, Azure, and GCP SDKs, CLIs, Terraform, CDK, and OpenTofu at <code>localhost:4566</code>, <code>:4577</code>, and <code>:4588</code>. Keep your code — just change the endpoint.</p>
+          <p>SigV4-signed AWS requests, Azure Resource Manager templates, and gcloud commands work against the same in-process and Docker-backed engines the MCP server drives.</p>
         </div>
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
@@ -497,7 +500,8 @@
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><path d="M7 7.6 10 10M17 7.6 14 10"/></svg></div>
           <h3>Multicloud interconnect</h3>
-          <p>Model cross-cloud connectivity like AWS Interconnect — gated by default, opened with one attachment from the hub to a peer cloud.</p>
+          <p>Model cross-cloud connectivity like AWS Interconnect — cross-cloud calls return <code>403</code> until <code>/_loopback/interconnects/authorize</code> opens a link from the AWS hub to Azure or GCP.</p>
+          <p>Chaos can sever authorized links to test failover. No VPC peering, ExpressRoute, or Cloud Interconnect configuration required.</p>
         </div>
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 7.7-8 9-4.5-1.3-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -521,7 +525,7 @@
           <span class="eyebrow">Multicloud interconnect</span>
           <h2>Build cross-cloud, on one machine</h2>
           <p>Loopback Cloud models <strong>AWS Interconnect — multicloud</strong> as a hub-and-spoke.
-            The AWS hub owns the control plane; Azure and GCP each run an interconnect gateway.</p>
+            The AWS hub on <code>localhost:4566</code> owns the control plane; Azure (<code>:4577</code>) and GCP (<code>:4588</code>) each run an interconnect gateway. Until a link is authorized, a Lambda calling Blob Storage or Pub/Sub reaching SQS gets a native-shaped <code>403 AccessDenied</code> — the same shape your SDK retry logic already handles.</p>
           <ul class="ic-steps">
             <li><span class="n">1</span><span><strong>Gated by default.</strong> Cross-cloud calls are denied with <code>403</code> until a link exists — and chaos rules can sever or slow a live link.</span></li>
             <li><span class="n">2</span><span><strong>One attachment.</strong> Create a <em>multicloud attachment</em> from the hub to <code>azure</code> or <code>gcp</code>.</span></li>
@@ -589,7 +593,8 @@
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 2h8"/><path d="M9 13h.01M15 13h.01"/></svg></div>
           <h3>Agent-native (MCP)</h3>
-          <p>A built-in Model Context Protocol server lets AI agents build real infra (buckets, queues, parameters), inspect every cloud, and drive every lab — zero spend, zero blast radius.</p>
+          <p>A built-in Model Context Protocol server at <code>/_loopback/mcp</code> lets AI agents build real infra, inspect every cloud, and drive every lab — <strong>85 tools</strong> (42 AWS / 24 Azure / 19 GCP), zero spend, zero blast radius.</p>
+          <p>Structured JSON responses map to <code>/_loopback/*</code> and cloud-native APIs so agents chain provision, chaos, clock, cost, snapshot, interconnect, and GenAI steps reliably.</p>
         </div>
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 14.5l.7 1.8L21.5 17l-1.8.7L19 19.5l-.7-1.8L16.5 17l1.8-.7z"/></svg></div>
@@ -614,7 +619,8 @@
         <div class="feat reveal">
           <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></div>
           <h3>Snapshots &amp; why-403</h3>
-          <p>Export the entire emulator's state to one file and restore it anywhere — git for cloud state. And ask IAM exactly which policy statement denied a call.</p>
+          <p>Export emulator state via <code>/_loopback/state/export</code> and restore anywhere — git for multicloud state. Replay destructive agent runs safely.</p>
+          <p><code>/_loopback/why-403</code> diagnoses SigV4 denials with the exact IAM statement and condition key that blocked the call.</p>
         </div>
       </div>
 

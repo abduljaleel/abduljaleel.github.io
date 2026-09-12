@@ -96,7 +96,9 @@
     .note-card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .note-id { font-family: var(--mono); font-size: 11.5px; color: var(--faint); font-weight: 600; margin-bottom: 10px; letter-spacing: .02em; }
     .note-card h2 { margin: 0 0 10px; font-size: 17.5px; letter-spacing: -.015em; line-height: 1.3; font-weight: 750; }
-    .note-card p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+    .note-card .note-body { flex: 1; }
+    .note-card .note-body p { margin: 0; color: var(--muted); font-size: 14.5px; }
+    .note-card .note-body p + p { margin-top: 12px; }
     .note-card code { font-family: var(--mono); font-size: .88em; background: var(--bg-2); border: 1px solid var(--border-strong);
       padding: 1px 6px; border-radius: 5px; color: var(--accent-strong); }
     .note-topics { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
@@ -172,7 +174,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-001</div>
           <h2>In-process vs Docker-backed engines</h2>
-          <p>Most services run as fast in-process Go handlers inside the emulator binary — low latency, shared state, easy snapshots. Services marked with a dot on the Features page (Lambda, RDS, OpenSearch, EKS, etc.) spin up real Docker containers when fidelity demands it: actual Postgres for RDS, real OpenSearch nodes, containerized Lambda runtimes. The router picks the backend per service; clients see identical API shapes either way.</p>
+          <div class="note-body">
+            <p>Most of Loopback's 117 emulated services run as fast in-process handlers inside the GraalVM-native emulator binary. Shared in-memory state keeps latency low — list-table calls complete in microseconds — and makes snapshots trivial: export serializes the same stores the handlers read and write. This is the default path for S3, DynamoDB, SQS, IAM, Blob Storage, Pub/Sub, and dozens of other wire-compatible APIs.</p>
+            <p>Services marked with a dot on the Features page escalate to Docker-backed engines when fidelity demands real processes: Lambda runs in containerized runtimes, RDS spins up actual Postgres, OpenSearch launches real nodes, EKS and GKE talk to local cluster APIs, Cosmos DB and Azure SQL use real database containers. The router selects the backend per service at request time; SDKs, CLIs, and IaC see identical API shapes and error codes either way.</p>
+            <p>The engineering trade-off is explicit: in-process for speed and determinism in CI, Docker when behavioral semantics depend on a real runtime or database engine. Compatibility tests in the repo exercise both paths against production SDKs so regressions surface before users hit them.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">Architecture</span>
             <span class="note-topic">Performance</span>
@@ -182,7 +188,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-002</div>
           <h2>MCP tool surface design</h2>
-          <p>The built-in MCP server exposes <strong>85 tools</strong> grouped by cloud and concern: inspect (list/describe resources), provision (create/update/delete), labs (chaos, clock, cost, snapshots, interconnect, GenAI). Each tool maps to an internal <code>/_loopback/*</code> or cloud-native API call. Tools return structured JSON so agents can chain operations — create a bucket, attach chaos, fast-forward the clock, read the cost meter — without parsing CLI output.</p>
+          <div class="note-body">
+            <p>The built-in MCP server at <code>/_loopback/mcp</code> exposes <strong>85 tools</strong> — 42 AWS, 24 Azure, 19 GCP — grouped by cloud and concern rather than by raw API surface area. Inspect tools list and describe resources with stable, typed arguments. Provision tools create, update, and delete with idempotent-friendly names. Lab tools drive chaos profiles, virtual clock advance/freeze, Cost Lab reads, snapshot export/import, interconnect authorize, and offline GenAI invocation.</p>
+            <p>Each tool maps to an internal <code>/_loopback/*</code> endpoint or a cloud-native API call the emulator already implements. Responses are structured JSON (resource IDs, ARNs, error codes, meter readings) — never shell stdout — so agents chain operations without regex parsing. A representative sequence: <code>create_bucket</code> → <code>set_chaos</code> on DynamoDB → <code>advance_clock</code> by 30 days → <code>get_costs</code> → <code>export_snapshot</code>.</p>
+            <p>Design invariant: MCP, the unified console, and direct curl hit the same state. Tool schemas are curated to reduce hallucinated resource names and impossible argument combinations — an intentional trade-off against giving agents unrestricted raw SDK access. See the Science hub for open questions on where that boundary should sit long term.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">MCP</span>
             <span class="note-topic">Agents</span>
@@ -192,7 +202,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-003</div>
           <h2>Interconnect authorize gate</h2>
-          <p>Cross-cloud traffic is denied at the proxy layer by default. An attachment record links a source cloud endpoint to a destination; until <code>POST /_loopback/interconnects/authorize</code> marks it active, requests crossing cloud boundaries receive a native-shaped <code>403 AccessDenied</code>. Chaos can sever or slow authorized links independently. This models real interconnect semantics without requiring VPC peering, ExpressRoute, or Cloud Interconnect configuration.</p>
+          <div class="note-body">
+            <p>Cross-cloud traffic is denied at the proxy layer by default. When an AWS Lambda function tries to reach Azure Blob Storage, or a GCP Cloud Function publishes to an AWS SQS queue, the interconnect gateway intercepts the request before it leaves the source cloud's emulator process. Without an active attachment, the caller receives a native-shaped <code>403 AccessDenied</code> — same shape SDKs expect from a missing VPC endpoint or denied resource policy.</p>
+            <p>An attachment record links the AWS hub to a peer cloud (<code>azure</code> or <code>gcp</code>). Creating the attachment is not enough: <code>POST /_loopback/interconnects/authorize</code> must mark it active before cross-boundary calls succeed. Revoking authorization returns the link to denied state without tearing down the attachment metadata — useful for testing gradual rollout and rollback.</p>
+            <p>Chaos profiles apply independently to authorized links: inject latency, drop packets, or sever the link entirely while in-process services on each cloud keep running. This minimal model reproduces partition and failover behavior teams see with ExpressRoute outages or misconfigured peering, without simulating full BGP stacks or requiring real cloud accounts.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">Networking</span>
             <span class="note-topic">Security</span>
@@ -202,7 +216,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-004</div>
           <h2>IAM why-403 diagnostics</h2>
-          <p>When a call is denied, the standard error gives little context. The <code>/_loopback/why-403</code> endpoint replays the request against the effective policy set — identity policy, resource policy, SCP-style boundaries — and returns the exact statement index, condition key, and failing <code>Effect: Deny</code> or missing <code>Allow</code>. This mirrors how engineers debug production IAM, but runs synchronously against in-memory policy documents.</p>
+          <div class="note-body">
+            <p>Production IAM denials are painful: the API returns <code>AccessDenied</code> with little context, and engineers grep CloudTrail, simulate policies in the console, or binary-search statement blocks. Loopback's <code>/_loopback/why-403</code> endpoint replays the exact SigV4-signed request against the effective policy set stored in the emulator — identity policy, resource policy, and SCP-style permission boundaries — and returns structured diagnostics synchronously.</p>
+            <p>The response identifies the failing statement index, the condition key that evaluated false, and whether the block came from an explicit <code>Effect: Deny</code> or a missing <code>Allow</code>. Because policies live in-memory alongside the resources they protect, replay is deterministic and instant — no CloudTrail lag, no simulate API quota.</p>
+            <p>Why-403 integrates with snapshots: capture state before a policy change, mutate IAM, observe a denial, diagnose it, then restore the snapshot and verify the fix. MCP exposes this as a lab tool so agents can learn from denials instead of retrying blindly. Azure and GCP have parallel permission models on their endpoints; AWS why-403 is the most mature diagnostic path today.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">IAM</span>
             <span class="note-topic">Debugging</span>
@@ -212,7 +230,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-005</div>
           <h2>Clock and TTL semantics</h2>
-          <p>Each cloud maintains a virtual clock independent of wall time. Fast-forward advances expiry for STS tokens, DynamoDB TTL attributes, SQS visibility timeouts, EventBridge schedules, and Certificate Manager renewals. Freeze pauses all time-dependent logic for deterministic tests. Background sweepers compare resource timestamps against the virtual clock on each tick — no real-time waits required in CI.</p>
+          <div class="note-body">
+            <p>Each cloud emulator maintains a virtual clock independent of wall time, exposed via <code>/_loopback/clock/advance</code>, <code>/_loopback/clock/freeze</code>, and read endpoints on all three ports. Fast-forward advances expiry for STS session tokens, DynamoDB TTL attribute sweeps, SQS visibility timeouts, EventBridge rules, Scheduler tasks, and ACM certificate renewal windows. On Azure, hidden queue messages become visible again after the advanced interval; on GCP, Cloud Scheduler fires pending jobs against the new instant.</p>
+            <p>Freeze pauses all time-dependent logic — TTL sweepers, token rotation, schedule evaluation — so assertions run against a stable instant. Background sweepers compare resource timestamps against the virtual clock on each tick rather than sleeping on wall clocks, which means CI pipelines never need <code>sleep 86400</code> to test token expiry.</p>
+            <p>Design invariant documented in Science working notes: Cost Lab meters, TTL logic, and schedule firing all consult the same clock source. Advancing thirty days in one POST produces consistent cost accrual, expired credentials, and fired schedules in a single deterministic step — a property production clouds cannot offer on a laptop.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">Time travel</span>
             <span class="note-topic">Determinism</span>
@@ -222,7 +244,11 @@
         <article class="note-card reveal">
           <div class="note-id">NOTE-006</div>
           <h2>Cost meter wiring &amp; agent-native sandbox philosophy</h2>
-          <p>The Cost Lab hooks into service-level operation counters — S3 PUT/GET, Lambda invocations, DynamoDB RCUs — and applies published pricing tables per cloud. Because the meter reads the same virtual clock as TTL logic, a month of accrual compresses into seconds. The broader design goal: agents should provision, break, and learn against real API shapes with zero blast radius — every control plane (MCP, console, <code>/_loopback/*</code>) is a first-class interface, not an afterthought.</p>
+          <div class="note-body">
+            <p>The Cost Lab hooks into service-level operation counters maintained by each emulated service — S3 PUT/GET/LIST, Lambda invocations, DynamoDB read/write capacity units, Bedrock token usage through the offline GenAI gateway, and Azure/GCP analogs. Counters multiply against published pricing tables per cloud; <code>/_loopback/costs</code> returns run rate, month-to-date totals, and per-service breakdowns, while <code>/_loopback/costs/whatif</code> projects scaled spend over future months.</p>
+            <p>Because the meter reads the same virtual clock as TTL and schedule logic, advancing time via <code>/_loopback/clock/advance</code> accrues cost in lockstep with expiry events. Freeze the clock at month-end and the meter shows a full month of spend without waiting on wall time — essential for agent loops that need to learn cost consequences of provisioning decisions.</p>
+            <p>The broader design goal: agents (and the humans supervising them) should provision, break, and learn against real API shapes with zero blast radius. Every control plane — MCP tools, the unified console, direct <code>/_loopback/*</code> curl, and native SDKs — is a first-class interface to the same emulator state, not an afterthought layered on a CLI wrapper. SigV4, interconnect 403 gates, snapshots, and offline GenAI exist so agent workflows encounter production-shaped constraints locally before they touch a real account.</p>
+          </div>
           <div class="note-topics">
             <span class="note-topic">Cost Lab</span>
             <span class="note-topic">Design</span>

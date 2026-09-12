@@ -106,6 +106,7 @@
       background: rgba(240,166,78,.1); border: 1px solid rgba(240,166,78,.2); margin-bottom: 14px; font-size: 17px; }
     .theme-card h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: -.01em; font-weight: 750; }
     .theme-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .theme-card p + p { margin-top: 10px; }
 
     .featured-list { display: flex; flex-direction: column; gap: 20px; }
     .story-card { display: grid; grid-template-columns: 1fr 1.6fr; gap: 28px; align-items: start;
@@ -122,6 +123,7 @@
     .story-theme { font-family: var(--mono); font-size: 12px; color: var(--faint); }
     .story-card h3 { margin: 0; font-size: 20px; letter-spacing: -.02em; line-height: 1.25; font-weight: 780; }
     .story-card .story-body { color: var(--muted); font-size: 15px; margin: 0; }
+    .story-card .story-body p + p { margin-top: 12px; }
     .story-card code { font-family: var(--mono); font-size: .88em; background: var(--bg-2); border: 1px solid var(--border-strong);
       padding: 1px 6px; border-radius: 5px; color: var(--accent-strong); }
 
@@ -206,32 +208,38 @@
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">◎</div>
           <h3>Emulation fidelity</h3>
-          <p>When does in-process Go suffice, and when must a service spin up real Docker containers? How do we measure wire-protocol correctness against production SDKs and CLIs across 117 services?</p>
+          <p>When does in-process emulation suffice, and when must a service spin up real Docker containers? Loopback marks Docker-backed engines with a dot on the Features page — Lambda, RDS, OpenSearch, EKS, Cosmos DB, GKE, and similar workloads where container or database fidelity changes test outcomes.</p>
+          <p>We study how to measure wire-protocol correctness against production SDKs and CLIs across 117 services without claiming parity we cannot prove. Compatibility tests in the repo exercise both in-process and Docker paths; the research question is whether we can publish a predictable fidelity tier per service — wire shape, behavioral semantics, isolation level — so users know what will match production before they deploy.</p>
         </div>
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">⇄</div>
           <h3>Multicloud interconnect</h3>
-          <p>Modeling cross-cloud connectivity with authorize gates, attachment records, and chaos on links — so engineers can test failover and partition behavior without real VPC peering.</p>
+          <p>Modeling cross-cloud connectivity with authorize gates, attachment records, and chaos on links — so engineers can test failover and partition behavior without real VPC peering, ExpressRoute, or Cloud Interconnect configuration.</p>
+          <p>The hub-and-spoke design places AWS at <code>localhost:4566</code> with Azure and GCP gateways on <code>:4577</code> and <code>:4588</code>. Cross-cloud calls return <code>403</code> until <code>/_loopback/interconnects/authorize</code> activates an attachment; chaos can then sever or slow live links. We ask whether this minimal trust model captures the failure modes multicloud teams actually debug in production.</p>
         </div>
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">⬡</div>
           <h3>Agent tooling &amp; MCP</h3>
-          <p>Designing tool surfaces that let AI agents provision, inspect, and stress infra safely. Structured JSON over 85 tools beats CLI parsing for agent reliability.</p>
+          <p>Designing tool surfaces that let AI agents provision, inspect, and stress infra safely over <code>/_loopback/mcp</code>. Eighty-five curated tools — inspect, provision, chaos, clock, cost, snapshots, interconnect, GenAI — return structured JSON instead of CLI stdout.</p>
+          <p>We study whether curated MCP schemas reduce hallucinated ARNs and failed retries compared to giving agents unrestricted SDK access, and how tool design should evolve as emulator coverage grows across AWS, Azure, and GCP.</p>
         </div>
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">◈</div>
           <h3>Offline GenAI gateways</h3>
-          <p>Unifying Bedrock, Azure OpenAI, and Vertex AI behind one offline gateway — deterministic responses, Ollama backends, token-cost simulation — so LLM pipelines test without API keys.</p>
+          <p>Unifying Bedrock Converse/InvokeModel, Azure OpenAI chat completions, and Vertex predict/streamGenerateContent behind one offline gateway — deterministic canned responses, Ollama backends, or token-cost simulation wired to the Cost Lab.</p>
+          <p>Multicloud LLM pipelines must handle provider-specific wire quirks (EventStream on Bedrock, SSE on Azure, publisher paths on Vertex) while staying testable in air-gapped CI. Grok 4.6 on Bedrock and Vertex illustrates real coverage asymmetry — Azure has no official Grok — that agents must navigate.</p>
         </div>
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">⏱</div>
           <h3>Cost, chaos &amp; time-travel labs</h3>
-          <p>Control planes that compress months of spend into seconds, inject native-shaped errors, and advance virtual clocks so TTLs, token expiry, and schedules behave deterministically in CI.</p>
+          <p>Control planes that compress months of spend into seconds via <code>/_loopback/costs</code>, inject native-shaped errors through chaos profiles, and advance virtual clocks so TTLs, STS token expiry, and schedules behave deterministically in CI.</p>
+          <p>A shared virtual clock substrate ties Cost Lab meters to TTL sweepers and schedule firing — fast-forward thirty days and cost accrual, expired credentials, and fired EventBridge rules land in one deterministic step. Snapshots and why-403 diagnostics round out the lab stack for reproducible agent training.</p>
         </div>
         <div class="theme-card reveal">
           <div class="theme-icon" aria-hidden="true">⊢</div>
           <h3>Automated reasoning</h3>
-          <p>Formal methods over emulated cloud state — derive least-privilege IAM from observed API use, check config controls on resources, and answer schema-aware queries for agents over MCP and the console.</p>
+          <p>Formal methods over emulated cloud state — derive least-privilege IAM from observed SigV4 traffic, check encryption/isolation/interconnect controls on resources, and answer schema-aware queries for agents over MCP and the unified console.</p>
+          <p>These are research directions and lab proposals, not shipped features. Loopback's replayable, zero-blast-radius sandbox is the enabling substrate: deterministic policy replay, exportable snapshots, and typed resource schemas make local verification possible where production accounts cannot.</p>
         </div>
       </div>
     </div>
@@ -253,7 +261,11 @@
           </div>
           <div>
             <h3>Least-privilege policy derivation from observed local API use</h3>
-            <p class="story-body">Record SigV4 and SDK traffic against the local emulator, then synthesize minimal IAM policy statements that permit exactly what was exercised — inspired by policy-autopilot research, but scoped to Loopback's replayable, zero-blast-radius sandbox. A future lab would propose attachable policies for human review before an agent graduates from demo to broader tool access.</p>
+            <div class="story-body">
+              <p><strong>Research direction.</strong> Record SigV4-signed and SDK traffic against the local emulator during an agent or integration-test session — every <code>PutObject</code>, <code>GetItem</code>, <code>InvokeFunction</code>, and <code>AssumeRole</code> call with principal, resource ARN, action, and condition context captured in emulator logs or a dedicated trace store.</p>
+              <p>From that trace, synthesize minimal IAM policy statements that permit exactly the actions exercised and no broader wildcards — inspired by policy-autopilot and automated-reasoning work in industry, but scoped to Loopback's replayable sandbox where traces are complete and replay is deterministic. A proposed lab would emit attachable policy JSON for human review, run <code>/_loopback/why-403</code> against edge cases the synthesis might miss, and let operators diff proposed vs. current policies before an agent graduates from demo to broader MCP tool access.</p>
+              <p>Why local first: production CloudTrail is incomplete for pre-deployment agent runs, and mistaken broad <code>s3:*</code> grants are expensive to unwind. Loopback lets you iterate on least-privilege synthesis with zero account risk, export the result in a snapshot, and replay the same trace after policy tightening to prove denials behave as expected.</p>
+            </div>
           </div>
         </article>
 
@@ -264,7 +276,11 @@
           </div>
           <div>
             <h3>Checkable configuration controls on emulated resources</h3>
-            <p class="story-body">Express encryption-at-rest, network isolation, and interconnect authorize gates as declarative controls evaluated over emulator state — a ControlsDSL-style checker for local resources, not a vendor compliance product. Agents and CI could ask whether a bucket is encrypted, a link is gated, or cross-cloud traffic is authorized, and get a checkable yes/no grounded in emulated config rather than guesswork.</p>
+            <div class="story-body">
+              <p><strong>Research direction.</strong> Express encryption-at-rest (S3 SSE-KMS, Blob Storage encryption scopes, Cloud Storage CMEK), network isolation boundaries, and interconnect authorize gates as declarative controls evaluated over emulator state — a ControlsDSL-style checker for local resources, not a vendor compliance product or a claim of SOC2 readiness.</p>
+              <p>Example control statements an agent or CI job could evaluate: "every S3 bucket in account X has default encryption enabled," "no cross-cloud attachment is authorized without an explicit <code>/_loopback/interconnects/authorize</code> record," "this Lambda's execution role cannot reach DynamoDB tables outside its prefix." The checker walks in-memory resource graphs and IAM attachments rather than calling external audit APIs.</p>
+              <p>Loopback-specific hook: interconnect 403 gates, snapshot export, and why-403 diagnostics give concrete pass/fail evidence. An agent provisions infra via MCP, runs the control checker, receives structured violations, fixes config, and re-runs — all before a human promotes the same Terraform to a real account. MapScout, Kani, and Amazon-internal compliance DSL are related industry work; they are not Loopback products.</p>
+            </div>
           </div>
         </article>
 
@@ -275,7 +291,11 @@
           </div>
           <div>
             <h3>Schema-aware verified queries over local cloud state</h3>
-            <p class="story-body">Give MCP tools and the console a typed query layer over emulated resources — agents submit structured questions ("list buckets without encryption in this account") backed by the emulator's schema, not free-text grep. The lab direction: answers constrained by resource types and relationships, so agents inspect local cloud state with verified results instead of hallucinated ARNs.</p>
+            <div class="story-body">
+              <p><strong>Lab.</strong> Give MCP tools and the unified console a typed query layer over emulated resources — agents submit structured questions ("list S3 buckets without default encryption in this account," "show authorized interconnect attachments," "which Lambda functions reference this DynamoDB table") backed by the emulator's internal schema, not free-text grep or invented ARNs.</p>
+              <p>The lab direction: query results constrained by resource types, relationships, and cross-cloud links the emulator actually stores. Answers include provenance — which store, which snapshot generation, which cloud endpoint — so agents inspect local state with verified results instead of hallucinating resource names. Integration point: new MCP inspect tools or an extension to existing list/describe tools that accept a typed query AST rather than ad-hoc string filters.</p>
+              <p>Why this matters for agent loops: provisioning tools create resources; inspect tools list them; but complex questions ("find all public-read buckets wired to this CloudFront distribution across three clouds") currently require brittle multi-step tool chains. A schema-aware query layer collapses those chains into one verifiable step, with snapshot export preserving query results for regression comparison in CI.</p>
+            </div>
           </div>
         </article>
 
@@ -304,7 +324,11 @@
           </div>
           <div>
             <h3>The fidelity spectrum: when is “close enough” actually close enough?</h3>
-            <p class="story-body">Most Loopback services run in-process for speed; Docker-backed engines handle Lambda, RDS, OpenSearch, and similar workloads where container fidelity matters. An open research question: can we formalize a fidelity tier per service — wire shape, behavioral semantics, container isolation — and give users a predictable contract about what will and won't match production?</p>
+            <div class="story-body">
+              <p><strong>Research direction.</strong> Most Loopback services run in-process for speed; Docker-backed engines handle Lambda, RDS, OpenSearch, EKS, Cosmos DB, GKE, and similar workloads where container or database fidelity changes test outcomes. Users today infer fidelity from the dot marker on the Features page — but that is informal.</p>
+              <p>An open research question: can we formalize a fidelity tier per service — wire shape (headers, error codes, pagination), behavioral semantics (eventual consistency, TTL sweep timing), container isolation (real Postgres vs. in-memory stub) — and publish a predictable contract about what will and won't match production? Compatibility tests already run against AWS, Azure, and GCP SDKs; the gap is communicating results as user-facing tiers rather than pass/fail logs in CI.</p>
+              <p>Agent implications: an agent choosing between in-process DynamoDB and Docker-backed RDS needs to know whether its integration test proves anything about production latency or isolation. Tier labels would let MCP tools annotate responses ("this result is wire-compatible only") so agent planners do not over-trust local behavior.</p>
+            </div>
           </div>
         </article>
 
@@ -315,7 +339,11 @@
           </div>
           <div>
             <h3>Authorize gates as a minimal model of cross-cloud trust</h3>
-            <p class="story-body">Cross-cloud calls return <code>403</code> until <code>/_loopback/interconnects/authorize</code> activates an attachment. This working note explores whether a single boolean gate plus chaos-on-links is sufficient to reproduce the failure modes teams see with ExpressRoute outages, Interconnect partitions, and misconfigured peering — without simulating full network stacks.</p>
+            <div class="story-body">
+              <p><strong>Working note.</strong> Cross-cloud calls return <code>403 AccessDenied</code> until <code>POST /_loopback/interconnects/authorize</code> activates an attachment between the AWS hub and an Azure or GCP peer. Attachment metadata persists across authorize/revoke cycles; chaos profiles can sever or slow authorized links without deleting the attachment record.</p>
+              <p>This note explores whether a single boolean gate plus link-level chaos is sufficient to reproduce failure modes teams see with ExpressRoute outages, Cloud Interconnect partitions, and misconfigured peering — without simulating BGP, DNS forwarding, or private endpoint routing tables. Early multicloud integration tests suggest the model captures "link down" and "link slow" well; it may not capture partial routing asymmetry or split-horizon DNS.</p>
+              <p>Practical guidance for now: treat interconnect 403 as "trust not established," use authorize for happy-path tests, and apply chaos for resilience tests. MCP interconnect tools and the console show attachment state so agents do not confuse IAM denials (why-403) with interconnect denials (403 before authorize).</p>
+            </div>
           </div>
         </article>
 
@@ -326,7 +354,11 @@
           </div>
           <div>
             <h3>Do agents need cloud-native APIs or purpose-built tool schemas?</h3>
-            <p class="story-body">Loopback exposes 85 MCP tools mapped to internal and cloud-native endpoints. An open question: for agent reliability, is a curated tool surface (inspect, provision, lab) strictly better than giving agents raw SDK access? Early evidence suggests structured tools reduce hallucinated resource names and failed retries — but the trade-off against flexibility remains unsettled.</p>
+            <div class="story-body">
+              <p><strong>Open question.</strong> Loopback exposes 85 MCP tools mapped to internal <code>/_loopback/*</code> and cloud-native endpoints, while simultaneously accepting raw SDK and SigV4 traffic against the same emulator. Agents could theoretically call <code>aws s3 mb</code> via shell, use boto3 through a code tool, or invoke curated MCP provision tools — all against <code>localhost:4566</code>.</p>
+              <p>For agent reliability, is a curated tool surface (inspect, provision, lab) strictly better than raw SDK access? Early evidence from agent demos suggests structured JSON tools reduce hallucinated bucket names, wrong regions, and retry storms on permanent failures — but curated schemas lag new services and may hide legitimate edge-case APIs agents need for advanced workflows.</p>
+              <p>A plausible middle path: keep curated tools as the default agent interface, expose optional "escape hatch" tools that proxy arbitrary signed requests with why-403 on denial, and use schema-aware queries (see Automated reasoning lab) for complex inspect operations. No verdict yet — feedback from agent builders running Loopback in CI will shape the boundary.</p>
+            </div>
           </div>
         </article>
 
@@ -337,7 +369,11 @@
           </div>
           <div>
             <h3>One gateway, three provider shapes: unifying Bedrock, Azure OpenAI, and Vertex</h3>
-            <p class="story-body">Production LLM pipelines often span multiple clouds. Loopback routes Bedrock Converse, Azure OpenAI chat, and Vertex predict through one offline gateway with shared token-cost simulation. The research direction: define a provider-agnostic abstraction layer that preserves each cloud's wire quirks while letting agents swap backends without rewriting orchestration logic.</p>
+            <div class="story-body">
+              <p><strong>Research direction.</strong> Production LLM pipelines often span multiple clouds — Bedrock for Claude, Azure OpenAI for GPT-4o, Vertex for Gemini or publisher models like Grok 4.6. Loopback routes Bedrock Converse/InvokeModel on <code>:4566</code>, Azure OpenAI chat completions on <code>:4577</code>, and Vertex predict/streamGenerateContent on <code>:4588</code> through one offline gateway with shared token-cost simulation tied to the Cost Lab.</p>
+              <p>The research direction: define a provider-agnostic orchestration layer that preserves each cloud's wire quirks — EventStream framing on Bedrock, SSE chunks on Azure, <code>publishers/xai</code> paths on Vertex — while letting agents swap backends via MCP GenAI tools without rewriting prompt assembly logic. Backends include deterministic canned responses for CI, Ollama for local realism, and pure billing simulation.</p>
+              <p>Open problem: streaming error handling differs materially across providers; agents must parse partial responses, tool-call blocks, and guardrail interruptions per cloud. The gateway today unifies cost and offline operation; unifying agent-facing semantics without erasing provider fidelity is the longer-term goal.</p>
+            </div>
           </div>
         </article>
 
@@ -348,7 +384,11 @@
           </div>
           <div>
             <h3>Virtual clocks as the shared substrate for cost and TTL semantics</h3>
-            <p class="story-body">Cost Lab meters read the same virtual clock that drives TTL expiry, STS token rotation, and SQS visibility timeouts. This working note documents the design invariant: all time-dependent subsystems consult one clock source, so fast-forwarding 30 days of wall time produces consistent cost accrual, expired credentials, and fired schedules in a single deterministic step.</p>
+            <div class="story-body">
+              <p><strong>Working note.</strong> Cost Lab meters read the same virtual clock that drives TTL expiry, STS token rotation, SQS visibility timeouts, EventBridge schedule firing, and Azure queue visibility. Each cloud emulator exposes clock control via <code>/_loopback/clock/advance</code> and freeze endpoints on its respective port; clock state is per-cloud, not global wall time.</p>
+              <p>Design invariant: all time-dependent subsystems within a cloud consult one clock source. Fast-forwarding thirty days via a single POST produces consistent cost accrual on <code>/_loopback/costs</code>, expired temporary credentials, swept DynamoDB TTL items, and fired Scheduler tasks in one deterministic step — behavior production clouds cannot replicate on a laptop without billing surprise.</p>
+              <p>Agent and CI implications: an agent loop can provision resources, advance time, read cost projections via <code>/_loopback/costs/whatif</code>, observe token expiry failures, and export a snapshot — teaching cost-aware and time-aware policies without sleep calls. Freeze mode stabilizes assertions mid-test; advance mode stress-tests long-horizon workflows in seconds.</p>
+            </div>
           </div>
         </article>
 

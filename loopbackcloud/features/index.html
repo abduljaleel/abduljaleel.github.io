@@ -117,6 +117,7 @@
     .lab-card:hover { border-color: var(--border-strong); transform: translateY(-2px); box-shadow: var(--shadow-md); }
     .lab-card h3 { margin: 0 0 8px; font-size: 16.5px; letter-spacing: -.01em; }
     .lab-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .lab-card p + p { margin-top: 10px; }
     .lab-card code { font-family: var(--mono); font-size: .88em; background: var(--bg-2); border: 1px solid var(--border-strong);
       padding: 1px 6px; border-radius: 5px; color: var(--accent-strong); }
 
@@ -178,7 +179,7 @@
     <div class="wrap">
       <span class="eyebrow">Features / Coverage</span>
       <h1>Every service, <span class="grad">every lab.</span></h1>
-      <p>Real Docker-backed engines where fidelity matters, fast in-process emulation everywhere else — including DynamoDB <code style="font-family:var(--mono);font-size:.9em;background:var(--panel);border:1px solid var(--border-strong);padding:2px 7px;border-radius:6px;color:var(--accent-strong)">SearchVectors</code> and an AI suite in every cloud.</p>
+      <p>Real Docker-backed engines where fidelity matters, fast in-process emulation everywhere else — including DynamoDB <code style="font-family:var(--mono);font-size:.9em;background:var(--panel);border:1px solid var(--border-strong);padding:2px 7px;border-radius:6px;color:var(--accent-strong)">SearchVectors</code> and an AI suite in every cloud. Point SDKs, CLIs, Terraform, and CDK at <code style="font-family:var(--mono);font-size:.9em">localhost:4566</code>, <code style="font-family:var(--mono);font-size:.9em">:4577</code>, and <code style="font-family:var(--mono);font-size:.9em">:4588</code> — SigV4 and fake credentials welcome.</p>
       <div class="hero-stats">
         <span class="hero-stat"><span class="n">117</span> <small>services</small></span>
         <span class="hero-stat" style="color:var(--aws)"><span class="d"></span><span class="n">61</span> <small>AWS</small></span>
@@ -239,36 +240,43 @@
       <div class="sec-head center reveal">
         <span class="eyebrow">Platform labs</span>
         <h2 style="justify-content:center">Agent &amp; testing superpowers</h2>
-        <p>Built-in control planes that turn all three clouds into a lab — drive them from an AI agent over MCP, the console, or a tiny <code style="font-family:var(--mono);font-size:.9em">/_loopback/*</code> API. Each is inert until you switch it on.</p>
+        <p>Built-in control planes that turn all three clouds into a lab — drive them from an AI agent over MCP at <code style="font-family:var(--mono);font-size:.9em">/_loopback/mcp</code>, the unified console, or direct <code style="font-family:var(--mono);font-size:.9em">/_loopback/*</code> curl. Each lab is inert until you switch it on; together they cover cost projection, chaos injection, virtual time, state snapshots, IAM why-403 diagnostics, multicloud interconnect authorize gates, and an offline GenAI gateway across Bedrock, Azure OpenAI, and Vertex.</p>
       </div>
       <div class="labs-grid">
         <div class="lab-card reveal">
           <h3>Agent-native (MCP)</h3>
-          <p>A built-in Model Context Protocol server lets AI agents build real infra, inspect every cloud, and drive every lab — zero spend, zero blast radius. <strong>42 AWS / 24 Azure / 19 GCP</strong> tools: inspect, provision, chaos, clock, GenAI.</p>
+          <p>A built-in Model Context Protocol server lets AI agents build real infra, inspect every cloud, and drive every lab — zero spend, zero blast radius. <strong>42 AWS / 24 Azure / 19 GCP</strong> tools: inspect, provision, chaos, clock, cost, snapshots, interconnect, GenAI.</p>
+          <p>Connect with <code>claude mcp add --transport http loopback http://localhost:4566/_loopback/mcp</code>. Tools return structured JSON mapped to <code>/_loopback/*</code> and cloud-native APIs — agents chain create-bucket, set-chaos, advance-clock, and export-snapshot without parsing CLI output.</p>
         </div>
         <div class="lab-card reveal">
           <h3>Offline GenAI gateway</h3>
-          <p>Bedrock Converse / ConverseStream / InvokeModel / InvokeModelWithResponseStream, Azure OpenAI, and Vertex AI — one offline gateway (deterministic, canned, or Ollama) with token-cost simulation. Grok 4.6 on Bedrock (<code>xai.grok-4.6</code>) and Vertex (<code>grok-4.6</code> / <code>publishers/xai</code>). Azure has no official Grok.</p>
+          <p>Bedrock Converse / ConverseStream / InvokeModel / InvokeModelWithResponseStream on <code>:4566</code>, Azure OpenAI chat completions (including SSE streaming) on <code>:4577</code>, and Vertex predict / streamGenerateContent on <code>:4588</code> — one offline gateway with deterministic canned responses, Ollama backends, or token-cost simulation wired to the Cost Lab.</p>
+          <p>Grok 4.6 on Bedrock (<code>xai.grok-4.6</code>) and Vertex (<code>grok-4.6</code> / <code>publishers/xai</code>). Azure has no official Grok — a real coverage gap agents must handle. Zero API keys, zero egress.</p>
         </div>
         <div class="lab-card reveal">
           <h3>Chaos engineering</h3>
-          <p>Inject latency and native-shaped errors into any service, in any of the three clouds — and sever or slow cross-cloud links — to test retries, timeouts, and failover.</p>
+          <p>Inject latency and native-shaped errors into any service via <code>/_loopback/chaos</code> — <code>ThrottlingException</code> on DynamoDB, 503s on Lambda, timeouts on SQS — in any of the three clouds.</p>
+          <p>Chaos also applies to multicloud interconnect links: sever or slow an authorized attachment to test retries, circuit breakers, and failover without real network partitions. Clear faults with one DELETE.</p>
         </div>
         <div class="lab-card reveal">
           <h3>Time travel</h3>
-          <p>A virtual clock in every cloud. Fast-forward and tokens expire, TTL'd items vanish, schedules fire, hidden queue messages reappear — or freeze time for deterministic tests.</p>
+          <p>A virtual clock per cloud via <code>/_loopback/clock/advance</code> and freeze. Fast-forward and STS tokens expire, DynamoDB TTL items sweep, EventBridge schedules fire, SQS visibility timeouts elapse, and Azure hidden queue messages reappear.</p>
+          <p>Freeze pauses all time-dependent logic for deterministic assertions. The same clock drives Cost Lab accrual — advance thirty days and billing math updates in the same step as expiry events.</p>
         </div>
         <div class="lab-card reveal">
           <h3>Cost Lab</h3>
-          <p>A live per-service cost meter and what-if projector — wired to the clock, so you can watch a month of spend accrue in seconds.</p>
+          <p>A live per-service cost meter at <code>/_loopback/costs</code> and what-if projector at <code>/_loopback/costs/whatif</code> — S3 operations, Lambda invocations, DynamoDB RCUs, GenAI tokens, and Azure/GCP analogs priced against published tables.</p>
+          <p>Wired to the virtual clock: watch a month of spend accrue in seconds, or project scaled spend over six months before an agent provisions another bucket.</p>
         </div>
         <div class="lab-card reveal">
           <h3>Snapshots &amp; why-403</h3>
-          <p>Export the entire emulator's state to one file and restore it anywhere — git for cloud state. And ask IAM exactly which policy statement denied a call.</p>
+          <p>Export the entire emulator's state via <code>/_loopback/state/export</code> and restore with import — git for cloud state across all three providers. Break everything in a test, then rewind.</p>
+          <p><code>/_loopback/why-403</code> replays SigV4 denials against identity policies, resource policies, and permission boundaries — returning the exact statement index and failing condition key, not a generic AccessDenied.</p>
         </div>
         <div class="lab-card reveal" style="grid-column: 1 / -1; max-width: 560px; margin: 0 auto; width: 100%;">
           <h3>Multicloud interconnect</h3>
-          <p>Model cross-cloud connectivity like AWS Interconnect — gated by default, opened with one attachment from the hub to a peer cloud. Cross-cloud calls return <code>403</code> until authorized via <code>/_loopback/interconnects/authorize</code>.</p>
+          <p>Model cross-cloud connectivity like AWS Interconnect — hub on <code>localhost:4566</code>, Azure and GCP gateways on <code>:4577</code> and <code>:4588</code>. Cross-cloud calls return <code>403</code> until authorized via <code>POST /_loopback/interconnects/authorize</code>.</p>
+          <p>Then S3 talks to Blob Storage, Pub/Sub reaches SQS, and chaos can drop the link mid-test — explicit trust boundaries without VPC peering, ExpressRoute, or Cloud Interconnect setup.</p>
         </div>
       </div>
     </div>

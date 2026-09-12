@@ -104,7 +104,9 @@
     .post-tag.gcp { background: rgba(79,141,247,.08); color: var(--gcp); border-color: rgba(79,141,247,.2); }
     .post-tag.lab { background: rgba(54,208,122,.08); color: var(--green); border-color: rgba(54,208,122,.2); }
     .post-card h2 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.015em; line-height: 1.3; font-weight: 750; }
-    .post-card p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+    .post-card .post-body { flex: 1; }
+    .post-card .post-body p { margin: 0; color: var(--muted); font-size: 14.5px; }
+    .post-card .post-body p + p { margin-top: 12px; }
     .post-card code { font-family: var(--mono); font-size: .88em; background: var(--bg-2); border: 1px solid var(--border-strong);
       padding: 1px 6px; border-radius: 5px; color: var(--accent-strong); }
     .post-read { margin-top: 16px; font-size: 13.5px; font-weight: 650; color: var(--accent-strong); display: inline-flex; align-items: center; gap: 6px; }
@@ -183,7 +185,11 @@
             <span class="post-tag">Getting started</span>
           </div>
           <h2>One command, three clouds</h2>
-          <p>Loopback Cloud boots AWS (<code>localhost:4566</code>), Azure (<code>localhost:4577</code>), and GCP (<code>localhost:4588</code>) from a single <code>docker compose up</code>. Same SDKs, CLIs, and IaC you use in production — no account, no auth token, no spend. Point your tools at loopback endpoints and they behave like the real thing.</p>
+          <div class="post-body">
+            <p>Loopback Cloud boots AWS (<code>localhost:4566</code>), Azure (<code>localhost:4577</code>), and GCP (<code>localhost:4588</code>) from a single <code>docker compose up</code>. The stack ships as a GraalVM native image with a ~24&nbsp;ms cold start and ~13&nbsp;MiB idle footprint — fast enough to spin up fresh in every CI job, demo, or agent session without waiting on a heavyweight container farm.</p>
+            <p>Point the AWS, Azure, and GCP SDKs, CLIs, Terraform, CDK, and OpenTofu at those loopback endpoints and they behave like production: SigV4-signed requests on AWS, Resource Manager templates on Azure, gcloud and client libraries on GCP. Credentials can be anything non-empty — there is no account, no auth token, and no outbound telemetry. Fake keys are fine; the emulator accepts them and enforces IAM locally.</p>
+            <p>Most services run as fast in-process handlers inside the emulator binary. Services that need real container fidelity — Lambda, RDS, OpenSearch, EKS, Cosmos DB, GKE, and others marked with a dot on the Features page — spin up Docker-backed engines on demand. Clients see identical API shapes either way, so your integration tests do not care which backend is underneath.</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -195,7 +201,11 @@
             <span class="post-tag lab">MCP</span>
           </div>
           <h2>Agent-native: 85 MCP tools across three clouds</h2>
-          <p>A built-in Model Context Protocol server lets AI agents inspect, provision, and stress real infra — <strong>42 AWS / 24 Azure / 19 GCP</strong> tools covering every lab. Agents create S3 buckets, attach interconnects, fast-forward clocks, and invoke the offline GenAI gateway without ever leaving the sandbox.</p>
+          <div class="post-body">
+            <p>A built-in Model Context Protocol server at <code>/_loopback/mcp</code> lets AI agents inspect, provision, and stress real infra — <strong>42 AWS / 24 Azure / 19 GCP</strong> tools grouped by cloud and concern: inspect (list and describe resources), provision (create, update, delete), and labs (chaos, clock, cost, snapshots, interconnect, GenAI). Connect with <code>claude mcp add --transport http loopback http://localhost:4566/_loopback/mcp</code> or any MCP client that speaks HTTP.</p>
+            <p>Each tool maps to an internal <code>/_loopback/*</code> or cloud-native API call and returns structured JSON — not CLI stdout — so agents can chain operations reliably. A typical agent workflow: create an S3 bucket, attach a chaos profile that injects <code>ThrottlingException</code>, fast-forward the virtual clock thirty days, read the Cost Lab meter, export a snapshot, and invoke Bedrock Converse through the offline GenAI gateway. Zero spend, zero blast radius, zero API keys.</p>
+            <p>The same control planes are reachable from the unified console at <code>/_loopback/console</code> and from direct curl against <code>/_loopback/*</code>. MCP is not a separate product bolted on — it is a first-class interface to the same emulator state that your SDKs and CLIs already hit.</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -207,7 +217,11 @@
             <span class="post-tag">Interconnect</span>
           </div>
           <h2>Multicloud interconnect: cross-cloud calls, gated by default</h2>
-          <p>Model AWS-style interconnect attachments between clouds. Cross-cloud API calls return <code>403</code> until you authorize a link via <code>/_loopback/interconnects/authorize</code> — then S3 in AWS can talk to Blob Storage in Azure, or Pub/Sub in GCP. Test failover, retries, and network partitions without wiring real VPC peering.</p>
+          <div class="post-body">
+            <p>Loopback Cloud models <strong>AWS Interconnect — multicloud</strong> as a hub-and-spoke topology. The AWS hub on <code>localhost:4566</code> owns the control plane; Azure (<code>:4577</code>) and GCP (<code>:4588</code>) each run an interconnect gateway. Cross-cloud traffic is denied at the proxy layer by default — a call from AWS to Azure Blob Storage or from GCP Pub/Sub back to S3 returns a native-shaped <code>403 AccessDenied</code>, exactly as if the link were not provisioned in production.</p>
+            <p>To open a path, create a multicloud attachment from the hub to <code>azure</code> or <code>gcp</code>, then activate it with <code>POST /_loopback/interconnects/authorize</code>. The same request that returned <code>403</code> now succeeds with <code>200</code>. Chaos profiles can sever or slow authorized links independently, so you can test retries, circuit breakers, and failover when ExpressRoute, Cloud Interconnect, or peering misconfiguration would otherwise require real network wiring.</p>
+            <p>Drive interconnect setup from MCP tools, the console, or curl — the authorize gate is the same invariant everywhere. This is how multicloud integration tests should feel: explicit trust boundaries, reproducible denials, and one command to flip a link live.</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -219,7 +233,11 @@
             <span class="post-tag">Console</span>
           </div>
           <h2>One unified console for every cloud</h2>
-          <p>Browse resources across AWS, Azure, and GCP in a single vendor-styled UI — S3 buckets beside Blob containers beside Cloud Storage buckets. Inspect IAM policies, watch cost meters tick, toggle chaos profiles, and drive every lab without switching tabs or signing into three separate consoles.</p>
+          <div class="post-body">
+            <p>The unified console at <code>/_loopback/console</code> lets you browse resources across AWS, Azure, and GCP in a single vendor-styled UI — flip between provider themes without leaving the page. S3 buckets sit beside Blob containers beside Cloud Storage buckets; Lambda functions beside Azure Functions beside Cloud Functions. Resource counts, ARNs, endpoints, and IDs are copy-ready for scripts and agent prompts.</p>
+            <p>Every lab control plane surfaces in the same shell: watch the Cost Lab meter tick as you invoke services, toggle chaos profiles that inject latency or native-shaped errors, fast-forward or freeze the virtual clock, export and import snapshots, and inspect interconnect attachment status. When IAM denies a call, jump to why-403 diagnostics that replay the request against effective policies and return the exact statement index and failing condition key.</p>
+            <p>The console is read-oriented for safety in shared demos, but it reflects live emulator state — the same state your SDKs, MCP tools, and <code>/_loopback/*</code> APIs mutate. One UI, three clouds, no sign-in to three separate vendor portals.</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -231,7 +249,11 @@
             <span class="post-tag aws">GenAI</span>
           </div>
           <h2>Offline GenAI gateway: Bedrock, Azure OpenAI, and Vertex</h2>
-          <p>One offline gateway behind Bedrock Converse / InvokeModel, Azure OpenAI chat completions, and Vertex AI predict — deterministic canned responses, Ollama-backed models, or token-cost simulation. Grok 4.6 on Bedrock (<code>xai.grok-4.6</code>) and Vertex (<code>grok-4.6</code>). Agents test LLM pipelines with zero API keys and zero egress.</p>
+          <div class="post-body">
+            <p>Production LLM pipelines often span multiple clouds. Loopback routes Bedrock Converse, ConverseStream, InvokeModel, and InvokeModelWithResponseStream on <code>localhost:4566</code>; Azure OpenAI chat completions (including streaming SSE) on <code>:4577</code>; and Vertex AI predict and streamGenerateContent on <code>:4588</code> — all through one offline gateway with shared token-cost simulation wired to the Cost Lab.</p>
+            <p>Backends are configurable: deterministic canned responses for CI, Ollama-backed models for local realism, or pure token-cost simulation when you only need billing math. Grok 4.6 is available on Bedrock (<code>xai.grok-4.6</code>) and Vertex (<code>grok-4.6</code> / <code>publishers/xai</code>); Azure has no official Grok deployment, which mirrors real-world provider coverage gaps agents must handle.</p>
+            <p>Agents invoke the gateway through MCP GenAI tools or direct HTTP — no API keys, no egress, no rate limits from a vendor account. Test RAG pipelines, tool-calling loops, streaming EventStream parsing, and cost projections entirely on localhost before touching production inference endpoints.</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -243,7 +265,11 @@
             <span class="post-tag lab">Labs</span>
           </div>
           <h2>Labs that stress-test your assumptions</h2>
-          <p>Four built-in control planes turn the emulator into a test harness: <strong>Cost Lab</strong> meters per-service spend wired to a virtual clock; <strong>Time travel</strong> fast-forwards TTLs, token expiry, and schedules; <strong>Chaos</strong> injects latency and native-shaped errors; <strong>Snapshots &amp; why-403</strong> export state to one file and explain exactly which IAM statement denied a call.</p>
+          <div class="post-body">
+            <p>Four built-in control planes turn the emulator into a test harness — each inert until you switch it on via MCP, the console, or <code>/_loopback/*</code>. <strong>Cost Lab</strong> hooks into service-level operation counters (S3 PUT/GET, Lambda invocations, DynamoDB RCUs) and applies published pricing tables per cloud; because the meter reads the same virtual clock as TTL logic, a month of accrual compresses into seconds.</p>
+            <p><strong>Time travel</strong> maintains an independent virtual clock per cloud. Fast-forward advances STS token expiry, DynamoDB TTL sweeps, SQS visibility timeouts, EventBridge schedules, and Certificate Manager renewals; freeze pauses all time-dependent logic for deterministic tests. <strong>Chaos</strong> injects latency and native-shaped errors into any service — and can sever or slow cross-cloud interconnect links — so retries, backoff, and circuit breakers are finally testable without a staging account.</p>
+            <p><strong>Snapshots</strong> export the entire emulator state to one file and restore it anywhere — git for cloud state across all three providers. <strong>Why-403</strong> replays denied SigV4 requests against identity policies, resource policies, and SCP-style boundaries, returning the exact statement that blocked the call. Together, these labs answer questions production sandboxes rarely can: what will this cost, what happens when the link drops, and why did IAM say no?</p>
+          </div>
           <span class="post-read">Read more
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
