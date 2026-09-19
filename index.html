@@ -306,9 +306,10 @@
       display: grid; place-items: center; font-size: 0.8rem; font-weight: 900; letter-spacing: -0.04em;
       box-shadow: 0 6px 14px -4px rgba(79,70,229,0.6);
     }
-    .brand-name { font-family: var(--hand); font-weight: 700; font-size: 1.28rem; letter-spacing: 0; line-height: 1; }
-    .nav-links { display: flex; gap: 1.6rem; margin-left: 1rem; }
-    .nav-links a { font-size: 0.88rem; font-weight: 550; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .brand-name { font-family: var(--hand); font-weight: 700; font-size: 1.28rem; letter-spacing: 0; line-height: 1; white-space: nowrap; }
+    .nav-links { display: flex; gap: 1.25rem; margin-left: 0.5rem; }
+    .nav-links a { font-size: 0.88rem; font-weight: 550; color: var(--text-muted); text-decoration: none; transition: color 0.15s; white-space: nowrap; }
+    @media (max-width: 1180px) { .nav-links .nav-proj { display: none; } }
     .nav-links a:hover { color: var(--text); }
     .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
 
@@ -531,15 +532,15 @@
       <span class="brand-name">Abdul Jaleel Kavungal</span>
     </a>
     <div class="nav-links">
-      <a href="#products">Sites</a>
+      <a href="#products">Work</a>
       <a href="#proof">Studio</a>
-      <a href="/aletheia/">Aletheia</a>
-      <a href="/ax/">ax</a>
-      <a href="/EvolveHandsAI/">EvolveHandsAI</a>
-      <a href="/vim/">VIM</a>
-      <a href="/wharf/">Wharf</a>
-      <a href="/X-Road/">X-Road</a>
-      <a href="/loopbackcloud/">LoopbackCloud</a>
+      <a class="nav-proj" href="/aletheia/">Aletheia</a>
+      <a class="nav-proj" href="/ax/">ax</a>
+      <a class="nav-proj" href="/EvolveHandsAI/">EvolveHandsAI</a>
+      <a class="nav-proj" href="/vim/">VIM</a>
+      <a class="nav-proj" href="/wharf/">Wharf</a>
+      <a class="nav-proj" href="/X-Road/">X-Road</a>
+      <a class="nav-proj" href="/loopbackcloud/">LoopbackCloud</a>
     </div>
     <div class="nav-cta">
       <a class="btn btn-secondary btn-sm" href="https://github.com/abduljaleel" rel="noopener noreferrer">GitHub</a>
@@ -595,8 +596,8 @@
             </g>
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
               <rect class="chip-bg" x="174" y="348" width="132" height="46" rx="12" stroke="var(--amber)"/>
-              <text class="chip-name" x="240" y="367">Sites</text>
-              <text class="chip-sub"  x="240" y="381">HUB MAP</text>
+              <text class="chip-name" x="240" y="367">Aletheia</text>
+              <text class="chip-sub"  x="240" y="381">AGENT STACK</text>
             </g>
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(244,63,94,.22))">
               <rect class="chip-bg" x="18" y="192" width="132" height="46" rx="12" stroke="var(--rose)"/>
@@ -627,22 +628,79 @@
       <div class="section-head">
         <span class="eyebrow">Selected work</span>
         <h2 class="section-title">Work that stands on its own</h2>
-        <p class="section-lead">Distinct builds across agent infrastructure, developer tools, supply-chain security, secure exchange, — each with its own brief and craft.</p>
+        <p class="section-lead">Distinct builds across agent infrastructure, developer tools, supply-chain security, secure exchange, and local cloud tooling — each with its own brief and craft.</p>
       </div>
 
       <div class="products">
-        
-              </div>
+        <div class="product-row" style="--pc: var(--indigo);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Agent stack</span>
+            <h3 class="serif">Aletheia</h3>
+            <p class="product-tagline">Infrastructure for autonomous agents.</p>
+            <p class="product-desc">Twelve products on one stack — governance, verification, optimization, infrastructure, and the physical frontier. The unconcealment layer for autonomous agents: nothing the agent does can be hidden.</p>
+            <ul class="check-list">
+              <li>Governance &amp; verification for agent fleets</li>
+              <li>Optimization and runtime infrastructure</li>
+              <li>Twelve products, one coordinated stack — each anchored to a city</li>
+            </ul>
+            <a class="product-link" href="/aletheia/">Explore Aletheia <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="/aletheia/" style="--pc: var(--indigo);" aria-label="Open the Aletheia page">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/aletheia</span></div>
+              <img src="assets/aletheia.webp" alt="Screenshot of the Aletheia page: Agents need new infrastructure. We're building it." loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
-        <div class="product-row" style="--pc: var(--rose);">
+        <div class="product-row reverse" style="--pc: var(--indigo);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> AI Coding Agent</span>
+            <h3 class="mono">ax</h3>
+            <p class="product-tagline">The AI coding agent built without the trade-offs.</p>
+            <p class="product-desc">A terminal-native coding agent with local-first architecture and security-first defaults. Multi-provider, cost-aware, and secure by default — own your agent instead of renting it from a single vendor.</p>
+            <ul class="check-list">
+              <li>Multi-provider: Anthropic, OpenAI, Gemini, Ollama, vLLM</li>
+              <li>Local-first architecture with security-first defaults</li>
+              <li>30+ built-in tools, sub-millisecond code search, 253 tests</li>
+            </ul>
+            <a class="product-link" href="/ax/">Explore ax <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="/ax/" style="--pc: var(--indigo);" aria-label="Open the ax page">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/ax</span></div>
+              <img src="assets/ax.webp" alt="Screenshot of the ax page: The AI coding agent built without the trade-offs." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
+        <div class="product-row" style="--pc: var(--teal);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Code evolution</span>
+            <h3>EvolveHandsAI</h3>
+            <p class="product-tagline">Code that breeds better code.</p>
+            <p class="product-desc">A self-evolving code engine: LLM-driven mutations compete across island populations while MAP-Elites quality-diversity search preserves the fittest — autonomously discovering and optimizing algorithms. The site runs a live evolution chamber in your browser.</p>
+            <ul class="check-list">
+              <li>LLM-driven code mutation across island populations</li>
+              <li>MAP-Elites quality-diversity search</li>
+              <li>Live evolution chamber — every gauge reads from a real running engine</li>
+            </ul>
+            <a class="product-link" href="/EvolveHandsAI/">Explore EvolveHandsAI <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="/EvolveHandsAI/" style="--pc: var(--teal);" aria-label="Open the EvolveHandsAI page">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/EvolveHandsAI</span></div>
+              <img src="assets/evolvehandsai.webp" alt="Screenshot of the EvolveHandsAI page: Code that breeds better code, with the live evolution chamber." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
+        <div class="product-row reverse" style="--pc: var(--rose);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> Supply Chain Security</span>
             <h3 class="mono">VIM</h3>
             <p class="product-tagline">Vulnerability Inheritance Map.</p>
-            <p class="product-desc">An open-source graph database that maps vulnerability lineage across forks, vendored dependencies, and compiled binaries. Apache 2.0. Targeting OpenSSF.</p>
+            <p class="product-desc">Frontier models now find zero-days faster than anyone can track where they live. VIM is the lineage layer: an open-source graph database that maps a single upstream finding to every fork, vendored copy, and compiled binary that inherits it. Apache 2.0, targeting the OpenSSF Sandbox.</p>
             <ul class="check-list">
               <li>Traces vulns across forks, vendored deps & binaries</li>
               <li>Graph-native blast-radius analysis</li>
@@ -653,12 +711,12 @@
           <div class="product-visual">
             <a class="pv shot" href="/vim/" style="--pc: var(--rose);" aria-label="Open the VIM page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/vim</span></div>
-              <img src="assets/vim.webp" alt="Screenshot of the VIM page" loading="lazy" decoding="async" width="1280" height="800">
+              <img src="assets/vim.webp" alt="Screenshot of the VIM page" loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
-        <div class="product-row reverse" style="--pc: var(--teal);">
+        <div class="product-row" style="--pc: var(--teal);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> MCP Server</span>
             <h3>Wharf</h3>
@@ -674,39 +732,34 @@
           <div class="product-visual">
             <a class="pv shot" href="/wharf/" style="--pc: var(--teal);" aria-label="Open the Wharf page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/wharf</span></div>
-              <img src="assets/wharf.webp" alt="Screenshot of the Wharf page" loading="lazy" decoding="async" width="1280" height="800">
+              <img src="assets/wharf.webp" alt="Screenshot of the Wharf page" loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
-        <div class="product-row" style="--pc: var(--amber);">
+        <div class="product-row reverse" style="--pc: var(--amber);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> Secure exchange</span>
             <h3>X-Road</h3>
-            <p class="product-tagline">Secure data exchange, instrumented.</p>
+            <p class="product-tagline">Secure data exchange that watches, predicts, and explains itself.</p>
             <p class="product-desc">X-Road, the open-source data exchange layer, with an opt-in AI layer that watches traffic, predicts problems, and explains them — running beside the system, never in the signing path.</p>
             <ul class="check-list">
-              <li>Opt-in AI layer beside X-Road</li>
-              <li>Watches, predicts, and explains</li>
-              <li>Never in the signing path</li>
+              <li>Detect, correlate, predict, explain — on operational metadata alone</li>
+              <li>Advisory only: never blocks, never reads a payload</li>
+              <li>Read-only sidecar beside X-Road 7.8.1 — never in the signing path</li>
             </ul>
             <a class="product-link" href="/X-Road/">Explore X-Road <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
             <a class="pv shot" href="/X-Road/" style="--pc: var(--amber);" aria-label="Open the X-Road page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/X-Road</span></div>
-              <div style="display:grid;place-items:center;min-height:220px;padding:2rem;background:linear-gradient(145deg, color-mix(in srgb, var(--amber) 18%, transparent), transparent);">
-                <div style="text-align:center">
-                  <div style="font-size:1.6rem;font-weight:800;letter-spacing:-0.03em;color:var(--text)">X-Road</div>
-                  <div style="margin-top:0.45rem;font-size:0.85rem;color:var(--text-muted)">Secure data exchange, instrumented.</div>
-                </div>
-              </div>
+              <img src="assets/x-road.webp" alt="Screenshot of the X-Road AI page: Secure data exchange that now watches, predicts, and explains itself." loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
 <!-- LoopbackCloud -->
-        <div class="product-row reverse" style="--pc: var(--amber);">
+        <div class="product-row" style="--pc: var(--amber);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> Cloud Dev Tool</span>
             <h3 class="mono">LoopbackCloud</h3>
@@ -723,7 +776,7 @@
           <div class="product-visual">
             <a class="pv shot" href="/loopbackcloud/" style="--pc: var(--amber);" aria-label="Open the LoopbackCloud page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/loopbackcloud</span></div>
-              <img src="assets/loopbackcloud.webp" alt="Screenshot of the LoopbackCloud page" loading="lazy" decoding="async" width="1280" height="800">
+              <img src="assets/loopbackcloud.webp" alt="Screenshot of the LoopbackCloud page" loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
