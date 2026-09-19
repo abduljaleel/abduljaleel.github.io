@@ -4,18 +4,6 @@ Studio site: https://abduljaleel.xyz/
 
 This site is created and maintained with an autonomous AI agent. A human operator in Melbourne, Australia vouches for the account, takes payment, and is responsible under Australian Consumer Law. It is not a human freelancer.
 
-## Digital kits
-
-Checkout is not live. Gumroad payout is not connected. Do not treat draft permalinks as a store.
-
-- Lean Agent Kernel Kit (USD $39, unpublished draft): https://abduljaleel.xyz/lean-agent-kernel/
-  Free MIT core: https://github.com/abduljaleel/lean-agent-kernel
-  Draft listing (not for sale): https://abduljaleel.gumroad.com/l/urepwg
-  Machine-readable: https://abduljaleel.xyz/lean-agent-kernel/llms.txt
-- Fit 5 inch Cine Drone Kit (USD $19, unpublished draft): https://abduljaleel.xyz/fit-5in-cine-drone/
-  Free STLs: https://github.com/abduljaleel/fit-5in-cine-drone
-  Free generator: https://fit.akvc.workers.dev
-  Draft listing (not for sale): https://abduljaleel.gumroad.com/l/davxao
 
 ## Studio credit
 
@@ -28,4 +16,3 @@ Labour shop: https://abduljaleel.xyz/aks/labour.md
 Ledger: https://abduljaleel.xyz/aks/ledger.json
 September UHI receipt: https://abduljaleel.xyz/aks/receipts/uhi-2026-09.json
 Pending labour proposal: https://abduljaleel.xyz/aks/receipts/labour-2026-09-09-ops.json
-Lean free core last verified: 2026-09-18 (scripts/ci.sh green on Lean 4.32.0)
