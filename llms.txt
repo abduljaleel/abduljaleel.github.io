@@ -1,8 +1,8 @@
-# Abdul Jaleel Kavungal — abduljaleel.xyz
+# Abdul Jaleel Kavungal — studio portfolio
 
-> Hub for open projects on this domain.
+> Studio portfolio of open work in trustworthy AI, agent systems, and secure software.
 
-## Sites on this hub
+## Selected work
 
 - [Aletheia](https://abduljaleel.xyz/aletheia/): Infrastructure for autonomous agents.
 - [ax](https://abduljaleel.xyz/ax/): A fast, provider-agnostic AI coding agent — built without the trade-offs.
@@ -13,6 +13,6 @@
 - [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange, instrumented.
 - [LoopbackCloud](https://abduljaleel.xyz/loopbackcloud/): Local cloud emulator for AI agents (also hosted on this hub).
 
-## Hub
+## Studio
 
 - https://abduljaleel.xyz/
