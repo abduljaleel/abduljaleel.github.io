@@ -7,7 +7,7 @@
   <meta name="description" content="An independent engineering studio building open-source infrastructure for trustworthy AI and secure software supply chains.">
   <meta name="author" content="Abdul Jaleel Kavungal">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="Abdul Jaleel Kavungal, Aletheia, ax, EvolveHandsAI, Unpaid, VIM, Wharf, X-Road, trustworthy AI, Melbourne">
+  <meta name="keywords" content="Abdul Jaleel Kavungal, Aletheia, ax, EvolveHandsAI, Unpaid, VIM, Wharf, X-Road, LoopbackCloud, trustworthy AI, Melbourne">
   <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://abduljaleel.xyz/">
@@ -184,6 +184,22 @@
       "url": "https://abduljaleel.xyz/X-Road/",
       "applicationCategory": "SecurityApplication",
       "description": "X-Road, the open-source data exchange layer, with an opt-in AI layer that watches traffic, predicts problems, and explains them — running beside the system, never in the signing path.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "LoopbackCloud",
+      "url": "https://abduljaleel.xyz/loopbackcloud/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "macOS, Linux, Windows",
+      "description": "A local-first emulator that runs 70+ AWS, Azure and GCP services on localhost — build and test multicloud applications with no accounts, no spend and no network.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -533,6 +549,7 @@
       <a href="/vim/">VIM</a>
       <a href="/wharf/">Wharf</a>
       <a href="/X-Road/">X-Road</a>
+      <a href="/loopbackcloud/">LoopbackCloud</a>
     </div>
     <div class="nav-cta">
       <a class="btn btn-secondary btn-sm" href="https://github.com/abduljaleel" rel="noopener noreferrer">GitHub</a>
@@ -556,7 +573,7 @@
       </div>
 
       <div class="hero-visual">
-        <div class="tgraph" role="img" aria-label="Diagram: the abduljaleel.xyz hub links seven sites — Aletheia, ax, EvolveHandsAI, Unpaid, VIM, Wharf, and X-Road.">
+        <div class="tgraph" role="img" aria-label="Diagram: the abduljaleel.xyz hub links eight sites — Aletheia, ax, EvolveHandsAI, Unpaid, VIM, Wharf, X-Road, and LoopbackCloud.">
           <svg viewBox="0 0 480 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <title>Product trust network</title>
             <circle class="tg-orbit" cx="240" cy="215" r="156"/>
@@ -619,7 +636,7 @@
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">On this hub</span>
-        <h2 class="section-title">Seven sites under abduljaleel.xyz</h2>
+        <h2 class="section-title">Eight sites under abduljaleel.xyz</h2>
         <p class="section-lead">Every live GitHub Pages project on this domain — linked from the hub, built in the open.</p>
       </div>
 
@@ -790,6 +807,30 @@
             </a>
           </div>
         </div>
+
+<!-- LoopbackCloud -->
+        <div class="product-row reverse" style="--pc: var(--amber);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Cloud Dev Tool</span>
+            <h3 class="mono">LoopbackCloud</h3>
+            <p class="product-tagline">The whole cloud, on localhost.</p>
+            <p class="product-desc">A local-first emulator that runs AWS, Azure and GCP on your own machine. Point your existing SDKs, CLIs and IaC at localhost and build multicloud apps with no accounts, no spend and no network.</p>
+            <ul class="check-list">
+              <li>70+ services across AWS, Azure &amp; GCP in one local stack</li>
+              <li>Drop-in for standard SDKs, CLIs, Terraform &amp; CDK</li>
+              <li>Unified console for resources across all three clouds</li>
+              <li>Native GraalVM image — 24&thinsp;ms cold start, MIT licensed</li>
+            </ul>
+            <a class="product-link" href="/loopbackcloud/">Explore LoopbackCloud <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="/loopbackcloud/" style="--pc: var(--amber);" aria-label="Open the LoopbackCloud page">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/loopbackcloud</span></div>
+              <img src="assets/loopbackcloud.webp" alt="Screenshot of the LoopbackCloud page" loading="lazy" decoding="async" width="1280" height="800">
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
