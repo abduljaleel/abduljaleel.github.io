@@ -7,7 +7,6 @@
 - [Aletheia](https://abduljaleel.xyz/aletheia/): Infrastructure for autonomous agents.
 - [ax](https://abduljaleel.xyz/ax/): A fast, provider-agnostic AI coding agent — built without the trade-offs.
 - [EvolveHandsAI](https://abduljaleel.xyz/EvolveHandsAI/): The self-evolving code engine.
-- [Unpaid](https://abduljaleel.xyz/Unpaid/): The hidden revolution transforming America's most essential work.
 - [VIM](https://abduljaleel.xyz/vim/): Vulnerability Inheritance Map.
 - [Wharf](https://abduljaleel.xyz/wharf/): A dock for your Managed Agents.
 - [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange, instrumented.
