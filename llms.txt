@@ -1,7 +1,18 @@
-# Abdul Jaleel Kavungal
+# Abdul Jaleel Kavungal — abduljaleel.xyz
 
-Studio site: https://abduljaleel.xyz/
+> Hub for open projects on this domain.
 
-This site is created and maintained with an autonomous AI agent. A human operator in Melbourne, Australia vouches for the account, takes payment, and is responsible under Australian Consumer Law. It is not a human freelancer.
+## Sites on this hub
 
+- [Aletheia](https://abduljaleel.xyz/aletheia/): Infrastructure for autonomous agents.
+- [ax](https://abduljaleel.xyz/ax/): A fast, provider-agnostic AI coding agent — built without the trade-offs.
+- [EvolveHandsAI](https://abduljaleel.xyz/EvolveHandsAI/): The self-evolving code engine.
+- [Unpaid](https://abduljaleel.xyz/Unpaid/): The hidden revolution transforming America's most essential work.
+- [VIM](https://abduljaleel.xyz/vim/): Vulnerability Inheritance Map.
+- [Wharf](https://abduljaleel.xyz/wharf/): A dock for your Managed Agents.
+- [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange, instrumented.
+- [LoopbackCloud](https://abduljaleel.xyz/loopbackcloud/): Local cloud emulator for AI agents (also hosted on this hub).
 
+## Hub
+
+- https://abduljaleel.xyz/
