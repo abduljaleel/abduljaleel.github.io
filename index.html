@@ -99,7 +99,7 @@
       "name": "Aletheia",
       "url": "https://abduljaleel.xyz/aletheia/",
       "applicationCategory": "DeveloperApplication",
-      "description": "Twelve products. One stack. The unconcealment layer for autonomous agents — governance, verification, optimization, infrastructure, and the physical frontier.",
+      "description": "The unconcealment layer for autonomous agents — twelve products on one stack spanning governance, verification, optimization, infrastructure and the physical frontier. Every agent action is constrained, verified, attributed and auditable.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -129,7 +129,7 @@
       "name": "EvolveHandsAI",
       "url": "https://abduljaleel.xyz/EvolveHandsAI/",
       "applicationCategory": "DeveloperApplication",
-      "description": "LLM-driven mutations with MAP-Elites quality-diversity search to autonomously discover and optimize algorithms.",
+      "description": "An evolutionary code engine: an LLM ensemble breeds competing implementations across island populations, MAP-Elites preserves diversity, and regressions are rejected automatically — code that breeds better code. MIT licensed.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -174,7 +174,7 @@
       "name": "X-Road",
       "url": "https://abduljaleel.xyz/X-Road/",
       "applicationCategory": "SecurityApplication",
-      "description": "X-Road, the open-source data exchange layer, with an opt-in AI layer that watches traffic, predicts problems, and explains them — running beside the system, never in the signing path.",
+      "description": "Secure data exchange that watches, predicts and explains itself: X-Road, the open-source data-exchange layer, with an opt-in intelligence layer that runs as a read-only sidecar — operational metadata only, never a payload, never in the signing path. MIT licensed.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -190,7 +190,7 @@
       "url": "https://abduljaleel.xyz/loopbackcloud/",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS, Linux, Windows",
-      "description": "A local-first emulator that runs 70+ AWS, Azure and GCP services on localhost — build and test multicloud applications with no accounts, no spend and no network.",
+      "description": "The local cloud for AI agents — 70+ AWS, Azure and GCP services on localhost, with a built-in MCP server so agents can provision and stress real infrastructure with zero spend and zero blast radius. MIT licensed.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -307,9 +307,8 @@
       box-shadow: 0 6px 14px -4px rgba(79,70,229,0.6);
     }
     .brand-name { font-family: var(--hand); font-weight: 700; font-size: 1.28rem; letter-spacing: 0; line-height: 1; white-space: nowrap; }
-    .nav-links { display: flex; gap: 1.25rem; margin-left: 0.5rem; }
+    .nav-links { display: flex; gap: 1.6rem; margin-left: 1rem; }
     .nav-links a { font-size: 0.88rem; font-weight: 550; color: var(--text-muted); text-decoration: none; transition: color 0.15s; white-space: nowrap; }
-    @media (max-width: 1180px) { .nav-links .nav-proj { display: none; } }
     .nav-links a:hover { color: var(--text); }
     .nav-cta { margin-left: auto; display: flex; align-items: center; gap: 0.6rem; }
 
@@ -534,13 +533,6 @@
     <div class="nav-links">
       <a href="#products">Work</a>
       <a href="#proof">Studio</a>
-      <a class="nav-proj" href="/aletheia/">Aletheia</a>
-      <a class="nav-proj" href="/ax/">ax</a>
-      <a class="nav-proj" href="/EvolveHandsAI/">EvolveHandsAI</a>
-      <a class="nav-proj" href="/vim/">VIM</a>
-      <a class="nav-proj" href="/wharf/">Wharf</a>
-      <a class="nav-proj" href="/X-Road/">X-Road</a>
-      <a class="nav-proj" href="/loopbackcloud/">LoopbackCloud</a>
     </div>
     <div class="nav-cta">
       <a class="btn btn-secondary btn-sm" href="https://github.com/abduljaleel" rel="noopener noreferrer">GitHub</a>
@@ -564,7 +556,7 @@
       </div>
 
       <div class="hero-visual">
-        <div class="tgraph" role="img" aria-label="Studio diagram: open projects across agent infrastructure, developer tools, security, and systems research.">
+        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects four open-source works as nodes in one network — ax (AI coding agent), Wharf (MCP server), Aletheia (agent stack), and VIM (supply-chain security).">
           <svg viewBox="0 0 480 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <title>Product trust network</title>
             <circle class="tg-orbit" cx="240" cy="215" r="156"/>
@@ -628,31 +620,34 @@
       <div class="section-head">
         <span class="eyebrow">Selected work</span>
         <h2 class="section-title">Work that stands on its own</h2>
-        <p class="section-lead">Distinct builds across agent infrastructure, developer tools, supply-chain security, secure exchange, and local cloud tooling — each with its own brief and craft.</p>
+        <p class="section-lead">Distinct builds across agent infrastructure, developer tools, supply-chain security, secure data exchange, and local cloud infrastructure — each with its own brief and craft.</p>
       </div>
 
       <div class="products">
-        <div class="product-row" style="--pc: var(--indigo);">
+        <!-- Aletheia -->
+        <div class="product-row" style="--pc: var(--amber);">
           <div class="product-copy">
-            <span class="ptag"><span class="d" aria-hidden="true"></span> Agent stack</span>
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Agent infrastructure</span>
             <h3 class="serif">Aletheia</h3>
-            <p class="product-tagline">Infrastructure for autonomous agents.</p>
-            <p class="product-desc">Twelve products on one stack — governance, verification, optimization, infrastructure, and the physical frontier. The unconcealment layer for autonomous agents: nothing the agent does can be hidden.</p>
+            <p class="product-tagline">The unconcealment layer for autonomous agents.</p>
+            <p class="product-desc">Twelve products on one stack — governance, verification, optimization, infrastructure and the physical frontier. Every action an agent takes is constrained, verified, attributed and auditable, so nothing it does can be hidden.</p>
             <ul class="check-list">
-              <li>Governance &amp; verification for agent fleets</li>
-              <li>Optimization and runtime infrastructure</li>
-              <li>Twelve products, one coordinated stack — each anchored to a city</li>
+              <li>Layered constraint enforcement — each layer bounds the one below</li>
+              <li>Formal verification of agent-generated code against specifications</li>
+              <li>Causal provenance graphs with cost and energy attribution for every decision</li>
+              <li>Self-healing infrastructure with regression detection and rollback</li>
             </ul>
             <a class="product-link" href="/aletheia/">Explore Aletheia <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/aletheia/" style="--pc: var(--indigo);" aria-label="Open the Aletheia page">
+            <a class="pv shot" href="/aletheia/" style="--pc: var(--amber);" aria-label="Open the Aletheia page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/aletheia</span></div>
               <img src="assets/aletheia.webp" alt="Screenshot of the Aletheia page: Agents need new infrastructure. We're building it." loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
+        <!-- ax -->
         <div class="product-row reverse" style="--pc: var(--indigo);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> AI Coding Agent</span>
@@ -674,16 +669,18 @@
           </div>
         </div>
 
+        <!-- EvolveHandsAI -->
         <div class="product-row" style="--pc: var(--teal);">
           <div class="product-copy">
-            <span class="ptag"><span class="d" aria-hidden="true"></span> Code evolution</span>
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Evolutionary code engine</span>
             <h3>EvolveHandsAI</h3>
             <p class="product-tagline">Code that breeds better code.</p>
-            <p class="product-desc">A self-evolving code engine: LLM-driven mutations compete across island populations while MAP-Elites quality-diversity search preserves the fittest — autonomously discovering and optimizing algorithms. The site runs a live evolution chamber in your browser.</p>
+            <p class="product-desc">An evolutionary optimization engine that breeds implementations instead of prompting for them. Define a fitness function and mark the mutable regions; an LLM ensemble evolves hundreds of candidates across island populations, MAP-Elites preserves diversity, and anything that breaks the tests is rejected automatically. The page itself runs a real engine in your browser — every gauge is live.</p>
             <ul class="check-list">
-              <li>LLM-driven code mutation across island populations</li>
-              <li>MAP-Elites quality-diversity search</li>
-              <li>Live evolution chamber — every gauge reads from a real running engine</li>
+              <li>LLM ensemble — Claude, GPT-4o and Haiku with adaptive model weighting</li>
+              <li>MAP-Elites quality-diversity grid across feature dimensions</li>
+              <li>Island parallelism — 2–5 populations with periodic migration</li>
+              <li>Isolated Docker sandboxes: read-only filesystem, no network, 256&thinsp;MB · MIT licensed</li>
             </ul>
             <a class="product-link" href="/EvolveHandsAI/">Explore EvolveHandsAI <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
@@ -695,6 +692,7 @@
           </div>
         </div>
 
+        <!-- VIM -->
         <div class="product-row reverse" style="--pc: var(--rose);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> Supply Chain Security</span>
@@ -716,6 +714,7 @@
           </div>
         </div>
 
+        <!-- Wharf -->
         <div class="product-row" style="--pc: var(--teal);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> MCP Server</span>
@@ -737,38 +736,40 @@
           </div>
         </div>
 
-        <div class="product-row reverse" style="--pc: var(--amber);">
+        <!-- X-Road -->
+        <div class="product-row reverse" style="--pc: var(--indigo);">
           <div class="product-copy">
-            <span class="ptag"><span class="d" aria-hidden="true"></span> Secure exchange</span>
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Secure data exchange</span>
             <h3>X-Road</h3>
             <p class="product-tagline">Secure data exchange that watches, predicts, and explains itself.</p>
-            <p class="product-desc">X-Road, the open-source data exchange layer, with an opt-in AI layer that watches traffic, predicts problems, and explains them — running beside the system, never in the signing path.</p>
+            <p class="product-desc">X-Road moves data between organisations with end-to-end integrity and non-repudiation. This edition adds an opt-in intelligence layer that runs beside the system — reading operational metadata only, never a payload, never in the signing path — to detect anomalies, correlate incidents and brief operators in plain language.</p>
             <ul class="check-list">
-              <li>Detect, correlate, predict, explain — on operational metadata alone</li>
-              <li>Advisory only: never blocks, never reads a payload</li>
-              <li>Read-only sidecar beside X-Road 7.8.1 — never in the signing path</li>
+              <li>Anomaly detection over federated temporal call-graph models</li>
+              <li>Collapses edge alerts into correlated incidents, with breach forecasting and confidence scores</li>
+              <li>Grounded copilot — source-cited, plain-language incident briefings</li>
+              <li>Read-only sidecar on X-Road 7.8.1 · 0 payloads read · advisory-only · MIT</li>
             </ul>
             <a class="product-link" href="/X-Road/">Explore X-Road <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/X-Road/" style="--pc: var(--amber);" aria-label="Open the X-Road page">
+            <a class="pv shot" href="/X-Road/" style="--pc: var(--indigo);" aria-label="Open the X-Road page">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/X-Road</span></div>
               <img src="assets/x-road.webp" alt="Screenshot of the X-Road AI page: Secure data exchange that now watches, predicts, and explains itself." loading="lazy" decoding="async" width="1600" height="1000">
             </a>
           </div>
         </div>
 
-<!-- LoopbackCloud -->
+        <!-- LoopbackCloud -->
         <div class="product-row" style="--pc: var(--amber);">
           <div class="product-copy">
-            <span class="ptag"><span class="d" aria-hidden="true"></span> Cloud Dev Tool</span>
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Local cloud for agents</span>
             <h3 class="mono">LoopbackCloud</h3>
-            <p class="product-tagline">The whole cloud, on localhost.</p>
-            <p class="product-desc">A local-first emulator that runs AWS, Azure and GCP on your own machine. Point your existing SDKs, CLIs and IaC at localhost and build multicloud apps with no accounts, no spend and no network.</p>
+            <p class="product-tagline">The local cloud for AI agents.</p>
+            <p class="product-desc">Runs AWS, Azure and GCP on your own machine so agents — and the people building them — can provision and stress real resources with zero spend and zero blast radius. The same SDKs, CLIs and IaC you already use, behind one unified console with a gated multicloud interconnect.</p>
             <ul class="check-list">
               <li>70+ services across AWS, Azure &amp; GCP in one local stack</li>
               <li>Drop-in for standard SDKs, CLIs, Terraform &amp; CDK</li>
-              <li>Unified console for resources across all three clouds</li>
+              <li>Built-in MCP server so agents can inspect, provision and stress real infrastructure</li>
               <li>Native GraalVM image — 24&thinsp;ms cold start, MIT licensed</li>
             </ul>
             <a class="product-link" href="/loopbackcloud/">Explore LoopbackCloud <span class="arrow" aria-hidden="true">&rarr;</span></a>
@@ -834,7 +835,7 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>Products</h4>
+        <h4>Work</h4>
         <a href="/aletheia/">Aletheia</a>
         <a href="/ax/">ax</a>
         <a href="/EvolveHandsAI/">EvolveHandsAI</a>

@@ -4,13 +4,13 @@
 
 ## Selected work
 
-- [Aletheia](https://abduljaleel.xyz/aletheia/): Infrastructure for autonomous agents.
-- [ax](https://abduljaleel.xyz/ax/): A fast, provider-agnostic AI coding agent — built without the trade-offs.
-- [EvolveHandsAI](https://abduljaleel.xyz/EvolveHandsAI/): The self-evolving code engine.
+- [Aletheia](https://abduljaleel.xyz/aletheia/): The unconcealment layer for autonomous agents — twelve products on one stack.
+- [ax](https://abduljaleel.xyz/ax/): The AI coding agent built without the trade-offs.
+- [EvolveHandsAI](https://abduljaleel.xyz/EvolveHandsAI/): Code that breeds better code — an evolutionary code engine.
 - [VIM](https://abduljaleel.xyz/vim/): Vulnerability Inheritance Map.
 - [Wharf](https://abduljaleel.xyz/wharf/): A dock for your Managed Agents.
-- [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange, instrumented.
-- [LoopbackCloud](https://abduljaleel.xyz/loopbackcloud/): Local cloud emulator for AI agents (also hosted on this hub).
+- [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange that watches, predicts, and explains itself.
+- [LoopbackCloud](https://abduljaleel.xyz/loopbackcloud/): The local cloud for AI agents — AWS, Azure and GCP on localhost.
 
 ## Studio
 
