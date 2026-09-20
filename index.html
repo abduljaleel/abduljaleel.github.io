@@ -374,8 +374,9 @@
     .chip-bg { fill: var(--bg-card); stroke-width: 1.75; stroke-opacity: 0.7; }
     .chip-name {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-weight: 700; font-size: 15px; fill: var(--text); text-anchor: middle;
+      font-weight: 700; font-size: 14px; fill: var(--text); text-anchor: middle;
     }
+    .chip-name.sm { font-size: 12px; }
     .chip-sub { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; fill: var(--text-subtle); text-anchor: middle; }
 
     /* Stats */
@@ -596,45 +597,73 @@
       </div>
 
       <div class="hero-visual">
-        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects four open-source works as nodes in one network — ax (AI coding agent), Wharf (MCP server), Aletheia (agent stack), and VIM (supply-chain security).">
-          <svg viewBox="0 0 480 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects all seven works as nodes in one network — ax (coding agent), EvolveHandsAI (code evolution), LoopbackCloud (local cloud), X-Road (data exchange), VIM (supply chain), Wharf (MCP server), and Aletheia (agent stack).">
+          <svg viewBox="0 0 540 462" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <title>Product trust network</title>
-            <circle class="tg-orbit" cx="240" cy="215" r="156"/>
+            <circle class="tg-orbit" cx="270" cy="235" r="170"/>
             <g>
-              <line class="edge" x1="240" y1="215" x2="240" y2="59"  stroke="var(--indigo)"/>
-              <line class="edge" x1="240" y1="215" x2="396" y2="215" stroke="var(--teal)"/>
-              <line class="edge" x1="240" y1="215" x2="240" y2="371" stroke="var(--amber)"/>
-              <line class="edge" x1="240" y1="215" x2="84"  y2="215" stroke="var(--rose)"/>
-              <line class="edge-flow" x1="240" y1="215" x2="240" y2="59"  stroke="var(--indigo)"/>
-              <line class="edge-flow" x1="240" y1="215" x2="396" y2="215" stroke="var(--teal)"  style="animation-delay:.7s"/>
-              <line class="edge-flow" x1="240" y1="215" x2="240" y2="371" stroke="var(--amber)" style="animation-delay:1.4s"/>
-              <line class="edge-flow" x1="240" y1="215" x2="84"  y2="215" stroke="var(--rose)"  style="animation-delay:2.1s"/>
+              <line class="edge" x1="270" y1="235" x2="270" y2="65"  stroke="var(--indigo)"/>
+              <line class="edge" x1="270" y1="235" x2="403" y2="129" stroke="var(--teal)"/>
+              <line class="edge" x1="270" y1="235" x2="436" y2="273" stroke="var(--amber)"/>
+              <line class="edge" x1="270" y1="235" x2="344" y2="388" stroke="var(--indigo)"/>
+              <line class="edge" x1="270" y1="235" x2="196" y2="388" stroke="var(--rose)"/>
+              <line class="edge" x1="270" y1="235" x2="104" y2="273" stroke="var(--teal)"/>
+              <line class="edge" x1="270" y1="235" x2="137" y2="129" stroke="var(--amber)"/>
+              <line class="edge-flow" x1="270" y1="235" x2="270" y2="65"  stroke="var(--indigo)"/>
+              <line class="edge-flow" x1="270" y1="235" x2="403" y2="129" stroke="var(--teal)"   style="animation-delay:.4s"/>
+              <line class="edge-flow" x1="270" y1="235" x2="436" y2="273" stroke="var(--amber)"  style="animation-delay:.8s"/>
+              <line class="edge-flow" x1="270" y1="235" x2="344" y2="388" stroke="var(--indigo)" style="animation-delay:1.2s"/>
+              <line class="edge-flow" x1="270" y1="235" x2="196" y2="388" stroke="var(--rose)"   style="animation-delay:1.6s"/>
+              <line class="edge-flow" x1="270" y1="235" x2="104" y2="273" stroke="var(--teal)"   style="animation-delay:2s"/>
+              <line class="edge-flow" x1="270" y1="235" x2="137" y2="129" stroke="var(--amber)"  style="animation-delay:2.4s"/>
             </g>
             <g>
-              <circle class="hub-glow" cx="240" cy="215" r="54"/>
-              <circle class="hub-ring" cx="240" cy="215" r="50"/>
-              <path class="hub-icon" d="M226,196 L254,196 L254,213 C254,224 248,230 240,235 C232,230 226,224 226,213 Z"/>
-              <path class="hub-check" d="M232,213 L238,220 L250,205"/>
+              <circle class="hub-glow" cx="270" cy="235" r="54"/>
+              <circle class="hub-ring" cx="270" cy="235" r="50"/>
+              <path class="hub-icon" d="M256,216 L284,216 L284,233 C284,244 278,250 270,255 C262,250 256,244 256,233 Z"/>
+              <path class="hub-check" d="M262,233 L268,240 L280,225"/>
             </g>
+            <!-- ax -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
-              <rect class="chip-bg" x="174" y="36" width="132" height="46" rx="12" stroke="var(--indigo)"/>
-              <text class="chip-name" x="240" y="55">ax</text>
-              <text class="chip-sub"  x="240" y="69">CODING AGENT</text>
+              <rect class="chip-bg" x="204" y="43" width="132" height="44" rx="12" stroke="var(--indigo)"/>
+              <text class="chip-name" x="270" y="61">ax</text>
+              <text class="chip-sub"  x="270" y="75">CODING AGENT</text>
             </g>
+            <!-- EvolveHandsAI -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(20,184,166,.22))">
-              <rect class="chip-bg" x="330" y="192" width="132" height="46" rx="12" stroke="var(--teal)"/>
-              <text class="chip-name" x="396" y="211">Wharf</text>
-              <text class="chip-sub"  x="396" y="225">MCP SERVER</text>
+              <rect class="chip-bg" x="337" y="107" width="132" height="44" rx="12" stroke="var(--teal)"/>
+              <text class="chip-name sm" x="403" y="125">EvolveHandsAI</text>
+              <text class="chip-sub"  x="403" y="139">CODE EVOLUTION</text>
             </g>
+            <!-- LoopbackCloud -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
-              <rect class="chip-bg" x="174" y="348" width="132" height="46" rx="12" stroke="var(--amber)"/>
-              <text class="chip-name" x="240" y="367">Aletheia</text>
-              <text class="chip-sub"  x="240" y="381">AGENT STACK</text>
+              <rect class="chip-bg" x="370" y="251" width="132" height="44" rx="12" stroke="var(--amber)"/>
+              <text class="chip-name sm" x="436" y="269">LoopbackCloud</text>
+              <text class="chip-sub"  x="436" y="283">LOCAL CLOUD</text>
             </g>
+            <!-- X-Road -->
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
+              <rect class="chip-bg" x="278" y="366" width="132" height="44" rx="12" stroke="var(--indigo)"/>
+              <text class="chip-name" x="344" y="384">X-Road</text>
+              <text class="chip-sub"  x="344" y="398">DATA EXCHANGE</text>
+            </g>
+            <!-- VIM -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(244,63,94,.22))">
-              <rect class="chip-bg" x="18" y="192" width="132" height="46" rx="12" stroke="var(--rose)"/>
-              <text class="chip-name" x="84" y="211">VIM</text>
-              <text class="chip-sub"  x="84" y="225">SUPPLY CHAIN</text>
+              <rect class="chip-bg" x="130" y="366" width="132" height="44" rx="12" stroke="var(--rose)"/>
+              <text class="chip-name" x="196" y="384">VIM</text>
+              <text class="chip-sub"  x="196" y="398">SUPPLY CHAIN</text>
+            </g>
+            <!-- Wharf -->
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(20,184,166,.22))">
+              <rect class="chip-bg" x="38" y="251" width="132" height="44" rx="12" stroke="var(--teal)"/>
+              <text class="chip-name" x="104" y="269">Wharf</text>
+              <text class="chip-sub"  x="104" y="283">MCP SERVER</text>
+            </g>
+            <!-- Aletheia -->
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
+              <rect class="chip-bg" x="71" y="107" width="132" height="44" rx="12" stroke="var(--amber)"/>
+              <text class="chip-name" x="137" y="125">Aletheia</text>
+              <text class="chip-sub"  x="137" y="139">AGENT STACK</text>
             </g>
           </svg>
         </div>
