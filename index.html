@@ -470,20 +470,48 @@
     .btn-outline:hover { background: rgba(255,255,255,0.16); transform: translateY(-2px); }
 
     /* Footer */
-    footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 3.5rem 0 2rem; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; }
+    footer { background: var(--bg-alt); border-top: 1px solid var(--border); padding: 3.5rem 0 0; overflow: hidden; }
+    .footer-panel {
+      display: grid; grid-template-columns: 1.55fr 1fr 1fr 1fr; gap: 2rem;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+      padding: 2.6rem 2.4rem; box-shadow: var(--shadow-sm);
+    }
     .footer-brand .brand { margin-bottom: 0.9rem; }
     .footer-brand p { font-size: 0.88rem; color: var(--text-muted); max-width: 280px; line-height: 1.6; }
     .footer-social { display: flex; gap: 0.6rem; margin-top: 1.1rem; }
     .footer-social a { width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--bg-card); display: grid; place-items: center; color: var(--text-muted); transition: color 0.15s, border-color 0.15s, transform 0.15s; }
     .footer-social a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
     .footer-social svg { width: 17px; height: 17px; fill: currentColor; }
-    .footer-col h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-subtle); font-weight: 700; margin-bottom: 1rem; }
+    .footer-col { border-left: 1px dashed var(--border); padding-left: 1.75rem; }
+    .footer-col h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent); font-weight: 700; margin-bottom: 1rem; }
     .footer-col a { display: block; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; padding: 0.3rem 0; transition: color 0.15s; }
     .footer-col a:hover { color: var(--accent); }
-    .footer-bottom { max-width: 1140px; margin: 2.5rem auto 0; padding: 1.4rem 1.5rem 0; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; align-items: center; }
+    .footer-bottom { margin: 1.5rem 0 0; padding: 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; align-items: center; }
     .footer-bottom p { font-size: 0.78rem; color: var(--text-subtle); }
     .footer-bottom .motto { font-family: var(--display); font-style: italic; }
+    .footer-skyline { margin-top: 0.25rem; }
+
+    /* Footer skyline illustration — Melbourne, drawn in line art; inherits the theme via --text / --bg-alt */
+    .skyline { width: 100%; height: auto; display: block; }
+    .sk-pbg { fill: var(--bg-alt); }
+    .sk-t1 { fill: var(--text); fill-opacity: .05; }
+    .sk-t2 { fill: var(--text); fill-opacity: .09; }
+    .sk-t3 { fill: var(--text); fill-opacity: .14; }
+    .sk-l1 { fill: var(--text); fill-opacity: .06; }
+    .sk-l2 { fill: var(--text); fill-opacity: .09; }
+    .sk-dl { fill: none; stroke: var(--text); stroke-opacity: .18; stroke-width: 1; }
+    .sk-stop { stop-color: var(--bg-alt); }
+    .skyline .b, .skyline .f, .skyline .t, .skyline .w { stroke: var(--text); stroke-width: 1; stroke-linejoin: round; }
+    .skyline .far .b { fill: url(#sk-far); stroke-opacity: .16; }
+    .skyline .mid .b { fill: url(#sk-mid); stroke-opacity: .26; }
+    .skyline .near .b { fill: url(#sk-near); stroke-opacity: .36; }
+    .skyline .f { fill: url(#sk-diag); stroke-opacity: .36; }
+    .skyline .t { fill: var(--text); fill-opacity: .08; stroke-opacity: .2; }
+    .skyline .k { fill: var(--text); fill-opacity: .1; stroke: none; }
+    .skyline .w { fill: var(--bg-alt); stroke-opacity: .32; }
+    .skyline .d { fill: none; stroke: var(--text); stroke-opacity: .26; stroke-width: 1; stroke-linecap: round; }
+    .skyline .far .d { stroke-opacity: .14; }
+    .skyline .g { fill: none; stroke: var(--text); stroke-opacity: .3; stroke-width: 1; }
 
 
     /* Studio kits */
@@ -501,8 +529,12 @@
     @media (max-width: 720px) { .kits { grid-template-columns: 1fr; } }
 
     @media (max-width: 900px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-panel { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; padding: 2.2rem 2rem; }
       .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 520px) {
+      .footer-panel { grid-template-columns: 1fr; padding: 1.8rem 1.4rem; gap: 1.5rem; }
+      .footer-col { border-left: 0; padding-left: 0; border-top: 1px dashed var(--border); padding-top: 1.2rem; }
     }
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -516,6 +548,14 @@
     @media (max-width: 520px) {
       .pad { padding: 3.5rem 0; }
       .hero { padding: 3rem 0; }
+    }
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0.7rem 1rem; gap: 0.9rem; }
+      .brand-name { font-size: 1.05rem; }
+      .nav-cta .btn-secondary { display: none; }
+    }
+    @media (max-width: 380px) {
+      .nav .brand-name { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -815,7 +855,7 @@
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-panel">
       <div class="footer-brand">
         <a class="brand" href="/"><span class="mark" aria-hidden="true">AK</span> <span class="brand-name">Abdul Jaleel Kavungal</span></a>
         <p>Engineering Leader building trustworthy human–agent systems. Melbourne, Australia.</p>
@@ -860,6 +900,125 @@
     <div class="footer-bottom">
       <p>&copy; 2026 Abdul Jaleel Kavungal · Built in Melbourne</p>
       <p class="motto">The best way to predict the future is to build it.</p>
+    </div>
+    <div class="footer-skyline" aria-hidden="true">
+    <svg class="skyline" viewBox="0 0 1600 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="sk-far" width="10" height="8" patternUnits="userSpaceOnUse">
+              <rect width="10" height="8" class="sk-pbg"/>
+              <rect width="10" height="8" class="sk-t1"/>
+              <rect width="10" height="1.2" y="3.4" class="sk-l1"/>
+            </pattern>
+            <pattern id="sk-mid" width="10" height="8" patternUnits="userSpaceOnUse">
+              <rect width="10" height="8" class="sk-pbg"/>
+              <rect width="10" height="8" class="sk-t2"/>
+              <rect width="10" height="1.2" y="3.4" class="sk-l2"/>
+            </pattern>
+            <pattern id="sk-near" width="10" height="8" patternUnits="userSpaceOnUse">
+              <rect width="10" height="8" class="sk-pbg"/>
+              <rect width="10" height="8" class="sk-t3"/>
+            </pattern>
+            <pattern id="sk-diag" width="9" height="9" patternUnits="userSpaceOnUse">
+              <rect width="9" height="9" class="sk-pbg"/>
+              <rect width="9" height="9" class="sk-t3"/>
+              <path d="M0 9 L9 0" class="sk-dl"/>
+            </pattern>
+            <pattern id="sk-ripple" width="8" height="4" patternUnits="userSpaceOnUse">
+              <rect width="8" height="2" y="2" class="sk-pbg"/>
+            </pattern>
+            <linearGradient id="sk-fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" class="sk-stop" stop-opacity=".75"/>
+              <stop offset=".55" class="sk-stop" stop-opacity=".25"/>
+              <stop offset="1" class="sk-stop" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="sk-rfg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".8"/>
+              <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+            <mask id="sk-rf"><rect x="0" y="330" width="1600" height="70" fill="url(#sk-rfg)"/></mask>
+          </defs>
+    
+          <g id="sk-city">
+            <!-- far: Docklands, Bolte Bridge, MCG -->
+            <g class="far">
+              <path class="d" d="M0 294 H240" style="stroke-width:2.5"/>
+              <path class="d" d="M0 300 H240 M40 300 V330 M100 300 V330 M160 300 V330 M220 300 V330"/>
+              <path class="b" d="M64 294 L67 150 H79 L82 294 Z"/>
+              <path class="b" d="M112 294 L115 150 H127 L130 294 Z"/>
+              <path class="b" d="M150 330 V236 H196 V330 Z"/>
+              <path class="b" d="M204 330 V220 L244 208 V330 Z"/>
+              <path class="b" d="M252 330 V246 H286 V330 Z"/>
+              <path class="b" d="M400 330 V190 H436 V330 Z"/>
+              <path class="b" d="M540 330 V178 H582 V330 Z"/>
+              <path class="b" d="M646 330 V208 H690 V330 Z"/>
+              <path class="b" d="M1050 330 V172 H1096 V330 Z"/>
+              <path class="b" d="M1100 330 V214 H1138 V330 Z"/>
+              <path class="b" d="M1230 330 V226 H1268 V330 Z"/>
+              <path class="b" d="M1275 330 V198 H1312 V330 Z"/>
+              <path class="b" d="M1330 330 C1340 300 1380 292 1455 290 C1530 292 1570 300 1580 330 Z"/>
+              <path class="d" d="M1370 292 L1372 160 M1455 290 L1455 150 M1540 292 L1538 160" style="stroke-width:2"/>
+              <path class="b" d="M1362 160 h20 v-14 h-20 Z M1445 150 h20 v-14 h-20 Z M1528 160 h20 v-14 h-20 Z"/>
+            </g>
+    
+            <!-- mid: the CBD and Southbank towers -->
+            <g class="mid">
+              <path class="b" d="M300 330 V112 L352 92 V330 Z"/>
+              <path class="b" d="M352 330 V142 L398 126 V330 Z"/>
+              <path class="b" d="M420 330 V60 H478 V330 Z"/>
+              <path class="k" d="M420 60 H478 V104 H420 Z"/>
+              <path class="b" d="M478 96 h9 v11 h-9 Z"/>
+              <path class="d" d="M449 60 V44"/>
+              <path class="b" d="M490 330 V176 H500 V166 H526 V176 H536 V330 Z"/>
+              <path class="b" d="M600 26 L614 252 C628 292 644 312 660 330 H540 C556 312 572 292 586 252 Z"/>
+              <path class="d" d="M596 96 h8 M593 150 h14 M590 204 h20 M586 252 h28 M600 96 L593 150 L607 204 L586 252 M600 96 L607 150 L593 204 L614 252 M572 284 Q600 292 628 284 M560 308 Q600 318 640 308"/>
+              <path class="b" d="M700 330 V124 L730 112 L760 124 V330 Z"/>
+              <path class="d" d="M730 112 V38 M726 112 h8" style="stroke-width:1.5"/>
+              <path class="b" d="M775 330 V152 H783 V138 H795 V128 H815 V138 H827 V152 H835 V330 Z"/>
+              <path class="d" d="M805 128 V84"/>
+              <path class="b" d="M860 330 V32 H912 V330 Z"/>
+              <path class="k" d="M860 112 H912 V140 H860 Z"/>
+              <path class="b" d="M860 112 L846 120 L846 132 L860 140 Z M912 112 L926 120 L926 132 L912 140 Z"/>
+              <path class="b" d="M920 330 V188 H950 V330 Z"/>
+              <path class="b" d="M950 330 V244 H1042 V330 Z"/>
+              <path class="b" d="M996 92 L1034 246 H958 Z"/>
+              <path class="d" d="M985 140 h22 M976 180 h40 M967 216 h58"/>
+              <path class="b" d="M1140 330 V232 H1158 V330 Z"/>
+              <path class="b" d="M1160 330 V184 L1216 172 V330 Z"/>
+            </g>
+    
+            <!-- near: Flinders Street Station, Federation Square, the river gardens -->
+            <g class="near">
+              <path class="t" d="M238 330 C244 306 268 304 274 324 C280 306 300 308 306 330 Z"/>
+              <path class="b" d="M830 330 V272 H1120 V330 Z"/>
+              <path class="b" d="M936 272 A40 40 0 0 1 1016 272 Z"/>
+              <path class="d" d="M930 272 H1022 M830 282 H1120 M976 232 V272 M958 240 L962 272 M994 240 L990 272"/>
+              <path class="b" d="M971 232 H981 V222 H971 Z"/>
+              <path class="d" d="M976 222 V212"/>
+              <path class="w" d="M846 300 a6 6 0 0 1 12 0 v22 h-12 Z M870 300 a6 6 0 0 1 12 0 v22 h-12 Z M894 300 a6 6 0 0 1 12 0 v22 h-12 Z M918 300 a6 6 0 0 1 12 0 v22 h-12 Z M942 300 a6 6 0 0 1 12 0 v22 h-12 Z M966 300 a6 6 0 0 1 12 0 v22 h-12 Z M990 300 a6 6 0 0 1 12 0 v22 h-12 Z M1014 300 a6 6 0 0 1 12 0 v22 h-12 Z M1038 300 a6 6 0 0 1 12 0 v22 h-12 Z M1062 300 a6 6 0 0 1 12 0 v22 h-12 Z"/>
+              <path class="b" d="M1088 330 V244 H1122 V330 Z"/>
+              <path class="b" d="M1086 244 L1105 224 L1124 244 Z"/>
+              <circle class="d" cx="1105" cy="262" r="6"/>
+              <path class="d" d="M1105 262 V257 M1105 262 h4"/>
+              <path class="w" d="M1099 292 a6 6 0 0 1 12 0 v20 h-12 Z"/>
+              <path class="f" d="M1130 330 V294 L1160 282 L1176 298 L1202 276 L1232 290 L1262 270 V330 Z"/>
+              <path class="d" d="M1160 282 L1176 330 M1202 276 L1190 330 M1232 290 L1244 330"/>
+              <path class="t" d="M1290 330 C1296 304 1320 302 1326 322 C1334 300 1362 300 1368 324 C1374 306 1398 306 1404 330 Z"/>
+              <path class="t" d="M1470 330 C1478 302 1508 300 1516 326 C1524 304 1552 306 1560 330 Z"/>
+              <path class="t" d="M1576 330 C1582 310 1600 308 1600 330 Z"/>
+            </g>
+            <path class="g" d="M250 330 H1600"/>
+          </g>
+    
+          <!-- reflection in the Yarra -->
+          <g mask="url(#sk-rf)" opacity=".85">
+            <use href="#sk-city" transform="matrix(1 0 0 -1 0 660)"/>
+          </g>
+          <rect x="0" y="331" width="1600" height="69" fill="url(#sk-ripple)"/>
+          <path class="d" d="M520 348 h90 M700 356 h140 M900 346 h70 M1200 352 h110 M300 362 h80 M1400 360 h60" style="stroke-opacity:.12"/>
+    
+          <!-- haze -->
+          <rect x="0" y="0" width="1600" height="270" fill="url(#sk-fade)"/>
+        </svg>
     </div>
   </div>
 </footer>
