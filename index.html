@@ -343,8 +343,6 @@
     }
     .hero-sub { margin-top: 1.3rem; font-size: 1.12rem; color: var(--text-muted); line-height: 1.6; max-width: 540px; }
     .hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    .hero-meta { margin-top: 1.6rem; font-size: 0.82rem; color: var(--text-subtle); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-    .hero-meta strong { color: var(--text); font-weight: 700; }
 
     /* Trust graph */
     .tgraph {
@@ -379,13 +377,6 @@
     .chip-name.sm { font-size: 12px; }
     .chip-sub { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; fill: var(--text-subtle); text-anchor: middle; }
 
-    /* Stats */
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
-    .stat .num { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .stat .lbl { margin-top: 0.5rem; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
-    .stat .sub { font-size: 0.72rem; color: var(--text-subtle); }
-
     /* Products */
     .products { display: flex; flex-direction: column; gap: 4.5rem; }
     .product-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
@@ -402,6 +393,7 @@
     .product-tagline { margin-top: 0.55rem; font-size: 1.05rem; font-weight: 600; color: var(--text); }
     .product-desc { margin-top: 0.7rem; font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; }
     .check-list { list-style: none; margin: 1.1rem 0 1.4rem; display: grid; gap: 0.5rem; }
+    .check-list:last-child { margin-bottom: 0; }
     .check-list li { position: relative; padding-left: 1.7rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
     .check-list li::before {
       content: ""; position: absolute; left: 0; top: 0.15rem;
@@ -442,9 +434,10 @@
     }
     .pv-cover .ct { font-family: var(--display); font-style: italic; font-weight: 600; font-size: 1.35rem; line-height: 1.05; }
     .pv-cover .cs { font-size: 0.58rem; line-height: 1.3; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.04em; }
-    .pv.shot { display: block; padding: 0; min-height: 0; cursor: pointer; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .pv.shot { display: block; padding: 0; min-height: 0; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    a.pv.shot { cursor: pointer; }
     .pv.shot img { display: block; width: 100%; height: auto; position: relative; z-index: 1; }
-    .pv.shot:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    a.pv.shot:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
     .pv-url { margin-left: 0.55rem; font-size: 0.72rem; color: var(--text-subtle); font-family: ui-monospace, Menlo, Consolas, monospace; align-self: center; }
 
     /* Testimonial */
@@ -461,7 +454,7 @@
       background: linear-gradient(130deg, #4f46e5, #7c3aed 55%, #0d9488);
       box-shadow: var(--shadow-lg); color: #fff; position: relative; overflow: hidden;
     }
-    .cta-inner::after { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 240px at 50% -40%, rgba(255,255,255,0.25), transparent 70%); }
+    .cta-inner::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(600px 240px at 50% -40%, rgba(255,255,255,0.25), transparent 70%); }
     .cta-inner h2 { position: relative; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; }
     .cta-inner p { position: relative; margin-top: 0.8rem; font-size: 1.05rem; opacity: 0.92; max-width: 520px; margin-left: auto; margin-right: auto; }
     .cta-actions { position: relative; margin-top: 1.8rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
@@ -485,7 +478,7 @@
     .footer-social svg { width: 17px; height: 17px; fill: currentColor; }
     .footer-col { border-left: 1px dashed var(--border); padding-left: 1.75rem; }
     .footer-col h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent); font-weight: 700; margin-bottom: 1rem; }
-    .footer-col a { display: block; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; padding: 0.3rem 0; transition: color 0.15s; }
+    .footer-col a, .footer-col span { display: block; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; padding: 0.3rem 0; transition: color 0.15s; }
     .footer-col a:hover { color: var(--accent); }
     .footer-bottom { margin: 1.5rem 0 0; padding: 0 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; align-items: center; }
     .footer-bottom p { font-size: 0.78rem; color: var(--text-subtle); }
@@ -543,7 +536,6 @@
       .product-row { grid-template-columns: 1fr; gap: 1.75rem; }
       .product-row.reverse .product-copy { order: 0; }
       .product-visual { order: 2; }
-      .stats { grid-template-columns: repeat(2, 1fr); gap: 1.75rem 1rem; }
       .nav-links { display: none; }
     }
     @media (max-width: 520px) {
@@ -573,7 +565,7 @@
     </a>
     <div class="nav-links">
       <a href="#products">Work</a>
-      <a href="#proof">Studio</a>
+      <a href="#studio">Studio</a>
     </div>
     <div class="nav-cta">
       <a class="btn btn-secondary btn-sm" href="https://github.com/abduljaleel" rel="noopener noreferrer">GitHub</a>
@@ -593,7 +585,6 @@
           <a class="btn btn-primary" href="#products">View the work <span class="arrow" aria-hidden="true">&rarr;</span></a>
           <a class="btn btn-secondary" href="https://github.com/abduljaleel" rel="noopener noreferrer">View on GitHub</a>
         </div>
-        <p class="hero-meta"><strong>100% open source</strong> · <strong>113</strong> repositories · <strong>6K+</strong> followers</p>
       </div>
 
       <div class="hero-visual">
@@ -671,18 +662,6 @@
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="band pad" id="proof" style="padding: 3rem 0;">
-    <div class="container">
-      <div class="stats">
-        <div class="stat"><div class="num">113</div><div class="lbl">Repositories</div><div class="sub">public on GitHub</div></div>
-        <div class="stat"><div class="num">6K+</div><div class="lbl">Followers</div><div class="sub">across GitHub &amp; LinkedIn</div></div>
-        <div class="stat"><div class="num">33</div><div class="lbl">Recommendations</div><div class="sub">from peers &amp; leaders</div></div>
-        <div class="stat"><div class="num">100%</div><div class="lbl">Open source</div><div class="sub">tools built in the open</div></div>
-      </div>
-    </div>
-  </section>
-
   <!-- Products -->
   <section class="pad" id="products">
     <div class="container">
@@ -706,13 +685,12 @@
               <li>Causal provenance graphs with cost and energy attribution for every decision</li>
               <li>Self-healing infrastructure with regression detection and rollback</li>
             </ul>
-            <a class="product-link" href="/aletheia/">Explore Aletheia <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/aletheia/" style="--pc: var(--amber);" aria-label="Open the Aletheia page">
+            <div class="pv shot" style="--pc: var(--amber);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/aletheia</span></div>
               <img src="assets/aletheia.webp" alt="Screenshot of the Aletheia page: Agents need new infrastructure. We're building it." loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -728,13 +706,12 @@
               <li>Local-first architecture with security-first defaults</li>
               <li>30+ built-in tools, sub-millisecond code search, 253 tests</li>
             </ul>
-            <a class="product-link" href="/ax/">Explore ax <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/ax/" style="--pc: var(--indigo);" aria-label="Open the ax page">
+            <div class="pv shot" style="--pc: var(--indigo);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/ax</span></div>
               <img src="assets/ax.webp" alt="Screenshot of the ax page: The AI coding agent built without the trade-offs." loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -751,13 +728,12 @@
               <li>Island parallelism — 2–5 populations with periodic migration</li>
               <li>Isolated Docker sandboxes: read-only filesystem, no network, 256&thinsp;MB · MIT licensed</li>
             </ul>
-            <a class="product-link" href="/EvolveHandsAI/">Explore EvolveHandsAI <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/EvolveHandsAI/" style="--pc: var(--teal);" aria-label="Open the EvolveHandsAI page">
+            <div class="pv shot" style="--pc: var(--teal);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/EvolveHandsAI</span></div>
               <img src="assets/evolvehandsai.webp" alt="Screenshot of the EvolveHandsAI page: Code that breeds better code, with the live evolution chamber." loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -773,13 +749,12 @@
               <li>Graph-native blast-radius analysis</li>
               <li>Apache 2.0 — aimed at the OpenSSF</li>
             </ul>
-            <a class="product-link" href="/vim/">Explore VIM <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/vim/" style="--pc: var(--rose);" aria-label="Open the VIM page">
+            <div class="pv shot" style="--pc: var(--rose);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/vim</span></div>
               <img src="assets/vim.webp" alt="Screenshot of the VIM page" loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -795,13 +770,12 @@
               <li>Deploy, message, update & retire from chat</li>
               <li>Runs where your Claude client already is</li>
             </ul>
-            <a class="product-link" href="/wharf/">Explore Wharf <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/wharf/" style="--pc: var(--teal);" aria-label="Open the Wharf page">
+            <div class="pv shot" style="--pc: var(--teal);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/wharf</span></div>
               <img src="assets/wharf.webp" alt="Screenshot of the Wharf page" loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -818,13 +792,12 @@
               <li>Grounded copilot — source-cited, plain-language incident briefings</li>
               <li>Read-only sidecar on X-Road 7.8.1 · 0 payloads read · advisory-only · MIT</li>
             </ul>
-            <a class="product-link" href="/X-Road/">Explore X-Road <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
-            <a class="pv shot" href="/X-Road/" style="--pc: var(--indigo);" aria-label="Open the X-Road page">
+            <div class="pv shot" style="--pc: var(--indigo);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/X-Road</span></div>
               <img src="assets/x-road.webp" alt="Screenshot of the X-Road AI page: Secure data exchange that now watches, predicts, and explains itself." loading="lazy" decoding="async" width="1600" height="1000">
-            </a>
+            </div>
           </div>
         </div>
 
@@ -841,7 +814,6 @@
               <li>Built-in MCP server so agents can inspect, provision and stress real infrastructure</li>
               <li>Native GraalVM image — 24&thinsp;ms cold start, MIT licensed</li>
             </ul>
-            <a class="product-link" href="/loopbackcloud/">Explore LoopbackCloud <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
           <div class="product-visual">
             <a class="pv shot" href="/loopbackcloud/" style="--pc: var(--amber);" aria-label="Open the LoopbackCloud page">
@@ -856,8 +828,8 @@
   </section>
 
 
-  <!-- Testimonial -->
-  <section class="band pad">
+  <!-- Studio principle -->
+  <section class="band pad" id="studio">
     <div class="container">
       <div class="quote-wrap">
         <span class="mark" aria-hidden="true">&ldquo;</span>
@@ -905,12 +877,12 @@
       </div>
       <div class="footer-col">
         <h4>Work</h4>
-        <a href="/aletheia/">Aletheia</a>
-        <a href="/ax/">ax</a>
-        <a href="/EvolveHandsAI/">EvolveHandsAI</a>
-        <a href="/vim/">VIM</a>
-        <a href="/wharf/">Wharf</a>
-        <a href="/X-Road/">X-Road</a>
+        <span>Aletheia</span>
+        <span>ax</span>
+        <span>EvolveHandsAI</span>
+        <span>VIM</span>
+        <span>Wharf</span>
+        <span>X-Road</span>
         <a href="/loopbackcloud/">LoopbackCloud</a>
       </div>
       <div class="footer-col">
