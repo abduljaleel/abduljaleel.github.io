@@ -204,7 +204,7 @@
       "@type": "SoftwareApplication",
       "name": "Strand DB",
       "applicationCategory": "DeveloperApplication",
-      "description": "The database for agent context graphs. Open-source v1 is a single-node Rust CLI and library: the graph is the Statement model, with cosine over hash embeddings. Not a hosted service and not a neural embedder.",
+      "description": "Facts are stored as statement atoms with provenance, and meaning is searchable at the database level instead of through an extra semantic layer. Early-stage and experimental.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -849,19 +849,20 @@
         <div class="product-row reverse" style="--pc: var(--rose);">
           <div class="product-copy">
             <span class="ptag"><span class="d" aria-hidden="true"></span> Context-graph database</span>
-            <h3 class="mono">Strand DB</h3>
-            <p class="product-tagline">The database for agent context graphs.</p>
-            <p class="product-desc">The graph is the Statement model: a Ref can be an edge, and sense, time, and provenance live on the same atom. Open-source v1 is a single-node Rust CLI and library — cosine over hash embeddings, not a hosted service and not a neural embedder. The Strands Agents adapter is in review and not available.</p>
+            <h3 class="serif">Strand DB</h3>
+            <p class="product-tagline">A database for agent context graphs.</p>
+            <p class="product-desc">Facts are stored as statement atoms with provenance, and meaning is searchable at the database level instead of through an extra semantic layer. Early-stage and experimental.</p>
             <ul class="check-list">
-              <li>Statement model — a Ref can be an edge; sense lives on the same atom</li>
-              <li>Compaction, provenance, and time are part of the engine model</li>
-              <li>Single-node Rust CLI and library · cosine over hash embeddings</li>
+              <li>Statement atoms with provenance</li>
+              <li>Semantic retrieval built into the database</li>
+              <li>v1: single-node Rust engine and CLI</li>
+              <li>Strands Agents integration (remember_fact / retrieve_facts tools) in review</li>
             </ul>
           </div>
           <div class="product-visual">
             <div class="pv shot" style="--pc: var(--rose);">
               <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/strand-db</span></div>
-              <img src="assets/stranddb.webp" alt="Screenshot of the Strand DB page: Strand is the database for agent context graphs." loading="lazy" decoding="async" width="1600" height="1000">
+              <img src="assets/stranddb.webp" alt="Screenshot of the Strand DB page: A database for agent context graphs." loading="lazy" decoding="async" width="1600" height="1000">
             </div>
           </div>
         </div>
