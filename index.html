@@ -7,7 +7,7 @@
   <meta name="description" content="Independent engineering studio. Open work in trustworthy AI, agent systems, and secure software — a portfolio of distinct builds.">
   <meta name="author" content="Abdul Jaleel Kavungal">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="keywords" content="Abdul Jaleel Kavungal, Aletheia, ax, EvolveHandsAI, VIM, Wharf, X-Road, LoopbackCloud, trustworthy AI, Melbourne">
+  <meta name="keywords" content="Abdul Jaleel Kavungal, Aletheia, ax, EvolveHandsAI, VIM, Wharf, X-Road, LoopbackCloud, Strand DB, trustworthy AI, Melbourne">
   <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#070b14" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://abduljaleel.xyz/">
@@ -191,6 +191,20 @@
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "macOS, Linux, Windows",
       "description": "The local cloud for AI agents — 70+ AWS, Azure and GCP services on localhost, with a built-in MCP server so agents can provision and stress real infrastructure with zero spend and zero blast radius. MIT licensed.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Strand DB",
+      "applicationCategory": "DeveloperApplication",
+      "description": "The database for agent context graphs. Open-source v1 is a single-node Rust CLI and library: the graph is the Statement model, with cosine over hash embeddings. Not a hosted service and not a neural embedder.",
       "author": {
         "@id": "https://abduljaleel.xyz/#person"
       },
@@ -588,73 +602,81 @@
       </div>
 
       <div class="hero-visual">
-        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects all seven works as nodes in one network — ax (coding agent), EvolveHandsAI (code evolution), LoopbackCloud (local cloud), X-Road (data exchange), VIM (supply chain), Wharf (MCP server), and Aletheia (agent stack).">
-          <svg viewBox="0 0 540 462" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <div class="tgraph" role="img" aria-label="Diagram: a central trust hub connects all eight works as nodes in one network — ax (coding agent), EvolveHandsAI (code evolution), LoopbackCloud (local cloud), X-Road (data exchange), VIM (supply chain), Wharf (MCP server), Aletheia (agent stack), and Strand DB (context graph).">
+          <svg viewBox="0 0 608 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <title>Product trust network</title>
-            <circle class="tg-orbit" cx="270" cy="235" r="170"/>
+            <circle class="tg-orbit" cx="304" cy="260" r="206"/>
             <g>
-              <line class="edge" x1="270" y1="235" x2="270" y2="65"  stroke="var(--indigo)"/>
-              <line class="edge" x1="270" y1="235" x2="403" y2="129" stroke="var(--teal)"/>
-              <line class="edge" x1="270" y1="235" x2="436" y2="273" stroke="var(--amber)"/>
-              <line class="edge" x1="270" y1="235" x2="344" y2="388" stroke="var(--indigo)"/>
-              <line class="edge" x1="270" y1="235" x2="196" y2="388" stroke="var(--rose)"/>
-              <line class="edge" x1="270" y1="235" x2="104" y2="273" stroke="var(--teal)"/>
-              <line class="edge" x1="270" y1="235" x2="137" y2="129" stroke="var(--amber)"/>
-              <line class="edge-flow" x1="270" y1="235" x2="270" y2="65"  stroke="var(--indigo)"/>
-              <line class="edge-flow" x1="270" y1="235" x2="403" y2="129" stroke="var(--teal)"   style="animation-delay:.4s"/>
-              <line class="edge-flow" x1="270" y1="235" x2="436" y2="273" stroke="var(--amber)"  style="animation-delay:.8s"/>
-              <line class="edge-flow" x1="270" y1="235" x2="344" y2="388" stroke="var(--indigo)" style="animation-delay:1.2s"/>
-              <line class="edge-flow" x1="270" y1="235" x2="196" y2="388" stroke="var(--rose)"   style="animation-delay:1.6s"/>
-              <line class="edge-flow" x1="270" y1="235" x2="104" y2="273" stroke="var(--teal)"   style="animation-delay:2s"/>
-              <line class="edge-flow" x1="270" y1="235" x2="137" y2="129" stroke="var(--amber)"  style="animation-delay:2.4s"/>
+              <line class="edge" x1="304" y1="260" x2="304" y2="54"  stroke="var(--indigo)"/>
+              <line class="edge" x1="304" y1="260" x2="450" y2="114" stroke="var(--teal)"/>
+              <line class="edge" x1="304" y1="260" x2="510" y2="260" stroke="var(--amber)"/>
+              <line class="edge" x1="304" y1="260" x2="450" y2="406" stroke="var(--indigo)"/>
+              <line class="edge" x1="304" y1="260" x2="304" y2="466" stroke="var(--rose)"/>
+              <line class="edge" x1="304" y1="260" x2="158" y2="406" stroke="var(--teal)"/>
+              <line class="edge" x1="304" y1="260" x2="98"  y2="260" stroke="var(--amber)"/>
+              <line class="edge" x1="304" y1="260" x2="158" y2="114" stroke="var(--rose)"/>
+              <line class="edge-flow" x1="304" y1="260" x2="304" y2="54"  stroke="var(--indigo)"/>
+              <line class="edge-flow" x1="304" y1="260" x2="450" y2="114" stroke="var(--teal)"   style="animation-delay:.35s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="510" y2="260" stroke="var(--amber)"  style="animation-delay:.7s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="450" y2="406" stroke="var(--indigo)" style="animation-delay:1.05s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="304" y2="466" stroke="var(--rose)"   style="animation-delay:1.4s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="158" y2="406" stroke="var(--teal)"   style="animation-delay:1.75s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="98"  y2="260" stroke="var(--amber)"  style="animation-delay:2.1s"/>
+              <line class="edge-flow" x1="304" y1="260" x2="158" y2="114" stroke="var(--rose)"   style="animation-delay:2.45s"/>
             </g>
             <g>
-              <circle class="hub-glow" cx="270" cy="235" r="54"/>
-              <circle class="hub-ring" cx="270" cy="235" r="50"/>
-              <path class="hub-icon" d="M256,216 L284,216 L284,233 C284,244 278,250 270,255 C262,250 256,244 256,233 Z"/>
-              <path class="hub-check" d="M262,233 L268,240 L280,225"/>
+              <circle class="hub-glow" cx="304" cy="260" r="54"/>
+              <circle class="hub-ring" cx="304" cy="260" r="50"/>
+              <path class="hub-icon" d="M290,241 L318,241 L318,258 C318,269 312,275 304,280 C296,275 290,269 290,258 Z"/>
+              <path class="hub-check" d="M296,258 L302,265 L314,250"/>
             </g>
             <!-- ax -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
-              <rect class="chip-bg" x="204" y="43" width="132" height="44" rx="12" stroke="var(--indigo)"/>
-              <text class="chip-name" x="270" y="61">ax</text>
-              <text class="chip-sub"  x="270" y="75">CODING AGENT</text>
+              <rect class="chip-bg" x="238" y="32" width="132" height="44" rx="12" stroke="var(--indigo)"/>
+              <text class="chip-name" x="304" y="50">ax</text>
+              <text class="chip-sub"  x="304" y="64">CODING AGENT</text>
             </g>
             <!-- EvolveHandsAI -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(20,184,166,.22))">
-              <rect class="chip-bg" x="337" y="107" width="132" height="44" rx="12" stroke="var(--teal)"/>
-              <text class="chip-name sm" x="403" y="125">EvolveHandsAI</text>
-              <text class="chip-sub"  x="403" y="139">CODE EVOLUTION</text>
+              <rect class="chip-bg" x="384" y="92" width="132" height="44" rx="12" stroke="var(--teal)"/>
+              <text class="chip-name sm" x="450" y="110">EvolveHandsAI</text>
+              <text class="chip-sub"  x="450" y="124">CODE EVOLUTION</text>
             </g>
             <!-- LoopbackCloud -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
-              <rect class="chip-bg" x="370" y="251" width="132" height="44" rx="12" stroke="var(--amber)"/>
-              <text class="chip-name sm" x="436" y="269">LoopbackCloud</text>
-              <text class="chip-sub"  x="436" y="283">LOCAL CLOUD</text>
+              <rect class="chip-bg" x="444" y="238" width="132" height="44" rx="12" stroke="var(--amber)"/>
+              <text class="chip-name sm" x="510" y="256">LoopbackCloud</text>
+              <text class="chip-sub"  x="510" y="270">LOCAL CLOUD</text>
             </g>
             <!-- X-Road -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(99,102,241,.22))">
-              <rect class="chip-bg" x="278" y="366" width="132" height="44" rx="12" stroke="var(--indigo)"/>
-              <text class="chip-name" x="344" y="384">X-Road</text>
-              <text class="chip-sub"  x="344" y="398">DATA EXCHANGE</text>
+              <rect class="chip-bg" x="384" y="384" width="132" height="44" rx="12" stroke="var(--indigo)"/>
+              <text class="chip-name" x="450" y="402">X-Road</text>
+              <text class="chip-sub"  x="450" y="416">DATA EXCHANGE</text>
             </g>
             <!-- VIM -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(244,63,94,.22))">
-              <rect class="chip-bg" x="130" y="366" width="132" height="44" rx="12" stroke="var(--rose)"/>
-              <text class="chip-name" x="196" y="384">VIM</text>
-              <text class="chip-sub"  x="196" y="398">SUPPLY CHAIN</text>
+              <rect class="chip-bg" x="238" y="444" width="132" height="44" rx="12" stroke="var(--rose)"/>
+              <text class="chip-name" x="304" y="462">VIM</text>
+              <text class="chip-sub"  x="304" y="476">SUPPLY CHAIN</text>
             </g>
             <!-- Wharf -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(20,184,166,.22))">
-              <rect class="chip-bg" x="38" y="251" width="132" height="44" rx="12" stroke="var(--teal)"/>
-              <text class="chip-name" x="104" y="269">Wharf</text>
-              <text class="chip-sub"  x="104" y="283">MCP SERVER</text>
+              <rect class="chip-bg" x="92" y="384" width="132" height="44" rx="12" stroke="var(--teal)"/>
+              <text class="chip-name" x="158" y="402">Wharf</text>
+              <text class="chip-sub"  x="158" y="416">MCP SERVER</text>
             </g>
             <!-- Aletheia -->
             <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(245,158,11,.22))">
-              <rect class="chip-bg" x="71" y="107" width="132" height="44" rx="12" stroke="var(--amber)"/>
-              <text class="chip-name" x="137" y="125">Aletheia</text>
-              <text class="chip-sub"  x="137" y="139">AGENT STACK</text>
+              <rect class="chip-bg" x="32" y="238" width="132" height="44" rx="12" stroke="var(--amber)"/>
+              <text class="chip-name" x="98" y="256">Aletheia</text>
+              <text class="chip-sub"  x="98" y="270">AGENT STACK</text>
+            </g>
+            <!-- Strand DB -->
+            <g class="tg-chip" style="filter:drop-shadow(0 6px 16px rgba(244,63,94,.22))">
+              <rect class="chip-bg" x="92" y="92" width="132" height="44" rx="12" stroke="var(--rose)"/>
+              <text class="chip-name" x="158" y="110">Strand DB</text>
+              <text class="chip-sub"  x="158" y="124">CONTEXT GRAPH</text>
             </g>
           </svg>
         </div>
@@ -668,7 +690,7 @@
       <div class="section-head">
         <span class="eyebrow">Selected work</span>
         <h2 class="section-title">Work that stands on its own</h2>
-        <p class="section-lead">Distinct builds across agent infrastructure, developer tools, supply-chain security, secure data exchange, and local cloud infrastructure — each with its own brief and craft.</p>
+        <p class="section-lead">Distinct builds across agent infrastructure, context graphs, developer tools, supply-chain security, secure data exchange, and local cloud infrastructure — each with its own brief and craft.</p>
       </div>
 
       <div class="products">
@@ -823,6 +845,27 @@
           </div>
         </div>
 
+        <!-- Strand DB -->
+        <div class="product-row reverse" style="--pc: var(--rose);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Context-graph database</span>
+            <h3 class="mono">Strand DB</h3>
+            <p class="product-tagline">The database for agent context graphs.</p>
+            <p class="product-desc">The graph is the Statement model: a Ref can be an edge, and sense, time, and provenance live on the same atom. Open-source v1 is a single-node Rust CLI and library — cosine over hash embeddings, not a hosted service and not a neural embedder. The Strands Agents adapter is in review and not available.</p>
+            <ul class="check-list">
+              <li>Statement model — a Ref can be an edge; sense lives on the same atom</li>
+              <li>Compaction, provenance, and time are part of the engine model</li>
+              <li>Single-node Rust CLI and library · cosine over hash embeddings</li>
+            </ul>
+          </div>
+          <div class="product-visual">
+            <div class="pv shot" style="--pc: var(--rose);">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">abduljaleel.xyz/strand-db</span></div>
+              <img src="assets/stranddb.webp" alt="Screenshot of the Strand DB page: Strand is the database for agent context graphs." loading="lazy" decoding="async" width="1600" height="1000">
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -884,6 +927,7 @@
         <span>Wharf</span>
         <span>X-Road</span>
         <a href="/loopbackcloud/">LoopbackCloud</a>
+        <span>Strand DB</span>
       </div>
       <div class="footer-col">
         <h4>Writing</h4>

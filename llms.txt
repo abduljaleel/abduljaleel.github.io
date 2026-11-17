@@ -11,6 +11,7 @@
 - [Wharf](https://abduljaleel.xyz/wharf/): A dock for your Managed Agents.
 - [X-Road](https://abduljaleel.xyz/X-Road/): Secure data exchange that watches, predicts, and explains itself.
 - [LoopbackCloud](https://abduljaleel.xyz/loopbackcloud/): The local cloud for AI agents — AWS, Azure and GCP on localhost.
+- Strand DB: The database for agent context graphs. Open-source v1 is a single-node Rust CLI and library.
 
 ## Studio
 
