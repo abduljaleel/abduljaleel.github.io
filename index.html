@@ -213,6 +213,66 @@
         "price": "0",
         "priceCurrency": "USD"
       }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SuperGuardian",
+      "url": "https://superguardian.org/",
+      "applicationCategory": "BusinessApplication",
+      "description": "Compliance command centre for Australian super funds, built for Payday Super — detection of underpaid, variance, and zero-SGC contributions with employer risk grading and audit-ready recovery plans.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "AgentBeing",
+      "url": "https://agentbeing.vercel.app/",
+      "applicationCategory": "DeveloperApplication",
+      "description": "The platform that turns coding agents into real teammates — assign tasks, track progress, compound skills, and manage your human and agent workforce in one place.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "SkillScan",
+      "url": "https://skillscanmcp.com/",
+      "applicationCategory": "SecurityApplication",
+      "description": "Remote MCP server that inspects AI agent skills for prompt injection, data exfiltration, supply-chain tampering and dozens of other security patterns.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Cask",
+      "url": "https://cask.build/",
+      "applicationCategory": "DeveloperApplication",
+      "description": "Git hosting at any scale — ordinary Git over HTTPS, a code browser, pull requests, and durable storage in Cloudflare Artifacts.",
+      "author": {
+        "@id": "https://abduljaleel.xyz/#person"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     }
   ]
 }
@@ -867,6 +927,94 @@
           </div>
         </div>
 
+        <!-- SuperGuardian -->
+        <div class="product-row" style="--pc: var(--teal);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Australian super compliance</span>
+            <h3>SuperGuardian</h3>
+            <p class="product-tagline">Every member. Every dollar. Every payday.</p>
+            <p class="product-desc">A compliance command centre for Australian super funds, built for Payday Super — catch contribution shortfalls on payday, not at audit.</p>
+            <ul class="check-list">
+              <li>On-demand detection scans on pay events, not quarterly batch jobs</li>
+              <li>Employer risk grading (0–100) recomputed on every scan</li>
+              <li>Drafted recovery plans with ATO referral paths and audit trail</li>
+              <li>CSV ledger import with employers registered by ABN</li>
+            </ul>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="https://superguardian.org/" rel="noopener noreferrer" style="--pc: var(--teal);" aria-label="Open SuperGuardian">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">superguardian.org</span></div>
+              <img src="assets/superguardian.webp" alt="Screenshot of SuperGuardian: compliance intelligence for Australian super — Every member. Every dollar. Every payday." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
+        <!-- AgentBeing -->
+        <div class="product-row reverse" style="--pc: var(--indigo);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Managed agents platform</span>
+            <h3>AgentBeing</h3>
+            <p class="product-tagline">The platform that turns coding agents into real teammates.</p>
+            <p class="product-desc">Assign tasks, track progress, and compound skills — manage your human and agent workforce in one place.</p>
+            <ul class="check-list">
+              <li>Humans and agents in the same assignee picker and activity feed</li>
+              <li>Full task lifecycle: enqueue, claim, start, complete or fail</li>
+              <li>Reusable skills any agent on the team can execute</li>
+              <li>Local daemons and cloud runtimes in one monitoring panel</li>
+            </ul>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="https://agentbeing.vercel.app/" rel="noopener noreferrer" style="--pc: var(--indigo);" aria-label="Open AgentBeing">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">agentbeing.vercel.app</span></div>
+              <img src="assets/agentbeing.webp" alt="Screenshot of AgentBeing: The platform that turns coding agents into real teammates." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
+        <!-- SkillScan MCP -->
+        <div class="product-row" style="--pc: var(--rose);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Agent skill security</span>
+            <h3 class="mono">SkillScan</h3>
+            <p class="product-tagline">Inspect agent skills before you install them.</p>
+            <p class="product-desc">SkillScan files a security dossier on any AI agent skill — flagging prompt injection, data exfiltration, supply-chain tampering and 60+ other patterns — and serves it as Model Context Protocol tools.</p>
+            <ul class="check-list">
+              <li>64 patterns across 17 categories of agent risk</li>
+              <li>Four MCP tools: scan_skill, scan_skill_from_github, scan_skill_from_url, list_patterns</li>
+              <li>Streamable HTTP and SSE endpoints on Cloudflare Workers</li>
+              <li>Engine derived from NVIDIA SkillSpector · Apache-2.0</li>
+            </ul>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="https://skillscanmcp.com/" rel="noopener noreferrer" style="--pc: var(--rose);" aria-label="Open SkillScan MCP">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">skillscanmcp.com</span></div>
+              <img src="assets/skillscanmcp.webp" alt="Screenshot of SkillScan: Inspect agent skills before you install them." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
+        <!-- Cask -->
+        <div class="product-row reverse" style="--pc: var(--amber);">
+          <div class="product-copy">
+            <span class="ptag"><span class="d" aria-hidden="true"></span> Git hosting</span>
+            <h3>Cask</h3>
+            <p class="product-tagline">Git hosting at any scale.</p>
+            <p class="product-desc">Ordinary Git over HTTPS, a code browser, pull requests, and durable storage in Cloudflare Artifacts. A push is acknowledged only once its objects and refs are in Artifacts, so replacing the container does not lose a repository.</p>
+            <ul class="check-list">
+              <li>Stock Git over HTTPS — clone, fetch and push with a stock client</li>
+              <li>Code browser, blame, branches, tags, and pull requests</li>
+              <li>Objects and refs stored in Cloudflare Artifacts</li>
+              <li>Cloudflare Worker, Go server, Artifacts, and an R2 catalog</li>
+            </ul>
+          </div>
+          <div class="product-visual">
+            <a class="pv shot" href="https://cask.build/" rel="noopener noreferrer" style="--pc: var(--amber);" aria-label="Open Cask">
+              <div class="pv-bar"><i></i><i></i><i></i><span class="pv-url">cask.build</span></div>
+              <img src="assets/cask.webp" alt="Screenshot of Cask: Git hosting at any scale." loading="lazy" decoding="async" width="1600" height="1000">
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -929,6 +1077,10 @@
         <span>X-Road</span>
         <a href="/loopbackcloud/">LoopbackCloud</a>
         <span>Strand DB</span>
+        <a href="https://superguardian.org/" rel="noopener noreferrer">SuperGuardian</a>
+        <a href="https://agentbeing.vercel.app/" rel="noopener noreferrer">AgentBeing</a>
+        <a href="https://skillscanmcp.com/" rel="noopener noreferrer">SkillScan</a>
+        <a href="https://cask.build/" rel="noopener noreferrer">Cask</a>
       </div>
       <div class="footer-col">
         <h4>Writing</h4>
